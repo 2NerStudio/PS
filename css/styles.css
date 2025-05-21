@@ -1,33 +1,48 @@
+/* Estilos Gerais */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
 header {
-  background-color: #004080;
-  color: white;
-  padding: 1rem;
-  text-align: center;
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav {
-  background-color: #e0e0e0;
-  padding: 1rem;
+.materias-grid, .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
-nav ul {
-  list-style-type: none;
-  padding: 0;
+.materia-card, .topic-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
 }
 
-nav li {
-  margin: 0.5rem 0;
+.materia-card:hover, .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-nav a {
-  text-decoration: none;
-  color: #004080;
-  font-weight: bold;
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+    
+    .materias-grid, .topics-grid {
+        grid-template-columns: 1fr;
+    }
 }

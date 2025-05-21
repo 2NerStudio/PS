@@ -3,24 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Project</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>EduTech - Soluções para Aprendizado</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>School Project</h1>
-  </header>
+    <header>
+        <div class="logo">
+            <h1>EduTech</h1>
+            <p>Soluções digitais para dificuldades escolares</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#materias">Matérias</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <nav>
-    <ul>
-      <li><a href="materias/matematica.html">Matemática</a></li>
-      <li><a href="materias/portugues.html">Português</a></li>
-      <li><a href="materias/ciencias.html">Ciências</a></li>
-    </ul>
-  </nav>
+    <main>
+        <section id="sobre">
+            <h2>Sobre o Projeto</h2>
+            <p>Este aplicativo foi desenvolvido para ajudar alunos com os tópicos mais desafiadores do currículo escolar.</p>
+        </section>
 
-  <main>
-    <p>Bem-vindo! Selecione uma matéria para começar.</p>
-  </main>
+        <section id="materias">
+            <h2>Matérias Disponíveis</h2>
+            <div class="materias-grid">
+                <a href="materias/matematica/" class="materia-card">
+                    <h3>Matemática</h3>
+                    <p>Frações, equações e geometria</p>
+                </a>
+                <a href="materias/portugues/" class="materia-card">
+                    <h3>Português</h3>
+                    <p>Gramática e interpretação de texto</p>
+                </a>
+                <a href="materias/ciencias/" class="materia-card">
+                    <h3>Ciências</h3>
+                    <p>Conceitos fundamentais</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <p>Desenvolvido para a Feira de Tecnologia da Diretoria de Ensino</p>
+        <p>Contato: 00001249473111sp@al.educacao.sp.gov.br</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
