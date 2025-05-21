@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Matemática | EduRevision</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/exercicios.css"> 
+</head>
+<body>
+    <header>
+        <a href="matematica.html" class="back-button">← Voltar</a>
+        <h1>Exercícios de Matemática</h1>
+    </header>
+        <a href="../matematica.html" class="back-button">← Voltar</a>
+        <h1>Exercícios de Matemática</h1>
+    </header>
+
+    <main class="exercicios-container">
+        <section class="filtro-exercicios">
+            <h2>Filtrar Exercícios</h2>
+            <div class="filtros">
+                <select id="dificuldade">
+                    <option value="todos">Todas as dificuldades</option>
+                    <option value="facil">Fácil</option>
+                    <option value="medio">Médio</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+                
+                <select id="topico">
+                    <option value="todos">Todos os tópicos</option>
+                    <option value="fracoes">Frações</option>
+                    <option value="equacoes">Equações</option>
+                    <option value="geometria">Geometria</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="lista-exercicios">
+        </section>
+
+        <section class="resultados">
+            <h2>Seu Progresso</h2>
+            <div class="progresso">
+                <div class="progresso-bar" style="width: 0%"></div>
+            </div>
+            <p class="pontuacao">0/0 exercícios concluídos</p>
+        </section>
+    </main>
+
+    <script src="js/exercicios.js"></script>
+</body>
+</html>
