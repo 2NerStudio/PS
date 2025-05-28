@@ -436,3 +436,12 @@ summary {
         margin: 10px 0;
     }
 }
+
+.destaque-verde {
+    color: #2e8b57;
+    font-weight: bold;
+}
+.destaque-azul {
+    color: #1e90ff;
+    font-weight: bold;
+}

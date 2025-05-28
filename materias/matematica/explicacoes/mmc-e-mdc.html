@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMC e MDC | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-verde {
+            color: #2e8b57;
+            font-weight: bold;
+        }
+        .destaque-azul {
+            color: #1e90ff;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .metodo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .metodo {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+        .passo-a-passo {
+            background-color: #fffaf0;
+            border-left: 4px solid #ffa500;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .comparativo {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .comparativo-item {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .comparativo-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>MMC e MDC - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>🔢 Introdução ao MMC e MDC</h2>
+            <p>
+                O <strong class="destaque-verde">MMC (Mínimo Múltiplo Comum)</strong> e o <strong class="destaque-azul">MDC (Máximo Divisor Comum)</strong> são conceitos fundamentais da aritmética com aplicações em problemas de divisibilidade, frações, álgebra e situações do cotidiano.
+            </p>
+            
+            <div class="comparativo">
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>📈 MMC - Mínimo Múltiplo Comum</h3>
+                        <p>O menor número que é múltiplo de dois ou mais números.</p>
+                        <ul>
+                            <li>Usado em: soma de frações, problemas de encontro</li>
+                            <li>Exemplo: MMC(4,6) = 12</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>📉 MDC - Máximo Divisor Comum</h3>
+                        <p>O maior número que divide dois ou mais números.</p>
+                        <ul>
+                            <li>Usado em: simplificação de frações, divisão em partes iguais</li>
+                            <li>Exemplo: MDC(12,18) = 6</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>🧩 Onde usamos MMC e MDC no dia a dia?</h3>
+                <ul>
+                    <li>Calcular quando dois eventos periódicos vão coincidir</li>
+                    <li>Dividir terrenos em lotes iguais</li>
+                    <li>Simplificar frações</li>
+                    <li>Resolver problemas de contagem e organização</li>
+                    <li>Programação de horários e escalas</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>📊 Métodos de Cálculo</h2>
+            
+            <h3>1. Decomposição em Fatores Primos</h3>
+            <div class="passo-a-passo">
+                <h4>Passo a Passo:</h4>
+                <ol>
+                    <li>Decompor cada número em fatores primos</li>
+                    <li><strong>Para MMC:</strong> Multiplicar os fatores comuns e não-comuns com maiores expoentes</li>
+                    <li><strong>Para MDC:</strong> Multiplicar apenas os fatores comuns com menores expoentes</li>
+                </ol>
+                
+                <h4>Exemplo: MMC e MDC de 24 e 36</h4>
+                <p>Decomposição:</p>
+                <ul>
+                    <li>24 = 2³ × 3¹</li>
+                    <li>36 = 2² × 3²</li>
+                </ul>
+                <p><strong>MMC(24,36):</strong> 2³ × 3² = 8 × 9 = 72</p>
+                <p><strong>MDC(24,36):</strong> 2² × 3¹ = 4 × 3 = 12</p>
+            </div>
+            
+            <h3>2. Método da Divisão Sucessiva</h3>
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">🔢</div>
+                    <h4>Para MMC</h4>
+                    <ol>
+                        <li>Dividir os números pelos primos em ordem crescente</li>
+                        <li>Continuar até obter 1 em todos</li>
+                        <li>Multiplicar todos os divisores</li>
+                    </ol>
+                    <p>Exemplo: MMC(12,15) = 60</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">➗</div>
+                    <h4>Para MDC</h4>
+                    <ol>
+                        <li>Dividir o maior pelo menor</li>
+                        <li>Repetir com o divisor e o resto</li>
+                        <li>Parar quando resto = 0</li>
+                        <li>Último divisor é o MDC</li>
+                    </ol>
+                    <p>Exemplo: MDC(48,36) = 12</p>
+                </div>
+            </div>
+            
+            <h3>3. Listagem de Múltiplos e Divisores</h3>
+            <div class="box-info">
+                <p>Para números pequenos, podemos listar:</p>
+                <table>
+                    <tr>
+                        <th>Número</th>
+                        <th>Múltiplos (MMC)</th>
+                        <th>Divisores (MDC)</th>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>8, 16, 24, 32, 40...</td>
+                        <td>1, 2, 4, 8</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>12, 24, 36, 48...</td>
+                        <td>1, 2, 3, 4, 6, 12</td>
+                    </tr>
+                </table>
+                <p><strong>MMC(8,12):</strong> O menor múltiplo comum é 24</p>
+                <p><strong>MDC(8,12):</strong> O maior divisor comum é 4</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔍 Propriedades Importantes</h2>
+            
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">ℹ️</div>
+                    <h4>Propriedades do MMC</h4>
+                    <ul>
+                        <li>MMC(a,b) ≥ max(a,b)</li>
+                        <li>MMC(a,a) = a</li>
+                        <li>MMC(a,b) × MDC(a,b) = a × b</li>
+                        <li>Se a é múltiplo de b, MMC(a,b) = a</li>
+                    </ul>
+                </div>
+                <div class="metodo">
+                    <div class="icone">ℹ️</div>
+                    <h4>Propriedades do MDC</h4>
+                    <ul>
+                        <li>MDC(a,b) ≤ min(a,b)</li>
+                        <li>MDC(a,a) = a</li>
+                        <li>MDC(a,b) = MDC(b,a)</li>
+                        <li>Se a é múltiplo de b, MDC(a,b) = b</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>📌 Relação Fundamental</h3>
+                <p>Para quaisquer dois números naturais a e b:</p>
+                <p class="destaque-verde" style="text-align: center; font-size: 1.2em;">
+                    MMC(a,b) × MDC(a,b) = a × b
+                </p>
+                <p>Exemplo: Para 12 e 18</p>
+                <ul>
+                    <li>MMC(12,18) = 36</li>
+                    <li>MDC(12,18) = 6</li>
+                    <li>12 × 18 = 216</li>
+                    <li>36 × 6 = 216 ✔️</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="exercicios">
+            <h2>📚 Exercícios Práticos</h2>
+            
+            <div class="exercicio">
+                <p>1. Calcule o MMC e MDC de 15 e 25:</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p><strong>Decomposição em primos:</strong></p>
+                        <ul>
+                            <li>15 = 3 × 5</li>
+                            <li>25 = 5²</li>
+                        </ul>
+                        <p><strong>MMC(15,25):</strong> 3 × 5² = 75</p>
+                        <p><strong>MDC(15,25):</strong> 5</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Três ônibus passam por um terminal a cada 15, 20 e 30 minutos. Depois de quanto tempo eles passarão juntos novamente?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Precisamos calcular o MMC dos intervalos:</p>
+                        <p><strong>MMC(15,20,30):</strong></p>
+                        <ul>
+                            <li>15 = 3 × 5</li>
+                            <li>20 = 2² × 5</li>
+                            <li>30 = 2 × 3 × 5</li>
+                        </ul>
+                        <p>MMC = 2² × 3 × 5 = 60 minutos (1 hora)</p>
+                        <p class="destaque-azul">Os ônibus passarão juntos novamente após 1 hora.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Um terreno retangular mede 120m × 180m. Qual o maior tamanho possível para lotes quadrados iguais?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Precisamos do MDC das dimensões:</p>
+                        <p><strong>MDC(120,180):</strong></p>
+                        <ul>
+                            <li>120 = 2³ × 3 × 5</li>
+                            <li>180 = 2² × 3² × 5</li>
+                        </ul>
+                        <p>MDC = 2² × 3 × 5 = 60</p>
+                        <p class="destaque-verde">Os lotes podem ter no máximo 60m × 60m.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>4. Simplifique a fração 84/120 usando MDC:</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Primeiro encontramos o MDC(84,120):</p>
+                        <p>Usando o método da divisão sucessiva:</p>
+                        <ul>
+                            <li>120 ÷ 84 = 1 com resto 36</li>
+                            <li>84 ÷ 36 = 2 com resto 12</li>
+                            <li>36 ÷ 12 = 3 com resto 0</li>
+                        </ul>
+                        <p>MDC = 12</p>
+                        <p>Simplificando: 84÷12 / 120÷12 = 7/10</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Dicas e Macetes</h2>
+            <div class="box-info">
+                <h3>🎯 Como escolher o melhor método?</h3>
+                <table>
+                    <tr>
+                        <th>Situação</th>
+                        <th>Método Recomendado</th>
+                    </tr>
+                    <tr>
+                        <td>Números pequenos (até 20)</td>
+                        <td>Listagem de múltiplos/divisores</td>
+                    </tr>
+                    <tr>
+                        <td>Números médios (20-100)</td>
+                        <td>Decomposição em fatores primos</td>
+                    </tr>
+                    <tr>
+                        <td>Números grandes (>100)</td>
+                        <td>Divisão sucessiva (especialmente MDC)</td>
+                    </tr>
+                    <tr>
+                        <td>Mais de 2 números</td>
+                        <td>Decomposição em primos</td>
+                    </tr>
+                </table>
+                
+                <h3>⚠️ Erros comuns para evitar</h3>
+                <ul>
+                    <li>Confundir MMC com MDC - lembre que MMC ≥ números e MDC ≤ números</li>
+                    <li>Esquecer de verificar todos os fatores primos</li>
+                    <li>Parar a decomposição antes de chegar a 1</li>
+                    <li>Não simplificar completamente as frações</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=Au2TsEIGGNg" target="_blank" class="destaque-verde">MMC - Mínimo Múltiplo Comum (Parte 1)</a> – Matemática Rio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=l2K66GP-SM4" target="_blank" class="destaque-verde">MMC e MDC - Conceitos Básicos</a> – Matemática Zero 2.0</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=JANIGcD3lbg" target="_blank" class="destaque-verde">Exercícios Resolvidos de MMC e MDC</a> – Matemática Concurso</li>
+                </ul>
+                
+                <h3>📚 Ferramentas e Sites:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.calculadoraonline.com.br/mmc-mdc" target="_blank" class="destaque-azul">Calculadora Online de MMC/MDC</a></li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-gcd" target="_blank" class="destaque-azul">Khan Academy - MDC e MMC</a></li>
+                    <li>🌐 <a href="https://www.obm.org.br/conteudo/material-didatico/" target="_blank" class="destaque-azul">Material Didático OBM</a></li>
+                </ul>
+                
+                <h3>📱 Aplicativos Úteis:</h3>
+                <ul>
+                    <li>📲 Mathway - Resolução passo a passo</li>
+                    <li>📲 Photomath - Calculadora com câmera</li>
+                    <li>📲 MalMath - Gerador de exercícios</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 1.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-verde">00001249473111sp@al.educacao.sp.gov.br</a></p>
+    </footer>
+</body>
+</html>

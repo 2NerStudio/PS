@@ -127,3 +127,12 @@ footer {
     font-weight: 600;
     margin-left: 0.5rem;
 }
+
+.destaque-verde {
+    color: #2e8b57;
+    font-weight: bold;
+}
+.destaque-azul {
+    color: #1e90ff;
+    font-weight: bold;
+}
