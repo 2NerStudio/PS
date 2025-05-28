@@ -67,6 +67,7 @@ header {
     overflow: hidden;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .conteudos-card:hover {
@@ -83,6 +84,7 @@ header {
 
 .card-body {
     padding: 1.5rem;
+    padding-bottom: 70px
 }
 
 .card-body p {
@@ -99,6 +101,9 @@ header {
     text-decoration: none;
     font-weight: 600;
     transition: background 0.3s ease;
+    position: absolute;
+    left: 20px;
+    bottom: 20px; 
 }
 
 .btn:hover {
