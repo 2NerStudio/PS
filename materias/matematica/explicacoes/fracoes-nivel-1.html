@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frações | EduRevision</title>
     <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .fracao-visual {
+            display: inline-block;
+            text-align: center;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        .numerador {
+            border-bottom: 1px solid #333;
+            padding: 0 5px;
+        }
+        .denominador {
+            padding: 0 5px;
+        }
+        .comparacao-fracoes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        .tipo-fracao {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,94 +44,153 @@
             </div>
         </div>
     </header>
+
     <main class="container">
         <section class="conteudo">
-            <h2>O que é uma Equação do 1º Grau?</h2>
+            <h2>O que são Frações?</h2>
             <p>
-                Uma <strong>equação do 1º grau</strong> é uma expressão matemática que envolve uma incógnita (geralmente representada por <em>x</em>) e que possui <span class="destaque">expoente igual a 1</span>.
-                O objetivo é encontrar o valor de <em>x</em> que torna a equação verdadeira.
+                As <strong>frações</strong> representam partes de um todo dividido em porções iguais. Elas são compostas por:
             </p>
+            <div class="fracao-visual">
+                <div class="numerador"><strong>Numerador</strong></div>
+                <div class="denominador"><strong>Denominador</strong></div>
+            </div>
+            <ul>
+                <li><strong>Numerador:</strong> Indica quantas partes estamos considerando</li>
+                <li><strong>Denominador:</strong> Indica em quantas partes iguais o todo foi dividido</li>
+            </ul>
+
             <div class="exemplo">
-                <h3>🧮 Exemplo:</h3>
+                <h3>🧮 Exemplo Visual:</h3>
                 <p>
-                    Considere a equação: <strong>2x + 3 = 7</strong><br>
-                    Para encontrar o valor de <em>x</em>, seguimos os seguintes passos:
+                    A fração <span class="fracao-grande">3/4</span> significa:
                 </p>
                 <ul>
-                    <li><strong>Passo 1:</strong> Subtrair 3 dos dois lados: <span>2x = 4</span></li>
-                    <li><strong>Passo 2:</strong> Dividir ambos os lados por 2: <span>x = 2</span></li>
+                    <li>O todo foi dividido em <strong>4 partes iguais</strong> (denominador)</li>
+                    <li>Estamos considerando <strong>3 dessas partes</strong> (numerador)</li>
                 </ul>
-                <p>Portanto, a solução da equação é <strong>x = 2</strong>.</p>
-            </div>
-            <div class="exemplo">
-                <h3>🔍 Dica:</h3>
-                <p>
-                    Toda equação do 1º grau pode ser escrita na forma <strong>ax + b = 0</strong>, onde:
-                </p>
-                <ul>
-                    <li><strong>a:</strong> coeficiente de x</li>
-                    <li><strong>b:</strong> termo constante</li>
-                </ul>
-                <p>Para resolver, isole o <em>x</em> aplicando operações inversas.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <div style="display: inline-block; width: 100px; height: 100px; border: 2px solid #333; position: relative;">
+                        <div style="position: absolute; width: 100%; height: 25%; top: 0; left: 0; background-color: #4361ee;"></div>
+                        <div style="position: absolute; width: 100%; height: 25%; top: 25%; left: 0; background-color: #4361ee;"></div>
+                        <div style="position: absolute; width: 100%; height: 25%; top: 50%; left: 0; background-color: #4361ee;"></div>
+                    </div>
+                    <p>3 partes coloridas de 4 no total</p>
+                </div>
             </div>
         </section>
+
         <section class="conteudo">
-            <h3>Tipos de frações</h3>
-            <ul>
-                <li><strong>Frações próprias:</strong> numerador menor que o denominador <span class="fracao-grande">3/4</span><span class="descricao">(três quartos)</span></li>
-                <li><strong>Frações impróprias:</strong> numerador maior ou igual ao denominador <span class="fracao-grande">5/4</span><span class="descricao">(cinco quartos)</span></li>
-                <li><strong>Frações aparentes:</strong> resultado inteiro <span class="fracao-grande">4/2</span><span class="descricao">(dois inteiros)</span></li>
-            </ul>
+            <h3>Tipos de Frações</h3>
+            <div class="comparacao-fracoes">
+                <div class="tipo-fracao">
+                    <h4>Frações Próprias</h4>
+                    <p>Numerador menor que o denominador</p>
+                    <div class="fracao-visual">
+                        <div class="numerador">3</div>
+                        <div class="denominador">4</div>
+                    </div>
+                    <p>Valor menor que 1 inteiro</p>
+                </div>
+                
+                <div class="tipo-fracao">
+                    <h4>Frações Impróprias</h4>
+                    <p>Numerador maior ou igual ao denominador</p>
+                    <div class="fracao-visual">
+                        <div class="numerador">5</div>
+                        <div class="denominador">4</div>
+                    </div>
+                    <p>Valor igual ou maior que 1</p>
+                </div>
+                
+                <div class="tipo-fracao">
+                    <h4>Frações Aparentes</h4>
+                    <p>Representam números inteiros</p>
+                    <div class="fracao-visual">
+                        <div class="numerador">4</div>
+                        <div class="denominador">2</div>
+                    </div>
+                    <p>Equivalem a 2 inteiros</p>
+                </div>
+            </div>
         </section>
+
         <section class="conteudo">
-            <h3>Operações com frações - Nível: 1</h3>
-            <ul>
-                <li><strong>Adição(denominadores iguais):</strong> mesmo denominador, soma os numeradores. Ex: <span class="fracao-grande">2/5 + 1/5 = 3/5</span></li>
-                <li><strong>Subtração(denominadores iguais):</strong> mesmo denominador, subtrai os numeradores. Ex: <span class="fracao-grande">3/4 - 1/4 = 2/4</span></li>
-            </ul>
+            <h3>Operações com Frações - Mesmo Denominador</h3>
+            <div class="operacao-fracao">
+                <h4>Adição</h4>
+                <p>Some os numeradores e mantenha o denominador:</p>
+                <div class="fracao-grande">2/7 + 3/7 = (2+3)/7 = 5/7</div>
+                
+                <h4>Subtração</h4>
+                <p>Subtraia os numeradores e mantenha o denominador:</p>
+                <div class="fracao-grande">5/6 - 2/6 = (5-2)/6 = 3/6 = 1/2 (simplificado)</div>
+            </div>
+            
+            <div class="dica-importante">
+                <h4>⚠️ Importante!</h4>
+                <p>Para somar ou subtrair frações com denominadores diferentes, é necessário primeiro encontrar um denominador comum (MMC).</p>
+            </div>
         </section>
+
         <section class="exercicios">
-            <h3>Exemplos de exercícios</h3>
-            <p>Resolva: <strong><span class="fracao-grande">3/5 + 1/5 =</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Como os denominadores são iguais, basta somar os numeradores: 3 + 1 = 4. Mantemos o mesmo denominador, e o resultado é: <strong><span class='fracao-grande'>4/5</span></strong></p>
-            </details>
-
-            <p>Resolva: <strong><span class="fracao-grande">5/8 + 2/8 =</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Como os denominadores são iguais, somamos os numeradores: 5 + 2 = 7. Mantemos o denominador e o resultado é: <strong><span class='fracao-grande'>7/8</span></strong></p>
-            </details>
-
-            <p>Resolva: <strong><span class="fracao-grande">6/10 - 3/10 =</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Os denominadores são iguais, então subtraímos os numeradores: 6 - 3 = 3. Mantemos o denominador e o resultado é: <strong><span class='fracao-grande'>3/10</span></strong></p>
-            </details>
-
-            <p>Resolva: <strong><span class="fracao-grande">4/7 + 2/7 =</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Os denominadores são iguais, portanto somamos os numeradores: 4 + 2 = 6. O resultado é: <strong><span class='fracao-grande'>6/7</span></strong></p>
-            </details>
-            <p>Resolva: <strong><span class="fracao-grande">9/12 - 5/12 =</span></strong></p>
-            <details>
-
-                <summary>Ver resposta</summary>
-                <p>Os denominadores são iguais, então subtraímos os numeradores: 9 - 5 = 4. O resultado é: <strong><span class='fracao-grande'>4/12</span></strong></p>
-            </details>
+            <h3>Exercícios Práticos</h3>
+            
+            <div class="nivel-exercicio">
+                <h4>Nível Básico</h4>
+                <p>1. Calcule: <span class="fracao-grande">2/9 + 5/9</span></p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p><span class="fracao-grande">7/9</span> (2 + 5 = 7, denominador permanece 9)</p>
+                </details>
+                
+                <p>2. Calcule: <span class="fracao-grande">7/10 - 3/10</span></p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p><span class="fracao-grande">4/10</span> que simplificado é <span class="fracao-grande">2/5</span></p>
+                </details>
+            </div>
+            
+            <div class="nivel-exercicio">
+                <h4>Nível Intermediário</h4>
+                <p>3. João comeu <span class="fracao-grande">3/8</span> de uma pizza e Maria comeu <span class="fracao-grande">2/8</span>. Quanto comeram juntos?</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p><span class="fracao-grande">5/8</span> da pizza</p>
+                </details>
+                
+                <p>4. Um copo tinha <span class="fracao-grande">6/7</span> de água. Se retirarmos <span class="fracao-grande">2/7</span>, quanto resta?</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p><span class="fracao-grande">4/7</span> de água no copo</p>
+                </details>
+            </div>
         </section>
+
         <section class="conteudo">
-            <h3>Extras</h3>
-            <ul>
-                <li>Se dividirmos o numerador pelo denominador, podemos saber se a fração representa um número menor que 1 (fração própria), maior que 1 (fração imprópria) ou igual a 1 (inteira).</li>
-                <li>Exemplo: <strong>4 ÷ 4 = 1</strong> → fração <span class="fracao-grande">4/4</span> representa <strong>1 inteiro</strong>.</li>
-                <li>Frações impróprias podem ser transformadas em números mistos. Ex: <span class="fracao-grande">7/4</span> = <strong>1 3/4</strong> (1 inteiro e 3 partes de 4).</li>
-            </ul>
+            <h3>Conversões e Representações</h3>
+            <div class="conversao-fracoes">
+                <h4>Frações Impróprias para Números Mistos</h4>
+                <ol>
+                    <li>Divida o numerador pelo denominador</li>
+                    <li>O quociente é a parte inteira</li>
+                    <li>O resto é o novo numerador</li>
+                    <li>Mantenha o mesmo denominador</li>
+                </ol>
+                <p><strong>Exemplo:</strong> <span class="fracao-grande">7/3</span> = 2 inteiros e <span class="fracao-grande">1/3</span></p>
+                
+                <h4>Números Mistos para Frações Impróprias</h4>
+                <ol>
+                    <li>Multiplique o inteiro pelo denominador</li>
+                    <li>Some com o numerador</li>
+                    <li>Mantenha o mesmo denominador</li>
+                </ol>
+                <p><strong>Exemplo:</strong> 1 <span class="fracao-grande">2/5</span> = <span class="fracao-grande">7/5</span></p>
+            </div>
         </section>
+
         <section class="conteudo">
-            <h3>Links úteis</h3>
+            <h3>Links Úteis</h3>
             <ul>
                 <li><a href="https://youtu.be/bPjSy37-D8U" target="_blank">📹 Vídeo: Introdução às frações (Canal Escola de Números com Thyago Araujo)</a></li>
                 <li><a href="https://youtu.be/w4oCFWwqeUQ" target="_blank">📹 Vídeo: Como somar e subtrair frações (Canal Professora Angela Matemática)</a></li>

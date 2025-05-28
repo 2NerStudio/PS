@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equações de primeiro grau | EduRevision</title> 
+    <title>Equações do 1º Grau | EduRevision</title> 
     <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .passo-a-passo {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--cor-primaria);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .passo {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .dica-avancada {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Equações de primeiro grau</h1> 
+                <h1>Equações do 1º Grau</h1> 
                 <a href="../matematica.html" class="btn-back">← Voltar</a>
             </div>
         </div>
@@ -18,104 +40,213 @@
 
     <main class="container">
         <section class="conteudo">
-            <h2>O que é uma Equação do 1º Grau?</h2>
+            <h2>O que são Equações do 1º Grau?</h2>
             <p>
-                Uma <strong>equação do 1º grau</strong> é uma expressão matemática que envolve uma incógnita (geralmente representada por <em>x</em>) e que possui <span class="destaque">expoente igual a 1</span>.
-                O objetivo é encontrar o valor de <em>x</em> que torna a equação verdadeira.
+                As <strong>equações do 1º grau</strong> são ferramentas matemáticas fundamentais que nos ajudam a descobrir valores desconhecidos em diversas situações do cotidiano. Elas apresentam:
             </p>
+            <ul>
+                <li><strong>Uma incógnita</strong> (normalmente representada por x)</li>
+                <li><strong>Expoente 1</strong> para a incógnita (por isso "1º grau")</li>
+                <li><strong>Relação de igualdade</strong> entre duas expressões</li>
+            </ul>
+
             <div class="exemplo">
-                <h3>🧮 Exemplo:</h3>
+                <h3>🧮 Exemplo Prático:</h3>
                 <p>
-                    Considere a equação: <strong>2x + 3 = 7</strong><br>
-                    Para encontrar o valor de <em>x</em>, seguimos os seguintes passos:
+                    Imagine que você tem R$ 50,00 e quer comprar alguns cadernos de R$ 12,00 cada. Quantos cadernos pode comprar sem faltar dinheiro?
                 </p>
-                <ul>
-                    <li><strong>Passo 1:</strong> Subtrair 3 dos dois lados: <span>2x = 4</span></li>
-                    <li><strong>Passo 2:</strong> Dividir ambos os lados por 2: <span>x = 2</span></li>
-                </ul>
-                <p>Portanto, a solução da equação é <strong>x = 2</strong>.</p>
+                <div class="passo-a-passo">
+                    <div class="passo">
+                        <strong>1. Montar a equação:</strong> 12x ≤ 50 (onde x é o número de cadernos)
+                    </div>
+                    <div class="passo">
+                        <strong>2. Resolver:</strong> x ≤ 50 ÷ 12 → x ≤ 4,166...
+                    </div>
+                    <div class="passo">
+                        <strong>3. Interpretar:</strong> Como não podemos comprar parte de caderno, a resposta é <strong>4 cadernos</strong>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <section class="conteudo">
+            <h3>Forma Geral e Componentes</h3>
+            <p>
+                Toda equação do 1º grau pode ser escrita na forma:
+            </p>
+            <p class="destaque-matematico">
+                ax + b = 0
+            </p>
+            <ul>
+                <li><strong>a</strong>: coeficiente da incógnita (não pode ser zero)</li>
+                <li><strong>b</strong>: termo independente</li>
+                <li><strong>x</strong>: incógnita (valor a ser descoberto)</li>
+            </ul>
+            
             <div class="exemplo">
-                <h3>🔍 Dica:</h3>
+                <h3>🔍 Transformando equações:</h3>
                 <p>
-                    Toda equação do 1º grau pode ser escrita na forma <strong>ax + b = 0</strong>, onde:
+                    Qualquer equação pode ser reorganizada para a forma padrão:
                 </p>
-                <ul>
-                    <li><strong>a:</strong> coeficiente de x</li>
-                    <li><strong>b:</strong> termo constante</li>
-                </ul>
-                <p>Para resolver, isole o <em>x</em> aplicando operações inversas.</p>
+                <div class="passo-a-passo">
+                    <div class="passo">
+                        <strong>Equação original:</strong> 2x + 5 = 13
+                    </div>
+                    <div class="passo">
+                        <strong>Subtrair 13:</strong> 2x + 5 - 13 = 0
+                    </div>
+                    <div class="passo">
+                        <strong>Forma padrão:</strong> 2x - 8 = 0 (onde a=2 e b=-8)
+                    </div>
+                </div>
             </div>
         </section>
+
         <section class="conteudo">
-            <h3>Estrutura de uma equação do 1º grau</h3>
-            <ul>
-                <li><strong>Equação simples:</strong> contém apenas uma incógnita (geralmente x) com expoente 1. Ex: <span class="fracao-grande">x + 2 = 5</span></li>
-                <li><strong>Equação na forma reduzida:</strong> escrita como <strong>ax + b = 0</strong>, onde a e b são números reais.</li>
-                <li><strong>Objetivo:</strong> isolar o x para descobrir seu valor.</li>
-            </ul>
+            <h3>Método de Resolução Passo a Passo</h3>
+            <ol>
+                <li><strong>Simplifique</strong> ambos os lados (se necessário)</li>
+                <li><strong>Isole</strong> os termos com x em um lado</li>
+                <li><strong>Isole</strong> os números no outro lado</li>
+                <li><strong>Divida</strong> pelo coeficiente de x</li>
+                <li><strong>Verifique</strong> a solução substituindo na original</li>
+            </ol>
+
+            <div class="exemplo-interativo">
+                <h4>📝 Resolva junto:</h4>
+                <p>3(x - 2) + 5 = 14</p>
+                <details>
+                    <summary>Mostrar solução completa</summary>
+                    <div class="passo-a-passo">
+                        <div class="passo">
+                            <strong>1. Distribuir:</strong> 3x - 6 + 5 = 14
+                        </div>
+                        <div class="passo">
+                            <strong>2. Simplificar:</strong> 3x - 1 = 14
+                        </div>
+                        <div class="passo">
+                            <strong>3. Isolar termo com x:</strong> 3x = 14 + 1 → 3x = 15
+                        </div>
+                        <div class="passo">
+                            <strong>4. Dividir:</strong> x = 15 ÷ 3 → <strong>x = 5</strong>
+                        </div>
+                        <div class="passo">
+                            <strong>5. Verificar:</strong> 3(5 - 2) + 5 = 3×3 + 5 = 14 ✅
+                        </div>
+                    </div>
+                </details>
+            </div>
         </section>
-        <section class="conteudo">
-            <h3>Resolvendo equações do 1º grau - Nível: 1</h3>
-            <ul>
-                <li><strong>Exemplo:</strong> <span class="fracao-grande">2x = 10</span> → divida por 2 → <strong>x = 5</strong></li>
-                <li><strong>Exemplo:</strong> <span class="fracao-grande">x + 3 = 7</span> → subtraia 3 → <strong>x = 4</strong></li>
-                <li><strong>Exemplo com dois passos:</strong> <span class="fracao-grande">3x - 2 = 7</span> → some 2 → <strong>3x = 9</strong> → divida por 3 → <strong>x = 3</strong></li>
-            </ul>
-        </section>
-        <section class="conteudo">
-            <h3>Verificação de soluções</h3>
-            <ul>
-                <li><strong>Substituir o valor de x</strong> na equação original para conferir se o resultado é verdadeiro.</li>
-                <li><strong>Exemplo:</strong> Se <strong>x = 4</strong> é solução de <span class="fracao-grande">x + 3 = 7</span>, então: <strong>4 + 3 = 7</strong> ✅</li>
-                <li>Se a equação não se confirmar, revise os passos ou calcule novamente.</li>
-            </ul>
-        </section>
+
         <section class="exercicios">
-            <h3>Exemplos de exercícios</h3>
+            <h3>Exercícios Progressivos</h3>
 
-            <p>Resolva: <strong><span class="fracao-grande">x + 5 = 12</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Subtraímos 5 dos dois lados: 12 - 5 = <strong>7</strong>. Então, <strong>x = 7</strong>.</p>
-            </details>
+            <div class="nivel-exercicio">
+                <h4>Nível 1 - Básico</h4>
+                <p>1. x + 7 = 15</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>x = 15 - 7 → <strong>x = 8</strong></p>
+                </details>
+                
+                <p>2. 3x = 27</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>x = 27 ÷ 3 → <strong>x = 9</strong></p>
+                </details>
+            </div>
 
-            <p>Resolva: <strong><span class="fracao-grande">3x = 15</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Dividimos os dois lados por 3: 15 ÷ 3 = <strong>5</strong>. Logo, <strong>x = 5</strong>.</p>
-            </details>
+            <div class="nivel-exercicio">
+                <h4>Nível 2 - Intermediário</h4>
+                <p>3. 2x - 5 = 13</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>2x = 13 + 5 → 2x = 18 → <strong>x = 9</strong></p>
+                </details>
+                
+                <p>4. x/4 + 3 = 7</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>x/4 = 7 - 3 → x/4 = 4 → <strong>x = 16</strong></p>
+                </details>
+            </div>
 
-            <p>Resolva: <strong><span class="fracao-grande">2x - 4 = 10</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Somamos 4 dos dois lados: 10 + 4 = 14. Depois dividimos por 2: 14 ÷ 2 = <strong>7</strong>. Então, <strong>x = 7</strong>.</p>
-            </details>
-
-            <p>Resolva: <strong><span class="fracao-grande">x/2 + 3 = 7</span></strong></p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Subtraímos 3 dos dois lados: 7 - 3 = 4. Depois multiplicamos por 2: 4 × 2 = <strong>8</strong>. Portanto, <strong>x = 8</strong>.</p>
-            </details>
+            <div class="nivel-exercicio">
+                <h4>Nível 3 - Desafio</h4>
+                <p>5. 3(x + 2) - 4 = 17</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <div class="passo-a-passo">
+                        <div class="passo">3x + 6 - 4 = 17</div>
+                        <div class="passo">3x + 2 = 17</div>
+                        <div class="passo">3x = 15</div>
+                        <div class="passo"><strong>x = 5</strong></div>
+                    </div>
+                </details>
+            </div>
         </section>
+
         <section class="conteudo">
-            <h3>Extras</h3>
-            <ul>
-                <li>Para resolver uma equação de 1º grau, o objetivo é isolar a incógnita (geralmente representada por <strong>x</strong>) de um lado da igualdade.</li>
-                <li>Podemos usar operações inversas para "desfazer" as operações ao redor do <strong>x</strong>. Exemplo: <strong>x + 4 = 9</strong> → subtraímos 4 de ambos os lados: <strong>x = 5</strong>.</li>
-                <li>Equações com multiplicação ou divisão também seguem esse processo. Exemplo: <strong>2x = 10</strong> → dividimos ambos os lados por 2: <strong>x = 5</strong>.</li>
-                <li>Se a equação for do tipo <strong>x/3 = 6</strong>, basta multiplicar os dois lados por 3: <strong>x = 18</strong>.</li>
-                <li>Equações ajudam a resolver problemas práticos do dia a dia, como descobrir um número desconhecido em uma situação de compra, distância, tempo, etc.</li>
-            </ul>
+            <h3>Aplicações no Cotidiano</h3>
+            <div class="aplicacoes-grid">
+                <div class="aplicacao-card">
+                    <h4>💰 Finanças</h4>
+                    <p>Calcular quantas parcelas cabem no orçamento:</p>
+                    <p><em>350x ≤ 2.800 → x ≤ 8 parcelas</em></p>
+                </div>
+                
+                <div class="aplicacao-card">
+                    <h4>📏 Medições</h4>
+                    <p>Descobrir comprimentos desconhecidos:</p>
+                    <p><em>x + 2x = 90cm → 3x = 90 → x = 30cm</em></p>
+                </div>
+                
+                <div class="aplicacao-card">
+                    <h4>⏱️ Tempo</h4>
+                    <p>Determinar durações de atividades:</p>
+                    <p><em>t + (t+15) = 95min → 2t = 80 → t = 40min</em></p>
+                </div>
+            </div>
         </section>
 
         <section class="conteudo">
-            <h3>Links úteis</h3>
-            <ul>
-                <li><a href="https://youtu.be/3F7AFSxA7MI" target="_blank">📹 Vídeo: Como resolver equações do 1º grau (Canal Manual da Matemática)</a></li>
-                <li><a href="https://youtu.be/ozvG-8E1XoY" target="_blank">📹 Vídeo: Equações passo a passo (Canal Matemática Rio)</a></li>
-                <li><a href="https://youtu.be/bG7qsrkVx38" target="_blank">📹 Vídeo: Equações com frações (Canal Matemática em Exercícios)</a></li>
-            </ul>
+            <h3>Dicas Avançadas</h3>
+            <div class="dica-avancada">
+                <h4>Equações com Frações</h4>
+                <p>Para resolver equações como <strong>½x + ⅓ = 5</strong>:</p>
+                <ol>
+                    <li>Encontre o MMC dos denominadores (MMC de 2 e 3 é 6)</li>
+                    <li>Multiplique todos os termos por 6</li>
+                    <li>Resolva normalmente: 3x + 2 = 30 → 3x = 28 → x ≈ 9,33</li>
+                </ol>
+            </div>
+            
+            <div class="dica-avancada">
+                <h4>Verificação Rápida</h4>
+                <p>Sempre substitua a solução na equação original para verificar:</p>
+                <p>Se x=4 é solução de 2x + 3 = 11, então: 2×4 + 3 = 11 → 8 + 3 = 11 ✅</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h3>Recursos Adicionais</h3>
+                <ul class="recursos-lista">
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=pzqSbu9oPW4" target="_blank">
+                            <strong>📹 Vídeo:</strong> Análise detalhada de equações matemáticas (Canal prof Grings)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=ToG_WjjL9rY" target="_blank">
+                            <strong>📹 Vídeo:</strong> Resolução de problemas usando equações (Canal prof Allan)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=QUl07wPpSfI" target="_blank">
+                            <strong>📹 Vídeo:</strong> Equações fracionárias e algébricas (Canal prof André)
+                        </a>
+                    </li>
+                </ul>
         </section>
     </main>
 

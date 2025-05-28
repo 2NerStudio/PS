@@ -3,156 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geometria | EduRevision</title> 
+    <title>Geometria Básica | EduRevision</title> 
     <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-verde {
+            color: #2e8b57;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .figura-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .figura {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 150px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Geometria - Nível: 1</h1> 
-                <a href="../matematica.html" class="btn-back">← Voltar</a>
+                <h1>Geometria Básica - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
             </div>
         </div>
     </header>
 
     <main class="container">
         <section class="conteudo">
-            <h2>O que é Geometria Básica?</h2>
+            <h2>🌐 Introdução à Geometria</h2>
             <p>
-                A <strong>geometria básica</strong> é o ramo da matemática que estuda as propriedades, medidas e 
-                relações das <span class="destaque">figuras no plano e no espaço</span>. Ela se divide em:
+                A <strong class="destaque-verde">geometria básica</strong> é o ramo da matemática que estuda as formas, tamanhos, posições relativas e propriedades do espaço. Ela está presente em tudo ao nosso redor, desde a arquitetura até a natureza.
             </p>
-         
-            <ul>
-                <li>
-                    <strong>Geometria Plana:</strong> Estuda figuras bidimensionais (comprimento e largura) como:
-                    <ul class="sub-lista">
-                        <li>Triângulos, quadrados, círculos</li>
-                        <li>Retângulos, losangos, trapézios</li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Geometria Espacial:</strong> Analisa objetos tridimensionais (comprimento, largura e altura) como:
-                    <ul class="sub-lista">
-                        <li>Cubos, esferas, pirâmides</li>
-                        <li>Cilindros, cones, prismas</li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="exemplo">
-                <h3>📏 Elementos Fundamentais:</h3>
-                <p>
-                    Toda figura geométrica é construída a partir de três elementos básicos:
-                </p>
-                <ul>
-                    <li>
-                        <strong>Ponto:</strong> 
-                        <ul>
-                            <li>Não possui dimensão (nem comprimento, nem largura, nem altura)</li>
-                            <li>Representado por letras maiúsculas: A, B, C...</li>
-                            <li>Exemplo: • A (ponto A)</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Reta:</strong>
-                        <ul>
-                            <li>Linha infinita em ambas direções (sem começo nem fim)</li>
-                            <li>Representada por letras minúsculas: r, s, t...</li>
-                            <li>Exemplo: ↔ r (reta r)</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Plano:</strong>
-                        <ul>
-                            <li>Superfície plana infinita em todas direções</li>
-                            <li>Representado por letras gregas: α (alfa), β (beta), π (pi)...</li>
-                            <li>Exemplo: ▯ α (plano α)</li>
-                        </ul>
-                    </li>
-                </ul>
+            
+            <div class="box-info">
+                <h3>📚 Divisões Principais:</h3>
+                <div class="figura-container">
+                    <div class="figura">
+                        <div class="icone">📐</div>
+                        <h4>Geometria Plana</h4>
+                        <p>Estuda figuras bidimensionais (2D)</p>
+                        <small>Triângulos, círculos, quadrados</small>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">🧊</div>
+                        <h4>Geometria Espacial</h4>
+                        <p>Analisa objetos tridimensionais (3D)</p>
+                        <small>Cubos, esferas, pirâmides</small>
+                    </div>
+                </div>
             </div>
-            <div class="aplicacao">
-                <h3>🔍 Onde usamos geometria no dia a dia?</h3>
-                <ul>
-                    <li>Medir terrenos e cômodos</li>
-                    <li>Projetar móveis e construções</li>
-                    <li>Calcular quantidades de materiais</li>
-                    <li>Desenvolver jogos e animações</li>
-                    <li>Navegação e localização (GPS)</li>
-                </ul>
+            
+            <h3>🔷 Elementos Fundamentais</h3>
+            <div class="figura-container">
+                <div class="figura">
+                    <div class="icone">•</div>
+                    <h4>Ponto</h4>
+                    <ul>
+                        <li>Sem dimensão</li>
+                        <li>Letras maiúsculas: A, B, C</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">↔</div>
+                    <h4>Reta</h4>
+                    <ul>
+                        <li>Infinita em ambas direções</li>
+                        <li>Letras minúsculas: r, s, t</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">▯</div>
+                    <h4>Plano</h4>
+                    <ul>
+                        <li>Superfície infinita</li>
+                        <li>Letras gregas: α, β, π</li>
+                    </ul>
+                </div>
             </div>
-        </section>
-        <section class="conteudo">
-            <h3>Elementos Fundamentais</h3>
-            <ul>
-                <li><strong>Ponto:</strong> Representado por letras maiúsculas (A, B, C...)</li>
-                <li><strong>Reta:</strong> Representada por letras minúsculas (r, s, t...)</li>
-                <li><strong>Plano:</strong> Superfície plana infinita</li>
-            </ul>
         </section>
 
         <section class="conteudo">
-            <h3>Formas Geométricas Básicas</h3>
-            <ul>
-                <li><strong>Quadrado:</strong> 4 lados iguais, 4 ângulos retos</li>
-                <li><strong>Retângulo:</strong> 4 ângulos retos, lados opostos iguais</li>
-                <li><strong>Triângulo:</strong> 3 lados e 3 ângulos</li>
-                <li><strong>Círculo:</strong> Todos os pontos à mesma distância do centro</li>
-            </ul>
+            <h2>📏 Formas Geométricas Básicas</h2>
+            
+            <h3>🟦 Quadriláteros</h3>
+            <div class="figura-container">
+                <div class="figura">
+                    <div class="icone">⬜</div>
+                    <h4>Quadrado</h4>
+                    <ul>
+                        <li>4 lados iguais</li>
+                        <li>4 ângulos retos (90°)</li>
+                        <li>Área: L × L</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">🟦</div>
+                    <h4>Retângulo</h4>
+                    <ul>
+                        <li>4 ângulos retos</li>
+                        <li>Lados opostos iguais</li>
+                        <li>Área: b × h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>🔺 Triângulos</h3>
+            <div class="figura-container">
+                <div class="figura">
+                    <div class="icone">🔺</div>
+                    <h4>Equilátero</h4>
+                    <ul>
+                        <li>3 lados iguais</li>
+                        <li>3 ângulos iguais (60°)</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">🔻</div>
+                    <h4>Isósceles</h4>
+                    <ul>
+                        <li>2 lados iguais</li>
+                        <li>2 ângulos iguais</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">⏢</div>
+                    <h4>Escaleno</h4>
+                    <ul>
+                        <li>Todos lados diferentes</li>
+                        <li>Todos ângulos diferentes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>⭕ Círculo</h3>
+            <div class="box-info">
+                <ul>
+                    <li>Conjunto de pontos equidistantes do centro</li>
+                    <li>Diâmetro: maior distância entre dois pontos</li>
+                    <li>Raio: metade do diâmetro</li>
+                    <li>Área: π × r²</li>
+                </ul>
+            </div>
         </section>
 
         <section class="conteudo">
-            <h3>Cálculo de Área</h3>
-            <ul>
-                <li><strong>Quadrado:</strong> Lado × Lado (L²)</li>
-                <li><strong>Retângulo:</strong> Base × Altura (b × h)</li>
-                <li><strong>Triângulo:</strong> (Base × Altura) ÷ 2</li>
-            </ul>
+            <h2>🧮 Cálculos Fundamentais</h2>
+            
+            <div class="box-info">
+                <h3>📐 Áreas</h3>
+                <table>
+                    <tr>
+                        <th>Figura</th>
+                        <th>Fórmula</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Quadrado</td>
+                        <td>L × L</td>
+                        <td>L=4cm → 16cm²</td>
+                    </tr>
+                    <tr>
+                        <td>Retângulo</td>
+                        <td>b × h</td>
+                        <td>b=3cm, h=5cm → 15cm²</td>
+                    </tr>
+                    <tr>
+                        <td>Triângulo</td>
+                        <td>(b × h)/2</td>
+                        <td>b=6cm, h=4cm → 12cm²</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="box-info">
+                <h3>📏 Perímetros</h3>
+                <ul>
+                    <li><strong>Quadrado:</strong> 4 × L</li>
+                    <li><strong>Retângulo:</strong> 2 × (b + h)</li>
+                    <li><strong>Triângulo:</strong> soma dos 3 lados</li>
+                    <li><strong>Círculo (circunferência):</strong> 2 × π × r</li>
+                </ul>
+            </div>
         </section>
 
         <section class="exercicios">
-            <h3>Exemplos de exercícios</h3>
+            <h2>📝 Exercícios Práticos</h2>
             
-            <p>Calcule a área de um quadrado com lado = 5cm:</p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Área = Lado × Lado = 5cm × 5cm = <strong>25cm²</strong></p>
-            </details>
-
-            <p>Calcule a área de um retângulo com base = 6cm e altura = 4cm:</p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Área = Base × Altura = 6cm × 4cm = <strong>24cm²</strong></p>
-            </details>
-
-            <p>Calcule a área de um triângulo com base = 8cm e altura = 5cm:</p>
-            <details>
-                <summary>Ver resposta</summary>
-                <p>Área = (Base × Altura) ÷ 2 = (8cm × 5cm) ÷ 2 = <strong>20cm²</strong></p>
-            </details>
+            <div class="exercicio">
+                <p>1. Calcule a área de um quadrado com lado = 5cm:</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Área = Lado × Lado = 5cm × 5cm = <strong>25cm²</strong></p>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Um retângulo tem base = 6cm e altura = 4cm. Qual seu perímetro?</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Perímetro = 2 × (Base + Altura) = 2 × (6cm + 4cm) = <strong>20cm</strong></p>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Calcule a área de um triângulo com base = 8cm e altura = 5cm:</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Área = (Base × Altura) ÷ 2 = (8cm × 5cm) ÷ 2 = <strong>20cm²</strong></p>
+                </details>
+            </div>
         </section>
 
         <section class="conteudo">
-            <h3>Dicas Importantes</h3>
-            <ul>
-                <li>Sempre verifique se as medidas estão na mesma unidade antes de calcular</li>
-                <li>A unidade de área é sempre elevada ao quadrado (cm², m², etc.)</li>
-                <li>O perímetro é a soma de todos os lados da figura</li>
-            </ul>
-        </section>
-
-        <section class="conteudo">
-            <h3>Links úteis</h3>
+            <h2>💡 Dicas Essenciais</h2>
+            <div class="box-info">
                 <ul>
-                    <li><a href="https://www.youtube.com/watch?v=_Fzd5-qzVHI" target="_blank">📹 Vídeo: Introdução à Geometria (Ryo Ensina - Matemática)</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=MEXdMrdL0DA" target="_blank">📹 Vídeo: Como calcular área e perímetro (Reducática)</a></li>
+                    <li>📌 Sempre verifique se todas as medidas estão na mesma unidade antes de calcular</li>
+                    <li>📌 A unidade de área é sempre elevada ao quadrado (cm², m², etc.)</li>
+                    <li>📌 Desenhe a figura para visualizar melhor o problema</li>
+                    <li>📌 Anote todas as informações dadas no enunciado</li>
                 </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=_Fzd5-qzVHI" target="_blank" class="destaque-verde">Introdução à Geometria</a> - Canal Ryo Ensina</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=MEXdMrdL0DA" target="_blank" class="destaque-verde">Área e Perímetro</a> - Reducática</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="destaque-verde">Geometria no Cotidiano</a> - Matemática Rio</li>
+                </ul>
+                
+                <h3>📚 Sites Úteis:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.geogebra.org" target="_blank" class="destaque-verde">GeoGebra</a> - Ferramenta interativa de geometria</li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/geometry" target="_blank" class="destaque-verde">Khan Academy</a> - Cursos gratuitos de geometria</li>
+                </ul>
+            </div>
         </section>
     </main>
     
     <footer class="container">
-        <p>Versão de teste - Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br">00001249473111sp@al.educacao.sp.gov.br</a></p>
+        <p>© 2023 EduRevision - Versão de teste | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-verde">00001249473111sp@al.educacao.sp.gov.br</a></p>
     </footer>
 </body>
 </html>
