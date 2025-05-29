@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potenciação e Radiciação | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-azul {
+            color: #1E90FF;
+            font-weight: bold;
+        }
+        .destaque-verde {
+            color: #2E8B57;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #F0F8FF;
+            border-left: 4px solid #1E90FF;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .metodo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .metodo {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #F0F8FF;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1E90FF;
+        }
+        .passo-a-passo {
+            background-color: #F0FFF0;
+            border-left: 4px solid #2E8B57;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .formula {
+            background-color: #FFF0F5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .propriedade {
+            background-color: #FFF5EE;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #FFA500;
+        }
+        @media (max-width: 768px) {
+            .metodo {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Potenciação e Radiciação - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>🔢 Introdução à Potenciação</h2>
+            <p>
+                A <strong class="destaque-azul">potenciação</strong> é uma operação matemática que representa a multiplicação repetida de um número por ele mesmo.
+            </p>
+            
+            <div class="box-info">
+                <h3>⭐ Definição Formal</h3>
+                <p>Dados um número real <em>a</em> (base) e um número natural <em>n</em> (expoente), com <em>n</em> ≥ 2:</p>
+                <p class="formula">aⁿ = a × a × a × ... × a (n vezes)</p>
+                <p>Casos especiais:</p>
+                <ul>
+                    <li>a¹ = a</li>
+                    <li>a⁰ = 1 (para a ≠ 0)</li>
+                </ul>
+                
+                <h3>📊 Exemplos Práticos</h3>
+                <ul>
+                    <li>2³ = 2 × 2 × 2 = 8</li>
+                    <li>5² = 5 × 5 = 25</li>
+                    <li>10⁴ = 10 × 10 × 10 × 10 = 10.000</li>
+                </ul>
+            </div>
+            
+            <div class="comparativo">
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>🔍 Partes da Potenciação</h3>
+                        <table>
+                            <tr>
+                                <th>Termo</th>
+                                <th>Significado</th>
+                                <th>Exemplo</th>
+                            </tr>
+                            <tr>
+                                <td>Base</td>
+                                <td>Número que está sendo multiplicado</td>
+                                <td>Em 3⁴, a base é 3</td>
+                            </tr>
+                            <tr>
+                                <td>Expoente</td>
+                                <td>Número de vezes que a base é multiplicada</td>
+                                <td>Em 3⁴, o expoente é 4</td>
+                            </tr>
+                            <tr>
+                                <td>Potência</td>
+                                <td>Resultado da operação</td>
+                                <td>3⁴ = 81 → 81 é a potência</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>🧮 Aplicações</h3>
+                        <ul>
+                            <li>Cálculo de áreas e volumes</li>
+                            <li>Notação científica</li>
+                            <li>Juros compostos</li>
+                            <li>Crescimento exponencial</li>
+                            <li>Computação (armazenamento em bytes)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>➗ Introdução à Radiciação</h2>
+            <p>
+                A <strong class="destaque-verde">radiciação</strong> é a operação inversa da potenciação, utilizada para determinar qual número elevado a determinado expoente resulta em um valor conhecido.
+            </p>
+            
+            <div class="box-info">
+                <h3>⭐ Definição Formal</h3>
+                <p>Dados um número real <em>a</em> (radicando) e um número natural <em>n</em> (índice), com <em>n</em> ≥ 2:</p>
+                <p class="formula">ⁿ√a = b ⇔ bⁿ = a</p>
+                <p>Casos especiais:</p>
+                <ul>
+                    <li>²√a = √a (raiz quadrada)</li>
+                    <li>³√a (raiz cúbica)</li>
+                </ul>
+                
+                <h3>📊 Exemplos Práticos</h3>
+                <ul>
+                    <li>√9 = 3 pois 3² = 9</li>
+                    <li>³√8 = 2 pois 2³ = 8</li>
+                    <li>⁴√16 = 2 pois 2⁴ = 16</li>
+                </ul>
+            </div>
+            
+            <div class="box-info">
+                <h3>📜 Partes da Radiciação</h3>
+                <table>
+                    <tr>
+                        <th>Termo</th>
+                        <th>Significado</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Radicando</td>
+                        <td>Número dentro do radical</td>
+                        <td>Em ³√27, o radicando é 27</td>
+                    </tr>
+                    <tr>
+                        <td>Índice</td>
+                        <td>Pequeno número que indica a raiz</td>
+                        <td>Em ³√27, o índice é 3</td>
+                    </tr>
+                    <tr>
+                        <td>Raiz</td>
+                        <td>Resultado da operação</td>
+                        <td>³√27 = 3 → 3 é a raiz</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>📚 Propriedades da Potenciação</h2>
+            
+            <div class="propriedade">
+                <h3>1. Multiplicação de potências de mesma base</h3>
+                <p class="formula">aᵐ × aⁿ = aᵐ⁺ⁿ</p>
+                <p>Exemplo: 2³ × 2⁴ = 2³⁺⁴ = 2⁷ = 128</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>2. Divisão de potências de mesma base</h3>
+                <p class="formula">aᵐ ÷ aⁿ = aᵐ⁻ⁿ (a ≠ 0)</p>
+                <p>Exemplo: 5⁵ ÷ 5² = 5⁵⁻² = 5³ = 125</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>3. Potência de potência</h3>
+                <p class="formula">(aᵐ)ⁿ = aᵐ×ⁿ</p>
+                <p>Exemplo: (3²)³ = 3²×³ = 3⁶ = 729</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>4. Potência de um produto</h3>
+                <p class="formula">(a × b)ⁿ = aⁿ × bⁿ</p>
+                <p>Exemplo: (2 × 5)³ = 2³ × 5³ = 8 × 125 = 1.000</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>5. Potência de um quociente</h3>
+                <p class="formula">(a ÷ b)ⁿ = aⁿ ÷ bⁿ (b ≠ 0)</p>
+                <p>Exemplo: (10 ÷ 2)² = 10² ÷ 2² = 100 ÷ 4 = 25</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>6. Expoente negativo</h3>
+                <p class="formula">a⁻ⁿ = 1 ÷ aⁿ (a ≠ 0)</p>
+                <p>Exemplo: 2⁻³ = 1 ÷ 2³ = 1/8 = 0,125</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>7. Expoente fracionário</h3>
+                <p class="formula">aᵐ/ⁿ = ⁿ√aᵐ</p>
+                <p>Exemplo: 8²/³ = ³√8² = ³√64 = 4</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🌱 Propriedades da Radiciação</h2>
+            
+            <div class="propriedade">
+                <h3>1. Raiz de um produto</h3>
+                <p class="formula">ⁿ√(a × b) = ⁿ√a × ⁿ√b</p>
+                <p>Exemplo: √(9 × 4) = √9 × √4 = 3 × 2 = 6</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>2. Raiz de um quociente</h3>
+                <p class="formula">ⁿ√(a ÷ b) = ⁿ√a ÷ ⁿ√b (b ≠ 0)</p>
+                <p>Exemplo: ³√(64 ÷ 8) = ³√64 ÷ ³√8 = 4 ÷ 2 = 2</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>3. Potência de uma raiz</h3>
+                <p class="formula">(ⁿ√a)ᵐ = ⁿ√aᵐ = aᵐ/ⁿ</p>
+                <p>Exemplo: (√9)³ = √9³ = 9³/² = 27</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>4. Raiz de raiz</h3>
+                <p class="formula">ᵐ√(ⁿ√a) = ᵐ×ⁿ√a</p>
+                <p>Exemplo: ³√(√64) = ⁶√64 = 2</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>5. Simplificação de radicais</h3>
+                <p class="formula">ⁿ√aᵐ = ⁿ÷ᵖ√aᵐ÷ᵖ (quando possível)</p>
+                <p>Exemplo: ⁴√16² = ²√16¹ = √16 = 4</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🧮 Operações com Potências e Raízes</h2>
+            
+            <h3>Simplificação de Expressões</h3>
+            <div class="passo-a-passo">
+                <h4>Exemplo: Simplificar √50 + √18</h4>
+                <ol>
+                    <li>Fatore os números dentro das raízes:</li>
+                    <p>50 = 2 × 5²</p>
+                    <p>18 = 2 × 3²</p>
+                    <li>Aplique a propriedade √(a×b) = √a × √b:</li>
+                    <p>√50 = √(2×5²) = √2 × √5² = 5√2</p>
+                    <p>√18 = √(2×3²) = √2 × √3² = 3√2</p>
+                    <li>Some os termos semelhantes:</li>
+                    <p>5√2 + 3√2 = (5+3)√2 = 8√2</p>
+                </ol>
+            </div>
+            
+            <h3>Racionalização de Denominadores</h3>
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">1️⃣</div>
+                    <h4>Caso 1: √a no denominador</h4>
+                    <p>Multiplicar numerador e denominador por √a</p>
+                    <p>Exemplo:</p>
+                    <p>3/√5 = (3×√5)/(√5×√5) = 3√5/5</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">2️⃣</div>
+                    <h4>Caso 2: a ± √b no denominador</h4>
+                    <p>Multiplicar pelo conjugado (a ∓ √b)</p>
+                    <p>Exemplo:</p>
+                    <p>1/(2+√3) = (2-√3)/[(2+√3)(2-√3)] = (2-√3)/(4-3) = 2-√3</p>
+                </div>
+            </div>
+            
+            <h3>Transformação entre Potências e Raízes</h3>
+            <div class="box-info">
+                <table>
+                    <tr>
+                        <th>Forma Radical</th>
+                        <th>Forma Exponencial</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>ⁿ√a</td>
+                        <td>a¹/ⁿ</td>
+                        <td>√9 = 9¹/² = 3</td>
+                    </tr>
+                    <tr>
+                        <td>ⁿ√aᵐ</td>
+                        <td>aᵐ/ⁿ</td>
+                        <td>³√8² = 8²/³ = 4</td>
+                    </tr>
+                    <tr>
+                        <td>1/ⁿ√a</td>
+                        <td>a⁻¹/ⁿ</td>
+                        <td>1/√4 = 4⁻¹/² = 0,5</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="exercicios">
+            <h2>📚 Exercícios Práticos</h2>
+            
+            <div class="exercicio">
+                <p>1. Calcule o valor das potências:</p>
+                <p>a) 2⁵</p>
+                <p>b) 3⁴</p>
+                <p>c) 10³</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 2⁵ = 2 × 2 × 2 × 2 × 2 = 32</p>
+                        <p>b) 3⁴ = 3 × 3 × 3 × 3 = 81</p>
+                        <p>c) 10³ = 10 × 10 × 10 = 1.000</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Simplifique as expressões:</p>
+                <p>a) 5³ × 5⁴ ÷ 5²</p>
+                <p>b) (2⁴)³</p>
+                <p>c) (3 × 4)²</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 5³ × 5⁴ ÷ 5² = 5³⁺⁴⁻² = 5⁵ = 3.125</p>
+                        <p>b) (2⁴)³ = 2⁴×³ = 2¹² = 4.096</p>
+                        <p>c) (3 × 4)² = 3² × 4² = 9 × 16 = 144</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Calcule as raízes:</p>
+                <p>a) √144</p>
+                <p>b) ³√125</p>
+                <p>c) ⁴√81</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>a) √144 = 12 (pois 12 × 12 = 144)</p>
+                        <p>b) ³√125 = 5 (pois 5 × 5 × 5 = 125)</p>
+                        <p>c) ⁴√81 = 3 (pois 3 × 3 × 3 × 3 = 81)</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>4. Racionalize os denominadores:</p>
+                <p>a) 1/√7</p>
+                <p>b) 2/(1+√3)</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 1/√7 = (1×√7)/(√7×√7) = √7/7</p>
+                        <p>b) 2/(1+√3) = [2×(1-√3)]/[(1+√3)(1-√3)] = (2-2√3)/(1-3) = (2-2√3)/(-2) = -1 + √3</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Dicas e Macetes</h2>
+            <div class="box-info">
+                <h3>🧠 Como Memorizar Potências</h3>
+                <table>
+                    <tr>
+                        <th>Número</th>
+                        <th>Potências importantes</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2¹=2, 2²=4, 2³=8, 2⁴=16, 2⁵=32, 2⁶=64, 2⁷=128, 2⁸=256</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3²=9, 3³=27, 3⁴=81</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>5²=25, 5³=125, 5⁴=625</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>10²=100, 10³=1.000, 10⁴=10.000</td>
+                    </tr>
+                </table>
+                
+                <h3>📐 Tabela de Raízes Quadradas</h3>
+                <table>
+                    <tr>
+                        <th>Número</th>
+                        <th>Raiz Quadrada</th>
+                        <th>Número</th>
+                        <th>Raiz Quadrada</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>25</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>36</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>49</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>64</td>
+                        <td>8</td>
+                    </tr>
+                </table>
+                
+                <h3>⚠️ Erros comuns para evitar</h3>
+                <ul>
+                    <li>Confundir (a + b)² com a² + b² (o correto é a² + 2ab + b²)</li>
+                    <li>Achar que √(a + b) = √a + √b (não é verdade!)</li>
+                    <li>Esquecer que a⁰ = 1 para qualquer a ≠ 0</li>
+                    <li>Não simplificar radicais quando possível</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=pZjIc5em0AU" target="_blank" class="destaque-azul">Potenciação - Aula Completa</a> – Matemática Rio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=HOc9gSqbJ-8" target="_blank" class="destaque-azul">Radiciação - Conceitos e Propriedades</a> – Professor Ferretto</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=WNG0UkUSoWY" target="_blank" class="destaque-azul">Propriedades das Potências</a> – Gis com Giz</li>
+                </ul>                        
+                <h3>📚 Ferramentas e Sites:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.wolframalpha.com/" target="_blank" class="destaque-verde">Wolfram Alpha (cálculo de potências e raízes)</a></li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/algebra/x2f8bb11595b61c86:rational-exponents-radicals" target="_blank" class="destaque-verde">Khan Academy - Expoentes e Radicais</a></li>
+                    <li>🌐 <a href="https://www.mathsisfun.com/algebra/exponent-laws.html" target="_blank" class="destaque-verde">Math is Fun - Leis dos Expoentes</a> (em inglês)</li>
+                </ul>
+                
+                <h3>📱 Aplicativos Úteis:</h3>
+                <ul>
+                    <li>📲 Mathway - Resolvedor de problemas</li>
+                    <li>📲 Photomath - Calculadora com câmera</li>
+                    <li>📲 MalMath - Resolução passo a passo</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 1.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-azul">00001249473111sp@al.educacao.sp.gov.br</a></p>
+    </footer>
+</body>
+</html>
