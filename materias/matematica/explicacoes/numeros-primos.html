@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-vermelho {
+            color: #B22222;
+            font-weight: bold;
+        }
+        .destaque-ouro {
+            color: #DAA520;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #FFF0F5;
+            border-left: 4px solid #B22222;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .metodo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .metodo {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #FFF5EE;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #B22222;
+        }
+        .passo-a-passo {
+            background-color: #F0FFF0;
+            border-left: 4px solid #2E8B57;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .primo {
+            background-color: #FFE4E1;
+            font-weight: bold;
+        }
+        .nao-primo {
+            background-color: #F0F8FF;
+        }
+        .crivo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .numero-crivo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+        }
+        .primo-crivo {
+            background-color: #FFE4E1;
+            border-color: #B22222;
+        }
+        .formula {
+            background-color: #F0F8FF;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            .metodo {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Números Primos - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>🔢 Introdução aos Números Primos</h2>
+            <p>
+                Os <strong class="destaque-vermelho">números primos</strong> são os "átomos" da matemática, números naturais maiores que 1 que possuem exatamente dois divisores distintos: 1 e ele mesmo.
+            </p>
+            
+            <div class="box-info">
+                <h3>⭐ Definição Formal</h3>
+                <p>Um número natural p > 1 é primo se seus únicos divisores positivos são 1 e p.</p>
+                <p>Exemplos: 2, 3, 5, 7, 11, 13, 17, 19, 23,...</p>
+                
+                <h3>🚫 Números Não Primos (Compostos)</h3>
+                <p>Números naturais maiores que 1 que possuem mais de dois divisores.</p>
+                <p>Exemplos: 4 (1,2,4), 6 (1,2,3,6), 8 (1,2,4,8), 9 (1,3,9),...</p>
+            </div>
+            
+            <div class="comparativo">
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>🔍 Propriedades dos Primos</h3>
+                        <ul>
+                            <li>Único número par primo: 2</li>
+                            <li>Infinitos números primos (Euclides)</li>
+                            <li>Todo número > 1 é primo ou produto de primos</li>
+                            <li>Primos gêmeos: pares com diferença 2 (ex: 11 e 13)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>🧮 Aplicações</h3>
+                        <ul>
+                            <li>Fatoração de números</li>
+                            <li>Criptografia RSA</li>
+                            <li>Cálculo de MMC e MDC</li>
+                            <li>Teoria dos números</li>
+                            <li>Algoritmos computacionais</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>📜 Curiosidades Históricas</h3>
+                <ul>
+                    <li>Conhecidos desde a Grécia Antiga (Euclides, Eratóstenes)</li>
+                    <li>Teorema Fundamental da Aritmética: todo número natural > 1 pode ser representado como produto de primos de forma única</li>
+                    <li>Hipótese de Riemann: um dos problemas não resolvidos mais importantes da matemática, relacionado à distribuição dos primos</li>
+                    <li>Maior primo conhecido (2023): 2⁸²⁵⁸⁹⁹³³ - 1 (tem 24.862.048 dígitos)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔍 Como Identificar Números Primos</h2>
+            
+            <h3>1. Crivo de Eratóstenes (Método Antigo)</h3>
+            <div class="passo-a-passo">
+                <h4>Passo a Passo até 30:</h4>
+                <ol>
+                    <li>Liste os números de 2 a 30</li>
+                    <li>Comece com o primeiro número não marcado (2)</li>
+                    <li>Marque como primo e risque todos os múltiplos</li>
+                    <li>Repita com o próximo número não marcado</li>
+                    <li>Pare quando chegar em √30 ≈ 5,5</li>
+                </ol>
+                
+                <div class="crivo">
+                    <div class="numero-crivo primo-crivo">2</div>
+                    <div class="numero-crivo primo-crivo">3</div>
+                    <div class="numero-crivo">4</div>
+                    <div class="numero-crivo primo-crivo">5</div>
+                    <div class="numero-crivo">6</div>
+                    <div class="numero-crivo primo-crivo">7</div>
+                    <div class="numero-crivo">8</div>
+                    <div class="numero-crivo">9</div>
+                    <div class="numero-crivo">10</div>
+                    <div class="numero-crivo primo-crivo">11</div>
+                    <div class="numero-crivo">12</div>
+                    <div class="numero-crivo primo-crivo">13</div>
+                    <div class="numero-crivo">14</div>
+                    <div class="numero-crivo">15</div>
+                    <div class="numero-crivo">16</div>
+                    <div class="numero-crivo primo-crivo">17</div>
+                    <div class="numero-crivo">18</div>
+                    <div class="numero-crivo primo-crivo">19</div>
+                    <div class="numero-crivo">20</div>
+                    <div class="numero-crivo">21</div>
+                    <div class="numero-crivo">22</div>
+                    <div class="numero-crivo primo-crivo">23</div>
+                    <div class="numero-crivo">24</div>
+                    <div class="numero-crivo">25</div>
+                    <div class="numero-crivo">26</div>
+                    <div class="numero-crivo">27</div>
+                    <div class="numero-crivo">28</div>
+                    <div class="numero-crivo primo-crivo">29</div>
+                    <div class="numero-crivo">30</div>
+                </div>
+                <p class="destaque-vermelho">Primos até 30: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29</p>
+            </div>
+            
+            <h3>2. Teste de Divisibilidade</h3>
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">➗</div>
+                    <h4>Passo a Passo</h4>
+                    <ol>
+                        <li>Verifique divisibilidade por 2 (se par > 2, não é primo)</li>
+                        <li>Teste divisores até √n</li>
+                        <li>Se nenhum divisor encontrado, é primo</li>
+                    </ol>
+                    <p>Exemplo: 37 é primo?</p>
+                    <p>√37 ≈ 6,08 → testar 2,3,5</p>
+                    <p>Nenhum divide → primo</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">🔢</div>
+                    <h4>Divisores Primos</h4>
+                    <p>Basta testar divisão pelos primos ≤ √n</p>
+                    <p>Exemplo: 97 é primo?</p>
+                    <p>√97 ≈ 9,85 → testar 2,3,5,7</p>
+                    <p>Nenhum divide → primo</p>
+                </div>
+            </div>
+            
+            <h3>3. Tabela de Primos</h3>
+            <div class="box-info">
+                <table>
+                    <tr>
+                        <th>Intervalo</th>
+                        <th>Números Primos</th>
+                        <th>Quantidade</th>
+                    </tr>
+                    <tr>
+                        <td>1-10</td>
+                        <td>2, 3, 5, 7</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>11-20</td>
+                        <td>11, 13, 17, 19</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>21-30</td>
+                        <td>23, 29</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>31-40</td>
+                        <td>31, 37</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>41-50</td>
+                        <td>41, 43, 47</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+                <p>Observação: A distribuição dos primos torna-se mais esparsa conforme os números aumentam</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🧩 Fatoração em Primos</h2>
+            
+            <div class="box-info">
+                <h3>📝 Teorema Fundamental da Aritmética</h3>
+                <p>Todo número natural maior que 1 pode ser expresso como produto de fatores primos de forma única (a menos da ordem).</p>
+                <p class="formula">Exemplo: 60 = 2 × 2 × 3 × 5 = 2² × 3¹ × 5¹</p>
+            </div>
+            
+            <h3>Método de Fatoração</h3>
+            <div class="passo-a-passo">
+                <h4>Exemplo: Fatorar 84</h4>
+                <ol>
+                    <li>Divida pelo menor primo possível (2):</li>
+                    <p>84 ÷ 2 = 42</p>
+                    <li>Continue dividindo:</li>
+                    <p>42 ÷ 2 = 21</p>
+                    <li>Próximo primo (3):</li>
+                    <p>21 ÷ 3 = 7</p>
+                    <li>Próximo primo (7):</li>
+                    <p>7 ÷ 7 = 1</p>
+                    <li>Quando chegar a 1, pare</li>
+                </ol>
+                <p class="destaque-vermelho">Fatoração: 84 = 2 × 2 × 3 × 7 = 2² × 3¹ × 7¹</p>
+            </div>
+            
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">📐</div>
+                    <h4>Aplicação no MMC</h4>
+                    <p>MMC usa todos os fatores com maiores expoentes</p>
+                    <p>Ex: MMC(12,18)</p>
+                    <p>12 = 2²×3¹</p>
+                    <p>18 = 2¹×3²</p>
+                    <p>MMC = 2²×3² = 36</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">📏</div>
+                    <h4>Aplicação no MDC</h4>
+                    <p>MDC usa fatores comuns com menores expoentes</p>
+                    <p>Ex: MDC(12,18)</p>
+                    <p>12 = 2²×3¹</p>
+                    <p>18 = 2¹×3²</p>
+                    <p>MDC = 2¹×3¹ = 6</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="exercicios">
+            <h2>📚 Exercícios Práticos</h2>
+            
+            <div class="exercicio">
+                <p>1. Quais são os números primos entre 50 e 70?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Testando cada número:</p>
+                        <ul>
+                            <li>51: 3×17 → não</li>
+                            <li>53: primo</li>
+                            <li>57: 3×19 → não</li>
+                            <li>59: primo</li>
+                            <li>61: primo</li>
+                            <li>63: 7×9 → não</li>
+                            <li>67: primo</li>
+                            <li>69: 3×23 → não</li>
+                        </ul>
+                        <p class="destaque-vermelho">Resposta: 53, 59, 61, 67</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Fatore o número 120 em seus fatores primos:</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Divisões sucessivas:</p>
+                        <p>120 ÷ 2 = 60</p>
+                        <p>60 ÷ 2 = 30</p>
+                        <p>30 ÷ 2 = 15</p>
+                        <p>15 ÷ 3 = 5</p>
+                        <p>5 ÷ 5 = 1</p>
+                        <p class="destaque-ouro">Fatoração: 120 = 2³ × 3¹ × 5¹</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Verifique se 143 é um número primo:</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>√143 ≈ 11,96 → testar primos ≤ 11: 2,3,5,7,11</p>
+                        <ul>
+                            <li>143 ÷ 2 = 71,5 → não divide</li>
+                            <li>143 ÷ 3 ≈ 47,666 → não divide</li>
+                            <li>143 ÷ 5 = 28,6 → não divide</li>
+                            <li>143 ÷ 7 ≈ 20,428 → não divide</li>
+                            <li>143 ÷ 11 = 13 → divide!</li>
+                        </ul>
+                        <p class="destaque-vermelho">143 = 11 × 13 → não é primo</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>4. Qual é a soma de todos os números primos menores que 20?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Primos < 20: 2, 3, 5, 7, 11, 13, 17, 19</p>
+                        <p>Cálculo:</p>
+                        <p>2 + 3 = 5</p>
+                        <p>5 + 5 = 10</p>
+                        <p>10 + 7 = 17</p>
+                        <p>17 + 11 = 28</p>
+                        <p>28 + 13 = 41</p>
+                        <p>41 + 17 = 58</p>
+                        <p>58 + 19 = 77</p>
+                        <p class="destaque-ouro">Resposta: 77</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Dicas e Macetes</h2>
+            <div class="box-info">
+                <h3>🧠 Como Memorizar Primos</h3>
+                <table>
+                    <tr>
+                        <th>Técnica</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Terminações</td>
+                        <td>Exceto 2 e 5, primos não terminam em 0,2,4,5,6,8</td>
+                    </tr>
+                    <tr>
+                        <td>Crivo Visual</td>
+                        <td>Memorize blocos (1-10: 4 primos, 11-20: 4, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td>Primos Gêmeos</td>
+                        <td>Pares como (11,13), (17,19), (29,31)</td>
+                    </tr>
+                </table>
+                
+                <h3>⚠️ Erros comuns para evitar</h3>
+                <ul>
+                    <li>Considerar 1 como primo (não é!)</li>
+                    <li>Esquecer que 2 é o único primo par</li>
+                    <li>Parar de testar divisores antes de √n</li>
+                    <li>Confundir fatoração com múltiplos</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=4mc9fumLMhw" target="_blank" class="destaque-vermelho">Os Números Primos são INFINITOS?</a> – Matemática Rio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=8pKMXwD4Reg" target="_blank" class="destaque-vermelho">NÚMEROS PRIMOS | CRIVO de ERATÓSTENES</a> – Matemática com a Gis</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=FAqtPTpaq38" target="_blank" class="destaque-vermelho">Números Primos e Fatoração - Aula Completa para Concursos</a> – Professor Tiago Gomes</li>
+                </ul>
+                
+                <h3>📚 Ferramentas e Sites:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.wolframalpha.com/" target="_blank" class="destaque-ouro">Wolfram Alpha (testar primalidade)</a></li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-prime-numbers" target="_blank" class="destaque-ouro">Khan Academy - Números Primos</a></li>
+                    <li>🌐 <a href="https://primes.utm.edu/" target="_blank" class="destaque-ouro">The Prime Pages</a> (em inglês)</li>
+                </ul>
+                
+                <h3>📱 Aplicativos Úteis:</h3>
+                <ul>
+                    <li>📲 Prime Numbers - Identificador de primos</li>
+                    <li>📲 Math Tools - Calculadora de fatoração</li>
+                    <li>📲 Number Theory - Exercícios de primalidade</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 1.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-vermelho">00001249473111sp@al.educacao.sp.gov.br</a></p>
+    </footer>
+</body>
+</html>

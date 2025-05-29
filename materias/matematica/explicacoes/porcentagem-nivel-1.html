@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentagem | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-laranja {
+            color: #FF8C00;
+            font-weight: bold;
+        }
+        .destaque-roxo {
+            color: #9370DB;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #FFF5E6;
+            border-left: 4px solid #FFA500;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .metodo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .metodo {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #FFF9F0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF8C00;
+        }
+        .passo-a-passo {
+            background-color: #F5F5FF;
+            border-left: 4px solid #9370DB;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .comparativo {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .comparativo-item {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+        .formula {
+            background-color: #F0F8FF;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            .comparativo-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Porcentagem - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>📊 Introdução à Porcentagem</h2>
+            <p>
+                A <strong class="destaque-laranja">porcentagem</strong> é uma forma de expressar proporções e relações entre valores, representada pelo símbolo % (por cento), que significa "por cem".
+            </p>
+            
+            <div class="box-info">
+                <h3>🧮 Conceito Fundamental</h3>
+                <p>1% = 1/100 = 0,01</p>
+                <p class="formula">Porcentagem = (Parte / Todo) × 100</p>
+                <p>Exemplo: 25% de 200 = (25/100) × 200 = 50</p>
+            </div>
+            
+            <div class="comparativo">
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>📈 Aumentos</h3>
+                        <p>Valor aumentado = Valor original × (1 + %)</p>
+                        <div class="formula">Ex: Aumento de 15%<br>1 + 0,15 = 1,15</div>
+                    </div>
+                </div>
+                <div class="comparativo-item">
+                    <div class="box-info">
+                        <h3>📉 Descontos</h3>
+                        <p>Valor descontado = Valor original × (1 - %)</p>
+                        <div class="formula">Ex: Desconto de 20%<br>1 - 0,20 = 0,80</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>🛒 Onde usamos porcentagem no dia a dia?</h3>
+                <ul>
+                    <li>Descontos em lojas e promoções</li>
+                    <li>Cálculo de juros e financiamentos</li>
+                    <li>Estatísticas e pesquisas</li>
+                    <li>Aumentos salariais</li>
+                    <li>Medidas de probabilidade</li>
+                    <li>Indicadores econômicos</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>📝 Métodos de Cálculo</h2>
+            
+            <h3>1. Regra de Três Simples</h3>
+            <div class="passo-a-passo">
+                <h4>Exemplo: Calcular 30% de 250</h4>
+                <ol>
+                    <li>100% corresponde a 250</li>
+                    <li>1% corresponde a 250 ÷ 100 = 2,5</li>
+                    <li>30% corresponde a 2,5 × 30 = 75</li>
+                </ol>
+                <p class="destaque-laranja">Resultado: 30% de 250 = 75</p>
+            </div>
+            
+            <h3>2. Fator Multiplicador</h3>
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">➕</div>
+                    <h4>Aumento Percentual</h4>
+                    <p>Para aumentar 25%:</p>
+                    <div class="formula">1 + 0,25 = 1,25</div>
+                    <p>Ex: 80 × 1,25 = 100</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">➖</div>
+                    <h4>Desconto Percentual</h4>
+                    <p>Para descontar 15%:</p>
+                    <div class="formula">1 - 0,15 = 0,85</div>
+                    <p>Ex: 200 × 0,85 = 170</p>
+                </div>
+                <div class="metodo">
+                    <div class="icone">✖</div>
+                    <h4>Porcentagem Direta</h4>
+                    <p>Calcular 40%:</p>
+                    <div class="formula">40% = 0,40</div>
+                    <p>Ex: 150 × 0,40 = 60</p>
+                </div>
+            </div>
+            
+            <h3>3. Transformação em Fração</h3>
+            <div class="box-info">
+                <table>
+                    <tr>
+                        <th>Porcentagem</th>
+                        <th>Fração</th>
+                        <th>Decimal</th>
+                    </tr>
+                    <tr>
+                        <td>25%</td>
+                        <td>1/4</td>
+                        <td>0,25</td>
+                    </tr>
+                    <tr>
+                        <td>50%</td>
+                        <td>1/2</td>
+                        <td>0,50</td>
+                    </tr>
+                    <tr>
+                        <td>75%</td>
+                        <td>3/4</td>
+                        <td>0,75</td>
+                    </tr>
+                    <tr>
+                        <td>10%</td>
+                        <td>1/10</td>
+                        <td>0,10</td>
+                    </tr>
+                </table>
+                <p>Exemplo: 50% de 80 = 80 × (1/2) = 40</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔍 Tipos de Problemas</h2>
+            
+            <div class="metodo-container">
+                <div class="metodo">
+                    <div class="icone">❓</div>
+                    <h4>Calcular a porcentagem</h4>
+                    <p>Quanto é 20% de 150?</p>
+                    <div class="formula">150 × 0,20 = 30</div>
+                </div>
+                <div class="metodo">
+                    <div class="icone">❓</div>
+                    <h4>Calcular o total</h4>
+                    <p>30 é 20% de quanto?</p>
+                    <div class="formula">30 ÷ 0,20 = 150</div>
+                </div>
+                <div class="metodo">
+                    <div class="icone">❓</div>
+                    <h4>Calcular a taxa</h4>
+                    <p>30 é qual % de 150?</p>
+                    <div class="formula">(30/150)×100 = 20%</div>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>📌 Variação Percentual</h3>
+                <p>Como calcular aumento ou redução percentual entre dois valores:</p>
+                <div class="formula">
+                    Variação % = [(Final - Inicial)/Inicial] × 100
+                </div>
+                <p>Exemplo: Preço aumentou de R$80 para R$100</p>
+                <p>[(100-80)/80] × 100 = 25% de aumento</p>
+            </div>
+        </section>
+
+        <section class="exercicios">
+            <h2>📚 Exercícios Práticos</h2>
+            
+            <div class="exercicio">
+                <p>1. Calcule 15% de R$ 200,00:</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p><strong>Método 1:</strong> Regra de três</p>
+                        <p>100% = 200 → 1% = 2 → 15% = 30</p>
+                        <p><strong>Método 2:</strong> Fator decimal</p>
+                        <p>200 × 0,15 = 30</p>
+                        <p class="destaque-laranja">Resposta: R$ 30,00</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Uma camisa custava R$ 80,00 e teve aumento de 25%. Qual seu novo preço?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p><strong>Fator de aumento:</strong> 1 + 0,25 = 1,25</p>
+                        <p>80 × 1,25 = 100</p>
+                        <p class="destaque-laranja">Novo preço: R$ 100,00</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Se 18 alunos em uma turma de 30 foram aprovados, qual a porcentagem de aprovados?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>(Parte/Total) × 100 = (18/30) × 100 = 0,6 × 100 = 60%</p>
+                        <p class="destaque-roxo">Taxa de aprovação: 60%</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>4. Um produto que custava R$ 120,00 foi vendido com desconto por R$ 96,00. Qual o desconto percentual?</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>Variação = [(96-120)/120] × 100 = (-24/120) × 100 = -20%</p>
+                        <p class="destaque-roxo">Desconto de 20%</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Dicas e Macetes</h2>
+            <div class="box-info">
+                <h3>🧠 Truques Rápidos</h3>
+                <table>
+                    <tr>
+                        <th>Porcentagem</th>
+                        <th>Cálculo Rápido</th>
+                    </tr>
+                    <tr>
+                        <td>10%</td>
+                        <td>Divida por 10</td>
+                    </tr>
+                    <tr>
+                        <td>5%</td>
+                        <td>Calcule 10% e divida por 2</td>
+                    </tr>
+                    <tr>
+                        <td>20%</td>
+                        <td>Calcule 10% e multiplique por 2</td>
+                    </tr>
+                    <tr>
+                        <td>50%</td>
+                        <td>Divida por 2</td>
+                    </tr>
+                    <tr>
+                        <td>25%</td>
+                        <td>Divida por 4</td>
+                    </tr>
+                </table>
+                
+                <h3>⚠️ Erros comuns para evitar</h3>
+                <ul>
+                    <li>Confundir aumento e desconto percentual</li>
+                    <li>Esquecer de mover a vírgula ao converter % para decimal</li>
+                    <li>Não identificar corretamente o "todo" em problemas</li>
+                    <li>Calcular variação percentual com denominador errado</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=Kn6al_RauLE" target="_blank" class="destaque-laranja">Porcentagem - Introdução</a> – Matemática Rio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=cnmBesqAF24" target="_blank" class="destaque-laranja">Como calcular porcentagem</a> – Professor Ferretto</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=YhY5P7QEqaY" target="_blank" class="destaque-laranja">Aumentos e Descontos Percentuais</a> – Matemática do Zero</li>
+                </ul>
+                <h3>📚 Ferramentas e Sites:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.calculadoraonline.com.br/porcentagem" target="_blank" class="destaque-roxo">Calculadora Online de Porcentagem</a></li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/arithmetic/arith-review-percentages" target="_blank" class="destaque-roxo">Khan Academy - Porcentagem</a></li>
+                    <li>🌐 <a href="https://www.somatematica.com.br/fundam/porcent.php" target="_blank" class="destaque-roxo">Só Matemática - Porcentagem</a></li>
+                </ul>
+                
+                <h3>📱 Aplicativos Úteis:</h3>
+                <ul>
+                    <li>📲 Calculadora de Porcentagem</li>
+                    <li>📲 PhotoMath - Resolução com câmera</li>
+                    <li>📲 Calculadora Científica HiPER</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 1.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-laranja">00001249473111sp@al.educacao.sp.gov.br</a></p>
+    </footer>
+</body>
+</html>
