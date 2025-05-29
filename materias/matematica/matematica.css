@@ -1,8 +1,13 @@
 :root {
-    --cor-primaria: #4361ee;
-    --cor-secundaria: #3f37c9;
-    --cor-texto: #2b2d42;
-    --cor-fundo: #f8f9fa;
+    --cor-primaria: #4361ee; 
+    --cor-secundaria: #3a0ca3; 
+    --cor-texto: #2b2d42;     
+    --cor-fundo: #f8f9fa;     
+    --cor-destaque: #f72585;  
+    --cor-sucesso: #4cc9f0;    
+    --cor-aviso: #f8961e;      
+    --cor-perigo: #ef233c;   
+    --cor-info: #4895ef;      
 }
         
 body {
@@ -444,4 +449,17 @@ summary {
 .destaque-azul {
     color: #1e90ff;
     font-weight: bold;
+}
+
+.btn, .btn-back {
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .btn-back:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.conteudos-card {
+    border-top: 3px solid var(--cor-primaria); /* Adiciona borda superior */
 }
