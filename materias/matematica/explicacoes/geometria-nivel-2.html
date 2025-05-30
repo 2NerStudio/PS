@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometria Intermediária | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-azul {
+            color: #1e90ff;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .figura-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .figura {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 180px;
+        }
+        .icone {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1e90ff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .teorema {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #0066cc;
+        }
+        .demonstracao {
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .formula {
+            background-color: #f8f8f8;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            display: inline-block;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Geometria Intermediária - Nível 2</h1>
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>📐 Geometria Plana Avançada</h2>
+            <p>
+                Aprofundando os conceitos de geometria plana, exploraremos relações métricas, teoremas fundamentais e propriedades de figuras mais complexas.
+            </p>
+            
+            <div class="box-info">
+                <h3>🔍 Propriedades dos Triângulos</h3>
+                <div class="figura-container">
+                    <div class="figura">
+                        <div class="icone">📐</div>
+                        <h4>Mediana</h4>
+                        <p>Segmento que liga um vértice ao ponto médio do lado oposto</p>
+                        <div class="formula">AM = MB</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">📏</div>
+                        <h4>Bissetriz</h4>
+                        <p>Reta que divide um ângulo em dois ângulos congruentes</p>
+                        <div class="formula">∠BAD = ∠CAD</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">⬆️</div>
+                        <h4>Altura</h4>
+                        <p>Segmento perpendicular de um vértice ao lado oposto</p>
+                        <div class="formula">h ⊥ BC</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="teorema">
+                <h3>📜 Teorema de Pitágoras</h3>
+                <p>Em um triângulo retângulo, o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.</p>
+                <div class="formula">a² = b² + c²</div>
+                <div class="demonstracao">
+                    <p><strong>Demonstração:</strong> Existem mais de 370 provas conhecidas deste teorema. A mais comum utiliza a comparação de áreas em um quadrado maior contendo quatro triângulos retângulos congruentes.</p>
+                </div>
+                <p><strong>Aplicação:</strong> Calcular distâncias, verificar triângulos retângulos, resolver problemas de geometria.</p>
+            </div>
+            
+            <h3>🔺 Semelhança de Triângulos</h3>
+            <p>Dois triângulos são semelhantes quando possuem ângulos correspondentes congruentes e lados correspondentes proporcionais.</p>
+            
+            <table>
+                <tr>
+                    <th>Casos de Semelhança</th>
+                    <th>Descrição</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>AA (Ângulo-Ângulo)</td>
+                    <td>Dois ângulos congruentes</td>
+                    <td>∠A = ∠D e ∠B = ∠E</td>
+                </tr>
+                <tr>
+                    <td>LAL (Lado-Ângulo-Lado)</td>
+                    <td>Dois lados proporcionais e o ângulo entre eles congruente</td>
+                    <td>AB/DE = AC/DF e ∠A = ∠D</td>
+                </tr>
+                <tr>
+                    <td>LLL (Lado-Lado-Lado)</td>
+                    <td>Três lados proporcionais</td>
+                    <td>AB/DE = AC/DF = BC/EF</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔄 Relações Métricas no Triângulo Retângulo</h2>
+            
+            <div class="box-info">
+                <div class="figura-container">
+                    <div class="figura">
+                        <div class="icone">🔺</div>
+                        <h4>Projeções</h4>
+                        <p>m: projeção do cateto b<br>n: projeção do cateto c</p>
+                        <div class="formula">a = m + n</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">📊</div>
+                        <h4>Relações</h4>
+                        <ul style="text-align: left;">
+                            <li>b² = a·m</li>
+                            <li>c² = a·n</li>
+                            <li>h² = m·n</li>
+                            <li>b·c = a·h</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="exercicio">
+                <p>1. Num triângulo retângulo, as projeções dos catetos sobre a hipotenusa medem 4 cm e 9 cm. Calcule a altura relativa à hipotenusa.</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Usando h² = m·n → h² = 4·9 = 36 → h = 6 cm</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>⭕ Geometria do Círculo</h2>
+            
+            <div class="box-info">
+                <h3>📐 Elementos do Círculo</h3>
+                <div class="figura-container">
+                    <div class="figura">
+                        <div class="icone">🔴</div>
+                        <h4>Raio</h4>
+                        <p>Distância do centro a qualquer ponto da circunferência</p>
+                        <div class="formula">r = OA</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">📏</div>
+                        <h4>Corda</h4>
+                        <p>Segmento que liga dois pontos da circunferência</p>
+                        <div class="formula">AB</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">↔️</div>
+                        <h4>Diâmetro</h4>
+                        <p>Corda que passa pelo centro (2r)</p>
+                        <div class="formula">d = 2r</div>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">◠</div>
+                        <h4>Arco</h4>
+                        <p>Parte da circunferência entre dois pontos</p>
+                        <div class="formula">AB̂</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="teorema">
+                <h3>📜 Teorema do Ângulo Central</h3>
+                <p>O ângulo central é igual ao arco que ele enxerga.</p>
+                <div class="formula">α = AB̂</div>
+                <div class="demonstracao">
+                    <p><strong>Demonstração:</strong> Como o ângulo central está diretamente relacionado ao comprimento do arco (em radianos), a medida em graus do ângulo central é igual à medida em graus do arco correspondente.</p>
+                </div>
+            </div>
+            
+            <h3>🔵 Posições Relativas de Retas e Círculos</h3>
+            <table>
+                <tr>
+                    <th>Posição</th>
+                    <th>Descrição</th>
+                    <th>Distância (d)</th>
+                    <th>Pontos Comuns</th>
+                </tr>
+                <tr>
+                    <td>Secante</td>
+                    <td>Corta a circunferência em dois pontos</td>
+                    <td>d < r</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Tangente</td>
+                    <td>Toca a circunferência em um ponto</td>
+                    <td>d = r</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Externa</td>
+                    <td>Não intercepta a circunferência</td>
+                    <td>d > r</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="conteudo">
+            <h2>📐 Polígonos Regulares</h2>
+            
+            <div class="box-info">
+                <h3>🔷 Propriedades</h3>
+                <ul>
+                    <li>Todos os lados congruentes</li>
+                    <li>Todos os ângulos internos congruentes</li>
+                    <li>Podem ser inscritos e circunscritos a círculos</li>
+                </ul>
+                
+                <h3>📏 Cálculos em Polígonos Regulares</h3>
+                <div class="formula">Ângulo interno: (n-2)×180°/n</div>
+                <div class="formula">N° diagonais: n(n-3)/2</div>
+                <div class="formula">Soma ângulos internos: (n-2)×180°</div>
+            </div>
+            
+            <div class="figura-container">
+                <div class="figura">
+                    <div class="icone">⬡</div>
+                    <h4>Hexágono Regular</h4>
+                    <ul>
+                        <li>6 lados iguais</li>
+                        <li>Ângulo interno: 120°</li>
+                        <li>9 diagonais</li>
+                        <li>Área: (3√3/2)L²</li>
+                    </ul>
+                </div>
+                <div class="figura">
+                    <div class="icone">⬣</div>
+                    <h4>Pentágono Regular</h4>
+                    <ul>
+                        <li>5 lados iguais</li>
+                        <li>Ângulo interno: 108°</li>
+                        <li>5 diagonais</li>
+                        <li>Área: (5L²)/(4tan(36°))</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🧊 Geometria Espacial Básica</h2>
+            
+            <div class="box-info">
+                <h3>🔶 Sólidos Geométricos</h3>
+                <div class="figura-container">
+                    <div class="figura">
+                        <div class="icone">🧊</div>
+                        <h4>Prisma</h4>
+                        <ul>
+                            <li>Duas bases paralelas congruentes</li>
+                            <li>Faces laterais paralelogramos</li>
+                            <li>Volume: Área_base × altura</li>
+                        </ul>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">🔺</div>
+                        <h4>Pirâmide</h4>
+                        <ul>
+                            <li>Uma base poligonal</li>
+                            <li>Faces laterais triangulares</li>
+                            <li>Volume: (Área_base × altura)/3</li>
+                        </ul>
+                    </div>
+                    <div class="figura">
+                        <div class="icone">⚽</div>
+                        <h4>Esfera</h4>
+                        <ul>
+                            <li>Todos pontos equidistantes do centro</li>
+                            <li>Volume: (4/3)πr³</li>
+                            <li>Área: 4πr²</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>📏 Cálculos em Sólidos</h3>
+            <table>
+                <tr>
+                    <th>Sólido</th>
+                    <th>Área Lateral</th>
+                    <th>Área Total</th>
+                    <th>Volume</th>
+                </tr>
+                <tr>
+                    <td>Cubo</td>
+                    <td>4a²</td>
+                    <td>6a²</td>
+                    <td>a³</td>
+                </tr>
+                <tr>
+                    <td>Paralelepípedo</td>
+                    <td>2(ac + bc)</td>
+                    <td>2(ab + ac + bc)</td>
+                    <td>a·b·c</td>
+                </tr>
+                <tr>
+                    <td>Cilindro</td>
+                    <td>2πrh</td>
+                    <td>2πr(r + h)</td>
+                    <td>πr²h</td>
+                </tr>
+                <tr>
+                    <td>Cone</td>
+                    <td>πrg</td>
+                    <td>πr(r + g)</td>
+                    <td>(πr²h)/3</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="exercicios">
+            <h2>📝 Exercícios Avançados</h2>
+            
+            <div class="exercicio">
+                <p>1. Um triângulo ABC tem lados AB = 8 cm, BC = 15 cm e AC = 17 cm. Verifique se é retângulo e calcule sua área.</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Verificação: 8² + 15² = 64 + 225 = 289 = 17² → É retângulo em B<br>
+                    Área = (8 × 15)/2 = 60 cm²</p>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Calcule o volume de um cilindro inscrito em um cubo de aresta 10 cm.</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Raio do cilindro = 5 cm, altura = 10 cm<br>
+                    Volume = π × 5² × 10 = 250π cm³ ≈ 785,4 cm³</p>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Um hexágono regular tem lado 4 cm. Calcule sua área.</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>Área = (3√3/2) × 4² = (3√3/2) × 16 = 24√3 cm² ≈ 41,57 cm²</p>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>4. Determine o comprimento da diagonal de um paralelepípedo com dimensões 3 cm, 4 cm e 12 cm.</p>
+                <details>
+                    <summary>Ver resposta</summary>
+                    <p>d² = 3² + 4² + 12² = 9 + 16 + 144 = 169 → d = 13 cm</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔍 Teoremas e Problemas Clássicos</h2>
+            
+            <div class="teorema">
+                <h3>📜 Teorema de Tales</h3>
+                <p>Um feixe de retas paralelas determina sobre duas transversais segmentos proporcionais.</p>
+                <div class="formula">AB/BC = DE/EF</div>
+                <div class="demonstracao">
+                    <p><strong>Aplicação:</strong> Dividir segmentos em partes proporcionais, resolver problemas de semelhança, cálculos de distâncias inacessíveis.</p>
+                </div>
+            </div>
+            
+            <div class="teorema">
+                <h3>📜 Lei dos Cossenos</h3>
+                <p>Generalização do Teorema de Pitágoras para qualquer triângulo.</p>
+                <div class="formula">a² = b² + c² - 2bc·cos(α)</div>
+                <div class="demonstracao">
+                    <p><strong>Uso:</strong> Calcular lados quando se conhece dois lados e o ângulo entre eles, ou ângulos quando se conhecem os três lados.</p>
+                </div>
+            </div>
+            
+            <div class="teorema">
+                <h3>📜 Lei dos Senos</h3>
+                <p>Relação constante entre lados e senos dos ângulos opostos.</p>
+                <div class="formula">a/sen(α) = b/sen(β) = c/sen(γ) = 2R</div>
+                <p>onde R é o raio da circunferência circunscrita.</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Técnicas de Resolução de Problemas</h2>
+            <div class="box-info">
+                <h3>🔎 Estratégias Eficazes</h3>
+                <ol>
+                    <li><strong>Desenho preciso:</strong> Represente o problema graficamente</li>
+                    <li><strong>Identificação de teoremas:</strong> Reconheça quais teoremas podem ser aplicados</li>
+                    <li><strong>Relações métricas:</strong> Utilize proporções e semelhanças</li>
+                    <li><strong>Sistemas de equações:</strong> Monte equações a partir das relações geométricas</li>
+                    <li><strong>Verificação dimensional:</strong> Confira se as unidades fazem sentido</li>
+                </ol>
+                
+                <h3>⚠️ Erros Comuns</h3>
+                <ul>
+                    <li>Confundir perímetro com área</li>
+                    <li>Aplicar Teorema de Pitágoras em triângulos não-retângulos</li>
+                    <li>Esquecer de converter unidades</li>
+                    <li>Não identificar corretamente ângulos e lados correspondentes em figuras semelhantes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Avançados</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/playlist?list=PLGyv8aUrOlzBiOqBXVfOTIJLCwVw4BduY" target="_blank" class="destaque-azul">Geometria Analítica - Curso Completo</a> – Canal Matemática Ensino Médio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=9Paa5eSzGHw" target="_blank" class="destaque-azul">Trigonometria em Triângulos Qualquer: Lei dos Senos</a> – Canal Me Salva!</li>
+                    <li>🎥 <a href="https://www.youtube.com/playlist?list=PLMC3bljfM-utUZqvdfaMuX0HD1DbOdPB7" target="_blank" class="destaque-azul">Resolução de Problemas Olímpicos</a> – Canal POTI (Polos Olímpicos de Treinamento Intensivo)</li>
+                </ul>
+                
+                <h3>📚 Livros e Materiais:</h3>
+                <ul>
+                    <li>📖 "A Matemática do Ensino Médio" - Elon Lages Lima</li>
+                    <li>📖 "Fundamentos de Matemática Elementar - Geometria Plana" - Gelson Iezzi</li>
+                    <li>🌐 <a href="https://www.obm.org.br" target="_blank" class="destaque-azul">Site da OBM</a> - Olimpíada Brasileira de Matemática</li>
+                </ul>
+                
+                <h3>🛠️ Ferramentas Digitais:</h3>
+                <ul>
+                    <li>💻 <a href="https://www.desmos.com/geometry" target="_blank" class="destaque-azul">Desmos Geometry</a> - Construções geométricas interativas</li>
+                    <li>💻 <a href="https://www.wolframalpha.com" target="_blank" class="destaque-azul">Wolfram Alpha</a> - Solucionador de problemas matemáticos</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 2.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-azul">00001249473111sp@al.educacao.sp.gov.br</a></p>
+        <p>Próximo nível: <a href="geometria-nivel-3.html" class="destaque-azul">Geometria Avançada</a></p>
+    </footer>
+</body>
+</html>
