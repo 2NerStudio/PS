@@ -3,6 +3,11 @@
     --cor-secundaria: #3f37c9;
     --cor-texto: #2b2d42;
     --cor-fundo: #f8f9fa;
+    
+    /* Novas variáveis para animações */
+    --animacao-entrada: 0.5s ease-out forwards;
+    --animacao-hover: 0.3s ease;
+    --sombra-hover: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
         
 body {
@@ -26,6 +31,13 @@ header {
     text-align: center;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Animação de entrada */
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .logo {
@@ -38,12 +50,21 @@ header {
     margin: 0;
     font-size: 2.5rem;
     font-weight: 700;
+    /* Animação de texto */
+    animation: textPop 0.6s 0.2s ease-out both;
+}
+
+@keyframes textPop {
+    0% { transform: scale(0.95); opacity: 0; }
+    80% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .logo p {
     margin: 0.5rem 0 0;
     font-size: 1.1rem;
     opacity: 0.9;
+    animation: fadeIn 0.6s 0.4s ease-out both;
 }
 
 .materias-grid {
@@ -58,13 +79,32 @@ header {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--animacao-hover), box-shadow var(--animacao-hover);
     position: relative;
+    /* Animação de entrada dos cards */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardEntrance var(--animacao-entrada);
+}
+
+/* Animação sequencial para os cards */
+.materia-card:nth-child(1) { animation-delay: 0.1s; }
+.materia-card:nth-child(2) { animation-delay: 0.2s; }
+.materia-card:nth-child(3) { animation-delay: 0.3s; }
+.materia-card:nth-child(4) { animation-delay: 0.4s; }
+.materia-card:nth-child(5) { animation-delay: 0.5s; }
+.materia-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardEntrance {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .materia-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--sombra-hover);
 }
 
 .card-header {
@@ -74,9 +114,19 @@ header {
     text-align: center;
 }
 
+.card-header h3 {
+    color: white;
+    margin: 0;
+    transition: transform var(--animacao-hover);
+}
+
+.materia-card:hover .card-header h3 {
+    transform: scale(1.05);
+}
+
 .card-body {
     padding: 1.5rem;
-    padding-bottom: 70px
+    padding-bottom: 70px;
 }
 
 .card-body p {
@@ -92,14 +142,24 @@ header {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.3s ease;
+    transition: all var(--animacao-hover);
     position: absolute;
     left: 20px;
-    bottom: 25px; 
+    bottom: 25px;
+    /* Efeito pulsante sutil */
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
 }
 
 .btn:hover {
     background: var(--cor-secundaria);
+    animation: none; /* Remove a pulsação no hover */
+    transform: scale(1.05) translateY(-2px);
 }
 
 .sobre {
@@ -108,6 +168,14 @@ header {
     border-radius: 12px;
     margin-bottom: 2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* Animação de entrada */
+    opacity: 0;
+    animation: fadeInUp 0.6s 0.3s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
@@ -115,6 +183,9 @@ footer {
     padding: 2rem 0;
     margin-top: 3rem;
     border-top: 1px solid #eee;
+    /* Animação de entrada */
+    opacity: 0;
+    animation: fadeIn 0.6s 0.6s ease-out forwards;
 }
 
 .badge {
@@ -126,13 +197,68 @@ footer {
     font-size: 0.8rem;
     font-weight: 600;
     margin-left: 0.5rem;
+    /* Animação de atenção */
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
 }
 
 .destaque-verde {
     color: #2e8b57;
     font-weight: bold;
+    transition: all var(--animacao-hover);
 }
+
 .destaque-azul {
     color: #1e90ff;
     font-weight: bold;
+    transition: all var(--animacao-hover);
+}
+
+/* Efeito de onda nos botões */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    border-radius: 100%;
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+
+.btn:hover::after {
+    animation: onda 0.6s ease-out;
+}
+
+@keyframes onda {
+    0% {
+        transform: translate(-50%, -50%) scale(1, 1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(50, 50);
+        opacity: 0;
+    }
+}
+
+/* Responsividade - mantendo as animações em mobile */
+@media (max-width: 768px) {
+    .materia-card {
+        animation-delay: 0s !important;
+        animation-duration: 0.4s;
+    }
+    
+    .btn {
+        animation: none; /* Remove a pulsação em mobile */
+    }
+    
+    .badge {
+        animation: none; /* Remove o bounce em mobile */
+    }
 }

@@ -3,14 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matematica | EduRevision</title>
+    <title>Matemática | EduRevision</title>
     <link rel="stylesheet" href="matematica.css">
+    <style>
+        .conteudos-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        
+        .conteudos-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(58, 12, 163, 0.05) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .conteudos-card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-header {
+            z-index: 2;
+        }
+        
+        .card-body {
+            z-index: 2;
+        }
+        
+        .btn {
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+            z-index: -1;
+            transition: all 0.6s ease;
+        }
+        
+        .btn:hover::after {
+            transform: scale(30, 30) translate(-50%, -50%);
+            opacity: 1;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .conteudos-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .conteudos-card:nth-child(1) { animation-delay: 0.1s; }
+        .conteudos-card:nth-child(2) { animation-delay: 0.2s; }
+        .conteudos-card:nth-child(3) { animation-delay: 0.3s; }
+        .conteudos-card:nth-child(4) { animation-delay: 0.4s; }
+        .conteudos-card:nth-child(5) { animation-delay: 0.5s; }
+        .conteudos-card:nth-child(6) { animation-delay: 0.6s; }
+        .conteudos-card:nth-child(7) { animation-delay: 0.7s; }
+        .conteudos-card:nth-child(8) { animation-delay: 0.8s; }
+        .conteudos-card:nth-child(9) { animation-delay: 0.9s; }
+        .conteudos-card:nth-child(10) { animation-delay: 1s; }
+        
+        header {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        /* Efeito no footer */
+        footer {
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cor-primaria), transparent);
+        }
+        
+        @media (max-width: 768px) {
+            .conteudos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .conteudos-card {
+                animation: none;
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>Matematica</h1>
+                <h1>Matemática</h1>
                 <a href="../../index.html" class="btn-back">← Voltar</a>
             </div>
         </div>
@@ -18,10 +156,12 @@
     
     <main class="container">
         <section class="dificuldades">
-            <h4>Aqui você encontra os conteúdos para suas devidas dificuldades. Como Frações, Equações e Geometria</h4>
+            <h4>Aqui você encontra os conteúdos organizados por categorias para facilitar seu estudo</h4>
         </section>
 
-        <section class="conteudos">
+        <!-- Categoria: Aritmética -->
+        <section class="categoria">
+            <h2 class="categoria-titulo aritmetica">Aritmética</h2>
             <div class="conteudos-grid">
                 <div class="conteudos-card"> 
                     <div class="card-header">
@@ -34,38 +174,11 @@
                 </div>
                 <div class="conteudos-card"> 
                     <div class="card-header">
-                        <h3>Equações - primeiro grau</h3> 
-                    </div>
-                    <div class="card-body">
-                        <p>Aprenda a resolver equações do 1º grau: descubra como isolar a incógnita e encontrar o valor de X passo a passo.</p>
-                        <a href="explicacoes/equacoes-primeiro-grau.html" class="btn">Acessar</a>
-                    </div>
-                </div>
-                <div class="conteudos-card"> 
-                    <div class="card-header">
-                        <h3>Geometria - Nível: 1</h3> 
-                    </div>
-                    <div class="card-body">
-                        <p>Princípios geométricos: estudo de figuras e suas características</p>
-                        <a href="explicacoes/geometria-nivel-1.html" class="btn">Acessar</a>
-                    </div>
-                </div>
-                <div class="conteudos-card"> 
-                    <div class="card-header">
                         <h3>Números Decimais</h3> 
                     </div>
                     <div class="card-body">
-                        <p>Domine o sistema decimal: aprenda a ler, comparar e operar com números que possuem vírgula em situações do cotidiano.</p>
+                        <p>Domine o sistema decimal: aprenda a ler, comparar e operar com números que possuem vírgula.</p>
                         <a href="explicacoes/numeros-decimais.html" class="btn">Acessar</a>
-                    </div>
-                </div>
-                <div class="conteudos-card"> 
-                    <div class="card-header">
-                        <h3>Sistema de Medidas</h3> 
-                    </div>
-                    <div class="card-body">
-                        <p>Explore o sistema métrico: compreenda unidades de comprimento, massa e capacidade com conversões práticas.</p>
-                        <a href="explicacoes/sistema-de-medidas.html" class="btn">Acessar</a>
                     </div>
                 </div>
                 <div class="conteudos-card"> 
@@ -73,7 +186,7 @@
                         <h3>Múltiplos e Divisores</h3> 
                     </div>
                     <div class="card-body">
-                        <p>Descubra as relações numéricas fundamentais: identifique múltiplos, divisores e aprenda a calcular MMC e MDC.</p>
+                        <p>Identifique múltiplos, divisores e aprenda a calcular MMC e MDC.</p>
                         <a href="explicacoes/multiplos-e-divisores.html" class="btn">Acessar</a>
                     </div>
                 </div>
@@ -82,7 +195,7 @@
                         <h3>MMC e MDC</h3>
                     </div>
                     <div class="card-body">
-                        <p>Domine os cálculos de Mínimo Múltiplo Comum e Máximo Divisor Comum com métodos práticos e aplicações reais.</p>
+                        <p>Domine os cálculos de Mínimo Múltiplo Comum e Máximo Divisor Comum.</p>
                         <a href="explicacoes/mmc-e-mdc.html" class="btn">Acessar</a>
                     </div>
                 </div>
@@ -91,8 +204,24 @@
                         <h3>Números Primos</h3>
                     </div>
                     <div class="card-body">
-                        <p>Descubra os átomos da matemática: aprenda a identificar, classificar e utilizar números primos em problemas.</p>
+                        <p>Aprenda a identificar, classificar e utilizar números primos em problemas.</p>
                         <a href="explicacoes/numeros-primos.html" class="btn">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categoria: Álgebra -->
+        <section class="categoria">
+            <h2 class="categoria-titulo algebra">Álgebra</h2>
+            <div class="conteudos-grid">
+                <div class="conteudos-card"> 
+                    <div class="card-header">
+                        <h3>Equações - primeiro grau</h3> 
+                    </div>
+                    <div class="card-body">
+                        <p>Aprenda a resolver equações do 1º grau: descubra como isolar a incógnita e encontrar o valor de X.</p>
+                        <a href="explicacoes/equacoes-primeiro-grau.html" class="btn">Acessar</a>
                     </div>
                 </div>
                 <div class="conteudos-card">
@@ -100,7 +229,7 @@
                         <h3>Porcentagem - Nível 1</h3>
                     </div>
                     <div class="card-body">
-                        <p>Aprenda cálculos percentuais básicos, aumentos, descontos e aplicações práticas no dia a dia.</p>
+                        <p>Aprenda cálculos percentuais básicos, aumentos, descontos e aplicações práticas.</p>
                         <a href="explicacoes/porcentagem-nivel-1.html" class="btn">Acessar</a>
                     </div>
                 </div>
@@ -109,15 +238,39 @@
                         <h3>Potenciação e Radiciação - Nível 1</h3>
                     </div>
                     <div class="card-body">
-                        <p>Aprenda as propriedades das potências e raízes, operações básicas e aplicações em problemas matemáticos.</p>
+                        <p>Aprenda as propriedades das potências e raízes, operações básicas e aplicações.</p>
                         <a href="explicacoes/potenciacao-e-radiciacao-nivel-1.html" class="btn">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categoria: Geometria -->
+        <section class="categoria">
+            <h2 class="categoria-titulo geometria">Geometria</h2>
+            <div class="conteudos-grid">
+                <div class="conteudos-card"> 
+                    <div class="card-header">
+                        <h3>Geometria - Nível: 1</h3> 
+                    </div>
+                    <div class="card-body">
+                        <p>Princípios geométricos: estudo de figuras e suas características.</p>
+                        <a href="explicacoes/geometria-nivel-1.html" class="btn">Acessar</a>
+                    </div>
+                </div>
+                <div class="conteudos-card"> 
+                    <div class="card-header">
+                        <h3>Sistema de Medidas</h3> 
+                    </div>
+                    <div class="card-body">
+                        <p>Compreenda unidades de comprimento, massa e capacidade com conversões práticas.</p>
+                        <a href="explicacoes/sistema-de-medidas.html" class="btn">Acessar</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
     <footer class="container">
-        <p>© 2025 EduRevision - Versão 1.0 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-verde">00001249473111sp@al.educacao.sp.gov.br</a></p>
+        <p>© 2025 EduRevision - Versão 1.1 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-verde">00001249473111sp@al.educacao.sp.gov.br</a></p>
     </footer>
 </body>
-</html>
