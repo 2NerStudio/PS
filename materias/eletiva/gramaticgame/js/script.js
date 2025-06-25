@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeGame() {
     // Variáveis do jogo
     let currentDifficulty = '';
-    let questions = [];
+    let selectedQuestions = [];
     let currentQuestionIndex = 0;
     let score = 0;
     let selectedOption = null;
@@ -59,8 +59,10 @@ function initializeGame() {
     // Funções do jogo
     function startGame(e) {
         currentDifficulty = e.target.dataset.difficulty;
-        questions = [...questionsDatabase[currentDifficulty]];
-        shuffleArray(questions); // Embaralha as perguntas
+        
+        // Seleciona 5 questões aleatórias da dificuldade escolhida
+        selectedQuestions = selectRandomQuestions(currentDifficulty, 5);
+        
         score = 0;
         currentQuestionIndex = 0;
         
@@ -71,11 +73,18 @@ function initializeGame() {
         showQuestion();
     }
 
+    // Seleciona n questões aleatórias de uma dificuldade
+    function selectRandomQuestions(difficulty, count) {
+        const allQuestions = [...questionsDatabase[difficulty]];
+        const shuffled = shuffleArray(allQuestions);
+        return shuffled.slice(0, count);
+    }
+
     function showQuestion() {
         resetState();
-        const currentQuestion = questions[currentQuestionIndex];
+        const currentQuestion = selectedQuestions[currentQuestionIndex];
         const questionNo = currentQuestionIndex + 1;
-        const totalQuestions = questions.length;
+        const totalQuestions = selectedQuestions.length;
         
         questionElement.innerHTML = `<span>${questionNo}/${totalQuestions}</span>. ${currentQuestion.question}`;
         
@@ -104,7 +113,7 @@ function initializeGame() {
     function selectOption(e) {
         selectedOption = e.target;
         const selectedIndex = parseInt(selectedOption.dataset.index);
-        const correctIndex = questions[currentQuestionIndex].answer;
+        const correctIndex = selectedQuestions[currentQuestionIndex].answer;
         
         // Desabilita todas as opções
         document.querySelectorAll('.btn-option').forEach(button => {
@@ -136,7 +145,7 @@ function initializeGame() {
     function nextQuestion() {
         currentQuestionIndex++;
         
-        if (currentQuestionIndex < questions.length) {
+        if (currentQuestionIndex < selectedQuestions.length) {
             showQuestion();
         } else {
             showResults();
@@ -151,9 +160,9 @@ function initializeGame() {
         updateUserScore(currentDifficulty, score);
         
         finalScoreElement.textContent = score;
-        totalQuestionsElement.textContent = questions.length;
+        totalQuestionsElement.textContent = selectedQuestions.length;
         
-        const percentage = (score / questions.length) * 100;
+        const percentage = (score / selectedQuestions.length) * 100;
         
         if (percentage >= 80) {
             resultMessageElement.textContent = 'Excelente! Você domina a gramática!';
@@ -176,7 +185,7 @@ function initializeGame() {
     }
 
     function updateProgress() {
-        const progress = ((currentQuestionIndex) / questions.length) * 100;
+        const progress = ((currentQuestionIndex) / selectedQuestions.length) * 100;
         progressBar.style.width = `${progress}%`;
     }
 
