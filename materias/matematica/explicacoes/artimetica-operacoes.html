@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmética Básica | EduRevision</title>
+    <link rel="stylesheet" href="../matematica.css">
+    <style>
+        .destaque-vermelho {
+            color: #FF4500;
+            font-weight: bold;
+        }
+        .destaque-roxo {
+            color: #9370DB;
+            font-weight: bold;
+        }
+        .box-info {
+            background-color: #FFF0F5;
+            border-left: 4px solid #FF69B4;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .operacao-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .operacao-card {
+            text-align: center;
+            margin: 10px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+        }
+        .icone-operacao {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .exercicio {
+            background: #FFF0F5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #FF69B4;
+        }
+        .passo-a-passo {
+            background-color: #F5F5F5;
+            border-left: 4px solid #9370DB;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .propriedade {
+            background-color: #E6E6FA;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #9370DB;
+        }
+        @media (max-width: 768px) {
+            .operacao-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Aritmética Básica - Nível 1</h1> 
+                <a href="../matematica.html" class="btn-back">← Voltar para Matemática</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="conteudo">
+            <h2>🧮 Operações Aritméticas Fundamentais</h2>
+            
+            <div class="operacao-container">
+                <div class="operacao-card">
+                    <div class="icone-operacao">➕</div>
+                    <h3>Adição</h3>
+                    <p>Combina dois números para formar um total.</p>
+                    <p class="formula">a + b = c</p>
+                    <p>Exemplo: 5 + 3 = 8</p>
+                </div>
+                
+                <div class="operacao-card">
+                    <div class="icone-operacao">➖</div>
+                    <h3>Subtração</h3>
+                    <p>Encontra a diferença entre dois números.</p>
+                    <p class="formula">a - b = c</p>
+                    <p>Exemplo: 7 - 2 = 5</p>
+                </div>
+                
+                <div class="operacao-card">
+                    <div class="icone-operacao">✖️</div>
+                    <h3>Multiplicação</h3>
+                    <p>Soma repetida de um número.</p>
+                    <p class="formula">a × b = c</p>
+                    <p>Exemplo: 4 × 3 = 12</p>
+                </div>
+                
+                <div class="operacao-card">
+                    <div class="icone-operacao">➗</div>
+                    <h3>Divisão</h3>
+                    <p>Partilha um número em partes iguais.</p>
+                    <p class="formula">a ÷ b = c</p>
+                    <p>Exemplo: 10 ÷ 2 = 5</p>
+                </div>
+            </div>
+            
+            <div class="box-info">
+                <h3>📊 Terminologia das Operações</h3>
+                <table>
+                    <tr>
+                        <th>Operação</th>
+                        <th>Termos</th>
+                        <th>Resultado</th>
+                    </tr>
+                    <tr>
+                        <td>Adição</td>
+                        <td>Parcela + Parcela</td>
+                        <td>Soma/Total</td>
+                    </tr>
+                    <tr>
+                        <td>Subtração</td>
+                        <td>Minuendo - Subtraendo</td>
+                        <td>Diferença/Resto</td>
+                    </tr>
+                    <tr>
+                        <td>Multiplicação</td>
+                        <td>Fator × Fator</td>
+                        <td>Produto</td>
+                    </tr>
+                    <tr>
+                        <td>Divisão</td>
+                        <td>Dividendo ÷ Divisor</td>
+                        <td>Quociente</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🔢 Propriedades das Operações</h2>
+            
+            <div class="propriedade">
+                <h3>Propriedades da Adição</h3>
+                <p><strong>Comutativa:</strong> a + b = b + a</p>
+                <p><strong>Associativa:</strong> (a + b) + c = a + (b + c)</p>
+                <p><strong>Elemento neutro:</strong> a + 0 = a</p>
+                <p>Exemplo: (2 + 3) + 4 = 2 + (3 + 4) = 9</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>Propriedades da Multiplicação</h3>
+                <p><strong>Comutativa:</strong> a × b = b × a</p>
+                <p><strong>Associativa:</strong> (a × b) × c = a × (b × c)</p>
+                <p><strong>Distributiva:</strong> a × (b + c) = (a × b) + (a × c)</p>
+                <p><strong>Elemento neutro:</strong> a × 1 = a</p>
+                <p>Exemplo: 3 × (4 + 5) = (3 × 4) + (3 × 5) = 27</p>
+            </div>
+            
+            <div class="propriedade">
+                <h3>Propriedades da Divisão</h3>
+                <p><strong>Não é comutativa:</strong> a ÷ b ≠ b ÷ a</p>
+                <p><strong>Divisão por 1:</strong> a ÷ 1 = a</p>
+                <p><strong>Divisão por zero:</strong> Indefinida</p>
+                <p>Exemplo: 10 ÷ 2 = 5 mas 2 ÷ 10 = 0,2</p>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🧠 Ordem das Operações (PEMDAS)</h2>
+            
+            <div class="box-info">
+                <h3>Regra PEMDAS</h3>
+                <ol>
+                    <li><strong class="destaque-vermelho">P</strong>arênteses</li>
+                    <li><strong class="destaque-vermelho">E</strong>xpoentes</li>
+                    <li><strong class="destaque-vermelho">M</strong>ultiplicação e <strong class="destaque-vermelho">D</strong>ivisão (da esquerda para direita)</li>
+                    <li><strong class="destaque-vermelho">A</strong>dição e <strong class="destaque-vermelho">S</strong>ubtração (da esquerda para direita)</li>
+                </ol>
+                
+                <h3>Exemplo Prático</h3>
+                <div class="passo-a-passo">
+                    <p>Calcule: 3 + 6 × (5 + 4) ÷ 3 - 7</p>
+                    <ol>
+                        <li>Parênteses: (5 + 4) = 9 → 3 + 6 × 9 ÷ 3 - 7</li>
+                        <li>Multiplicação e Divisão (da esquerda para direita):
+                            <ul>
+                                <li>6 × 9 = 54 → 3 + 54 ÷ 3 - 7</li>
+                                <li>54 ÷ 3 = 18 → 3 + 18 - 7</li>
+                            </ul>
+                        </li>
+                        <li>Adição e Subtração (da esquerda para direita):
+                            <ul>
+                                <li>3 + 18 = 21 → 21 - 7 = 14</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>Resultado final: <strong>14</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>📝 Exercícios Práticos</h2>
+            
+            <div class="exercicio">
+                <p>1. Resolva as operações básicas:</p>
+                <p>a) 15 + 27</p>
+                <p>b) 48 - 19</p>
+                <p>c) 6 × 8</p>
+                <p>d) 72 ÷ 9</p>
+                <details>
+                    <summary>Ver respostas</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 15 + 27 = 42</p>
+                        <p>b) 48 - 19 = 29</p>
+                        <p>c) 6 × 8 = 48</p>
+                        <p>d) 72 ÷ 9 = 8</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>2. Aplique a ordem das operações (PEMDAS):</p>
+                <p>a) 5 + 3 × 2</p>
+                <p>b) (10 - 4) × 3</p>
+                <p>c) 12 ÷ (2 + 2) × 3</p>
+                <p>d) 4 + 3² × 2</p>
+                <details>
+                    <summary>Ver resolução</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 5 + 3 × 2 = 5 + 6 = 11 (multiplicação antes da adição)</p>
+                        <p>b) (10 - 4) × 3 = 6 × 3 = 18 (parênteses primeiro)</p>
+                        <p>c) 12 ÷ (2 + 2) × 3 = 12 ÷ 4 × 3 = 3 × 3 = 9</p>
+                        <p>d) 4 + 3² × 2 = 4 + 9 × 2 = 4 + 18 = 22 (expoente antes da multiplicação)</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="exercicio">
+                <p>3. Problemas de aplicação:</p>
+                <p>a) João tem 12 balas e ganha mais 8. Quantas balas ele tem agora?</p>
+                <p>b) Uma caixa tem 24 lápis divididos igualmente entre 6 crianças. Quantos lápis cada criança recebe?</p>
+                <p>c) Um pacote com 5 cadernos custa R$ 45. Qual o preço de 3 pacotes?</p>
+                <details>
+                    <summary>Ver respostas</summary>
+                    <div class="passo-a-passo">
+                        <p>a) 12 + 8 = 20 balas</p>
+                        <p>b) 24 ÷ 6 = 4 lápis por criança</p>
+                        <p>c) 45 × 3 = R$ 135</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>💡 Dicas e Macetes</h2>
+            <div class="box-info">
+                <h3>🧮 Truques para Cálculos Rápidos</h3>
+                <table>
+                    <tr>
+                        <th>Técnica</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Multiplicar por 10</td>
+                        <td>25 × 10 = 250 (acrescenta um zero)</td>
+                    </tr>
+                    <tr>
+                        <td>Multiplicar por 5</td>
+                        <td>18 × 5 = (18 × 10) ÷ 2 = 90</td>
+                    </tr>
+                    <tr>
+                        <td>Multiplicar por 9</td>
+                        <td>7 × 9 = (7 × 10) - 7 = 63</td>
+                    </tr>
+                    <tr>
+                        <td>Somar números próximos</td>
+                        <td>19 + 21 = (20-1)+(20+1) = 40</td>
+                    </tr>
+                    <tr>
+                        <td>Subtrair pelo complemento</td>
+                        <td>100 - 36 = 64 (36 + 64 = 100)</td>
+                    </tr>
+                </table>
+                
+                <h3>⚠️ Erros comuns para evitar</h3>
+                <ul>
+                    <li>Confundir a ordem das operações (PEMDAS)</li>
+                    <li>Esquecer de resolver primeiro o que está dentro dos parênteses</li>
+                    <li>Não prestar atenção nos sinais (+ e -)</li>
+                    <li>Dividir por zero (operação indefinida)</li>
+                    <li>Confundir os termos das operações (minuendo, subtraendo, etc.)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="conteudo">
+            <h2>🎓 Recursos Adicionais</h2>
+            <div class="box-info">
+                <h3>📹 Vídeos Recomendados:</h3>
+                <ul>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=Kj3tZ3K5kqA" target="_blank" class="destaque-vermelho">Operações Fundamentais - Aula Completa</a> – Matemática Rio</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=7K9k5t0Q7VU" target="_blank" class="destaque-vermelho">Ordem das Operações (PEMDAS)</a> – Professor Ferretto</li>
+                    <li>🎥 <a href="https://www.youtube.com/watch?v=QH2QG8Giz4w" target="_blank" class="destaque-vermelho">Truques de Cálculo Mental</a> – Gis com Giz</li>
+                </ul>                        
+                <h3>📚 Ferramentas e Sites:</h3>
+                <ul>
+                    <li>🌐 <a href="https://www.mathplayground.com/order_of_operations.html" target="_blank" class="destaque-roxo">Jogo Interativo de Ordem das Operações</a></li>
+                    <li>🌐 <a href="https://pt.khanacademy.org/math/arithmetic" target="_blank" class="destaque-roxo">Khan Academy - Aritmética</a></li>
+                    <li>🌐 <a href="https://www.mathsisfun.com/numbers/index.html" target="_blank" class="destaque-roxo">Math is Fun - Números e Operações</a> (em inglês)</li>
+                </ul>
+                
+                <h3>📱 Aplicativos Úteis:</h3>
+                <ul>
+                    <li>📲 Math Training - Exercícios de operações básicas</li>
+                    <li>📲 Math Tricks - Truques de cálculo rápido</li>
+                    <li>📲 Math Workout - Desafios matemáticos</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="container">
+        <p>© 2025 EduRevision - Versão 1.1 | Contato: <a href="mailto:00001249473111sp@al.educacao.sp.gov.br" class="destaque-roxo">00001249473111sp@al.educacao.sp.gov.br</a></p>
+    </footer>
+</body>
+</html>
