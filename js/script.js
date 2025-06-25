@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'MAT': 'materias/matematica/matematica.html',
         'PORT': '#', // Substitua pelo link real quando disponível
         'CIEN': '#', // Substitua pelo link real quando disponível
-        'ELETIVA': 'materias/eletiva/gramaticgame.html'
+        'ELETIVA': 'materias/eletiva/gramaticgame/login.html'
     };
 
     // Abre o modal quando clicar no botão

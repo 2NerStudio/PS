@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GramaticGame - Jogo de Gramática</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>GramaticGame</h1>
+        </div>
+        <div class="user-info" id="user-info" style="display: none;">
+            <span id="user-name"></span>
+            <button class="btn btn-sm" id="logout-btn">Sair</button>
+        </div>
+    </div>
+</header>
+<body>
+    <div class="container">
+        <!-- Tela Inicial -->
+        <div id="start-screen">
+            <h1>GramaticGame</h1>
+            <p>Teste seus conhecimentos de gramática portuguesa e melhore suas habilidades!</p>
+            <p>Escolha o nível de dificuldade:</p>
+            <button class="btn btn-difficulty" data-difficulty="easy">Fácil</button>
+            <button class="btn btn-difficulty" data-difficulty="medium">Médio</button>
+            <button class="btn btn-difficulty" data-difficulty="hard">Difícil</button>
+        </div>
+        
+        <!-- Tela do Jogo -->
+        <div id="game-screen" class="game-screen">
+            <div class="score-container">
+                Pontuação: <span id="score">0</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="question-container">
+                <div class="question" id="question"></div>
+                <div id="options-container"></div>
+            </div>
+            <div class="feedback" id="feedback"></div>
+            <button class="btn" id="next-btn" style="display: none;">Próxima Pergunta</button>
+        </div>
+        
+        <!-- Tela de Resultados -->
+        <div id="result-screen" class="game-screen result-screen">
+            <h1>Resultado Final</h1>
+            <div class="trophy" id="trophy">🏆</div>
+            <div class="result-message" id="result-message"></div>
+            <p>Você acertou <span id="final-score">0</span> de <span id="total-questions">0</span> perguntas!</p>
+            <button class="btn" id="restart-btn">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
