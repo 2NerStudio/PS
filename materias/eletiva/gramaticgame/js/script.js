@@ -1,102 +1,225 @@
+// script.js - Versão completa sem back-end
 document.addEventListener('DOMContentLoaded', function() {
-    const API_BASE_URL = 'http://localhost:3000/api/v1';
-    const token = sessionStorage.getItem('token');
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    
-    // Verifica se o usuário está logado
-    if (!token || !currentUser) {
+    // Verifica autenticação
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
         window.location.href = 'login.html';
         return;
     }
 
     // Elementos da UI
-    const userProfile = document.getElementById('user-profile');
-    const leaderboardTable = document.getElementById('leaderboard-table');
-    const gameHistoryList = document.getElementById('game-history');
-    const difficultySelect = document.getElementById('difficulty');
-    const startGameBtn = document.getElementById('start-game');
-    const logoutBtn = document.getElementById('logout');
+    const userNameElement = document.getElementById('user-name');
+    const logoutBtn = document.getElementById('logout-btn');
+    const profileBtn = document.getElementById('profile-btn');
+    const showLeaderboardBtn = document.getElementById('show-leaderboard-btn');
+    const backToMenuBtn = document.getElementById('back-to-menu-btn');
+    const difficultyButtons = document.querySelectorAll('.btn-difficulty');
+    const leaderboardContainer = document.getElementById('leaderboard-container');
+    const profileContainer = document.getElementById('profile-container');
+    const backFromProfileBtn = document.getElementById('back-from-profile-btn');
 
-    // Carrega dados do usuário e leaderboard
-    async function loadUserData() {
-        try {
-            // Carrega perfil do usuário
-            const userResponse = await fetch(`${API_BASE_URL}/users/me`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+    // Mostra informações do usuário
+    if (userNameElement) {
+        userNameElement.textContent = currentUser.name;
+    }
+
+    // Event Listeners
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', logoutUser);
+    }
+
+    if (profileBtn) {
+        profileBtn.addEventListener('click', showProfile);
+    }
+
+    if (showLeaderboardBtn) {
+        showLeaderboardBtn.addEventListener('click', showLeaderboard);
+    }
+
+    if (backToMenuBtn) {
+        backToMenuBtn.addEventListener('click', () => {
+            document.getElementById('leaderboard-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'block';
+        });
+    }
+
+    if (backFromProfileBtn) {
+        backFromProfileBtn.addEventListener('click', () => {
+            document.getElementById('profile-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'block';
+        });
+    }
+
+    if (difficultyButtons) {
+        difficultyButtons.forEach(button => {
+            button.addEventListener('click', startGame);
+        });
+    }
+
+    // Funções do jogo
+    function startGame(e) {
+        const difficulty = e.target.dataset.difficulty;
+        sessionStorage.setItem('currentDifficulty', difficulty);
+        
+        // Esconde a tela inicial e mostra a tela do jogo
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('game-screen').style.display = 'block';
+        
+        // Inicializa o jogo (esta parte seria manipulada pelo auth.js)
+    }
+
+    function showProfile() {
+        const user = getCurrentUser();
+        if (!user) return;
+
+        const totalScore = (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3);
+        
+        let level = "Iniciante";
+        let levelClass = "level-badge";
+        
+        if (totalScore >= 100) {
+            level = "Mestre";
+            levelClass += " gold";
+        } else if (totalScore >= 50) {
+            level = "Avançado";
+            levelClass += " silver";
+        } else if (totalScore >= 20) {
+            level = "Intermediário";
+            levelClass += " bronze";
+        }
+        
+        profileContainer.innerHTML = `
+            <div class="profile-header">
+                <div class="profile-avatar">${user.name.charAt(0).toUpperCase()}</div>
+                <div>
+                    <h2>${user.name} <span class="${levelClass}">${level}</span></h2>
+                    <p>Jogador desde ${new Date(user.createdAt).toLocaleDateString()}</p>
+                </div>
+            </div>
             
-            const userData = await userResponse.json();
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-value">${totalScore}</div>
+                    <div class="stat-label">Pontos totais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${user.scores.easy + user.scores.medium + user.scores.hard}</div>
+                    <div class="stat-label">Questões acertadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${Math.floor(totalScore / 5)}</div>
+                    <div class="stat-label">Partidas jogadas</div>
+                </div>
+            </div>
             
-            if (!userResponse.ok) {
-                throw new Error(userData.error || 'Failed to load user data');
+            <div class="progress-section">
+                <h3>Desempenho por Nível</h3>
+                
+                <div class="progress-title">
+                    <span>Fácil <small>(1 ponto por acerto)</small></span>
+                    <span>${user.scores.easy} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.easy / 20) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Médio <small>(2 pontos por acerto)</small></span>
+                    <span>${user.scores.medium} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.medium / 15) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Difícil <small>(3 pontos por acerto)</small></span>
+                    <span>${user.scores.hard} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.hard / 10) * 100)}%"></div>
+                </div>
+            </div>
+        `;
+
+        // Mostra a tela de perfil
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('profile-screen').style.display = 'block';
+    }
+
+    function showLeaderboard() {
+        const ranking = getUserRanking();
+        const currentUser = getCurrentUser();
+        
+        leaderboardContainer.innerHTML = '';
+        
+        if (ranking.length === 0) {
+            leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
+            return;
+        }
+        
+        ranking.forEach((user, index) => {
+            const leaderboardItem = document.createElement('div');
+            leaderboardItem.className = 'leaderboard-item';
+            
+            if (currentUser && user.id === currentUser.id) {
+                leaderboardItem.classList.add('current-user');
             }
             
-            // Atualiza UI com dados do usuário
-            userProfile.innerHTML = `
-                <h2>${userData.data.user.name}</h2>
-                <p>Email: ${userData.data.user.email}</p>
-                <h3>Melhores Pontuações</h3>
-                <ul>
-                    <li>Fácil: ${userData.data.user.scores.easy || 0}</li>
-                    <li>Médio: ${userData.data.user.scores.medium || 0}</li>
-                    <li>Difícil: ${userData.data.user.scores.hard || 0}</li>
-                </ul>
+            let trophyIcon = '';
+            if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
+            else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
+            else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
+            
+            const lastPlayed = user.lastPlayed 
+                ? new Date(user.lastPlayed).toLocaleDateString() 
+                : 'Nunca jogou';
+            
+            const scoreDetails = `Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard}`;
+            
+            leaderboardItem.innerHTML = `
+                <div class="leaderboard-position">${index + 1}</div>
+                <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
+                <div class="leaderboard-score">
+                    ${user.score} pts
+                    <small>${scoreDetails}</small>
+                    <small>Último jogo: ${lastPlayed}</small>
+                </div>
             `;
             
-            // Exibe histórico de jogos
-            if (userData.data.gameHistory && userData.data.gameHistory.length > 0) {
-                gameHistoryList.innerHTML = userData.data.gameHistory.map(game => `
-                    <li>
-                        ${game.difficulty}: ${game.score} pontos 
-                        (${new Date(game.playedAt).toLocaleDateString()})
-                    </li>
-                `).join('');
-            } else {
-                gameHistoryList.innerHTML = '<li>Nenhum jogo registrado ainda</li>';
-            }
-            
-            // Carrega leaderboard
-            const leaderboardResponse = await fetch(`${API_BASE_URL}/users/leaderboard`);
-            const leaderboardData = await leaderboardResponse.json();
-            
-            if (!leaderboardResponse.ok) {
-                throw new Error(leaderboardData.error || 'Failed to load leaderboard');
-            }
-            
-            // Preenche tabela de leaderboard
-            leaderboardTable.innerHTML = leaderboardData.data.map((user, index) => `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${user.name}</td>
-                    <td>${user.scores.easy || 0}</td>
-                    <td>${user.scores.medium || 0}</td>
-                    <td>${user.scores.hard || 0}</td>
-                    <td>${user.totalScore || 0}</td>
-                </tr>
-            `).join('');
-            
-        } catch (err) {
-            console.error('Error loading user data:', err);
-            alert('Erro ao carregar dados do usuário');
-        }
+            leaderboardContainer.appendChild(leaderboardItem);
+        });
+
+        // Mostra a tela de leaderboard
+        document.getElementById('start-screen').style.display = 'none';
+        document.getElementById('leaderboard-screen').style.display = 'block';
     }
-    
-    // Inicia um novo jogo
-    startGameBtn.addEventListener('click', function() {
-        const difficulty = difficultySelect.value;
-        sessionStorage.setItem('gameDifficulty', difficulty);
-        window.location.href = 'game.html';
-    });
-    
-    // Logout
-    logoutBtn.addEventListener('click', function() {
-        sessionStorage.removeItem('token');
+
+    function logoutUser() {
         sessionStorage.removeItem('currentUser');
         window.location.href = 'login.html';
-    });
-    
-    // Carrega os dados quando a página é aberta
-    loadUserData();
+    }
+
+    // Funções auxiliares
+    function getCurrentUser() {
+        return JSON.parse(sessionStorage.getItem('currentUser'));
+    }
+
+    function getUserRanking() {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        return users
+            .map(user => ({
+                id: user.id,
+                name: user.name,
+                score: (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3),
+                easy: user.scores.easy,
+                medium: user.scores.medium,
+                hard: user.scores.hard,
+                lastPlayed: user.lastPlayed || null,
+                createdAt: user.createdAt
+            }))
+            .sort((a, b) => {
+                if (b.score !== a.score) return b.score - a.score;
+                return new Date(a.createdAt) - new Date(b.createdAt);
+            });
+    }
 });
