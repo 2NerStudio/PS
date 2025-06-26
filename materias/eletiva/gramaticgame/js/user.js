@@ -1,11 +1,23 @@
-// user.js - Versão sem back-end
-
-// Função para obter o usuário atual da sessionStorage
+// Funções relacionadas ao usuário
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
 
-// Atualiza a pontuação do usuário no localStorage e sessionStorage
+function getUserRanking() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users
+        .map(user => ({
+            id: user.id,
+            name: user.name,
+            score: (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3),
+            easy: user.scores.easy,
+            medium: user.scores.medium,
+            hard: user.scores.hard,
+            lastPlayed: user.lastPlayed || null
+        }))
+        .sort((a, b) => b.score - a.score);
+}
+
 function updateUserScore(difficulty, score) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
@@ -15,7 +27,7 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza apenas se a nova pontuação for maior que a anterior
+        // Atualiza a pontuação se for maior que a anterior
         if (score > users[userIndex].scores[difficulty]) {
             users[userIndex].scores[difficulty] = score;
             localStorage.setItem('users', JSON.stringify(users));
@@ -30,28 +42,6 @@ function updateUserScore(difficulty, score) {
     return false;
 }
 
-// Obtém o ranking de todos os usuários
-function getUserRanking() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    return users
-        .map(user => ({
-            id: user.id,
-            name: user.name,
-            score: (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3),
-            easy: user.scores.easy,
-            medium: user.scores.medium,
-            hard: user.scores.hard,
-            lastPlayed: user.lastPlayed || null,
-            createdAt: user.createdAt
-        }))
-        .sort((a, b) => {
-            // Ordena por score (decrescente), depois por data de criação (mais antigos primeiro)
-            if (b.score !== a.score) return b.score - a.score;
-            return new Date(a.createdAt) - new Date(b.createdAt);
-        });
-}
-
-// Atualiza a data da última jogada
 function updateLastPlayed() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
@@ -72,6 +62,3 @@ function updateLastPlayed() {
     
     return false;
 }
-
-// Exporta as funções para uso em outros arquivos
-export { getCurrentUser, updateUserScore, getUserRanking, updateLastPlayed };

@@ -1,6 +1,4 @@
-// auth.js - Versão corrigida e simplificada (sem back-end)
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementos do DOM
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
     const loginBox = document.getElementById('login-box');
@@ -21,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loginBox.style.display = 'block';
     });
 
-    // Registrar novo usuário
+    // Cadastro de novo usuário
     registerForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -29,77 +27,66 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('register-email').value.trim();
         const password = document.getElementById('register-password').value;
 
-        if (!name || !email || !password) {
-            alert('Por favor, preencha todos os campos');
-            return;
+        if (registerUser(name, email, password)) {
+            alert('Cadastro realizado com sucesso! Faça login para continuar.');
+            registerBox.style.display = 'none';
+            loginBox.style.display = 'block';
+            registerForm.reset();
+        } else {
+            alert('Este email já está cadastrado!');
         }
-
-        if (password.length < 6) {
-            alert('A senha deve ter pelo menos 6 caracteres');
-            return;
-        }
-
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        
-        // Verifica se o usuário já existe
-        if (users.some(user => user.email === email)) {
-            alert('Este email já está cadastrado');
-            return;
-        }
-
-        // Cria novo usuário
-        const newUser = {
-            id: Date.now().toString(),
-            name,
-            email,
-            password, // Em um sistema real, isso seria hasheado
-            scores: {
-                easy: 0,
-                medium: 0,
-                hard: 0
-            },
-            createdAt: new Date().toISOString(),
-            lastPlayed: null
-        };
-
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        alert('Cadastro realizado com sucesso! Faça login para continuar.');
-        registerBox.style.display = 'none';
-        loginBox.style.display = 'block';
-        registerForm.reset();
     });
 
-    // Login
+    // Login do usuário
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value;
 
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const user = users.find(u => u.email === email && u.password === password);
-
-        if (!user) {
-            alert('Email ou senha incorretos');
-            return;
-        }
-
-        // Armazena o usuário na sessão
-        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        const user = authenticateUser(email, password);
         
-        // Redireciona para a página principal
-        window.location.href = 'index.html';
+        if (user) {
+            // Salva o usuário na sessão atual
+            sessionStorage.setItem('currentUser', JSON.stringify(user));
+            // Redireciona para o jogo
+            window.location.href = 'index.html';
+        } else {
+            alert('Email ou senha incorretos!');
+        }
     });
-
-    // Verifica se já está logado ao carregar a página
-    if (getCurrentUser()) {
-        window.location.href = 'index.html';
-    }
 });
 
-// Função auxiliar para pegar usuário atual
-function getCurrentUser() {
-    return JSON.parse(sessionStorage.getItem('currentUser'));
+// Função para registrar novo usuário
+function registerUser(name, email, password) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Verifica se o email já existe
+    if (users.some(user => user.email === email)) {
+        return false;
+    }
+    
+    // Cria o novo usuário
+    const newUser = {
+        id: Date.now().toString(),
+        name,
+        email,
+        password, // Na prática, você deve usar hash de senha em um sistema real
+        createdAt: new Date().toISOString(),
+        scores: {
+            easy: 0,
+            medium: 0,
+            hard: 0
+        }
+    };
+    
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    return true;
+}
+
+// Função para autenticar usuário
+function authenticateUser(email, password) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users.find(user => user.email === email && user.password === password);
 }

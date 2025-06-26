@@ -170,20 +170,7 @@ header .container {
 .user-info {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.user-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user-name {
-    order: 1;
-    margin-right: 10px;
-    font-weight: bold;
-    color: #4a4a4a;
+    gap: 15px;
 }
 
 .btn-sm {
