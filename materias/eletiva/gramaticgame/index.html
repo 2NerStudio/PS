@@ -13,22 +13,19 @@
         <div class="logo">
             <h1>GramaticGame</h1>
         </div>
-        <div class="user-info" id="user-info" style="display: none;">
-            <span id="user-name"></span>
-            <button class="btn btn-sm" id="logout-btn">Sair</button>
-            <div class="user-actions">
-                <span id="user-name" class="user-name"></span>
-                <button class="btn btn-profile" id="profile-btn">
-                    <i class="fas fa-user"></i>
-                </button>
-                <button class="btn btn-leaderboard" id="show-leaderboard-btn">
-                    <i class="fas fa-trophy"></i> Classificação
-                </button>
-                <button class="btn btn-sm btn-logout" id="logout-btn">Sair</button>
-            </div>
-        </div>  
+        <div class="header-items" id="user-info" style="display: none;">
+            <span class="header-name" id="user-name">Nome do Usuário</span>
+            <button class="header-btn profile-btn" id="profile-btn">
+                <i class="fas fa-user"></i>
+            </button>
+            <button class="header-btn leaderboard-btn" id="show-leaderboard-btn">
+                <i class="fas fa-trophy"></i> Classificação
+            </button>
+            <button class="header-btn logout-btn" id="logout-btn">Sair</button>
+        </div>
     </div>
 </header>
+
 
 <body>
     <div class="container">
@@ -48,6 +45,14 @@
                 <!-- Os jogadores serão inseridos aqui via JavaScript -->
             </div>
             <button class="btn" id="back-to-menu-btn">Voltar ao Menu</button>
+        </div>
+        <!-- Adicione isso após a tela de leaderboard -->
+        <div id="profile-screen" class="game-screen" style="display: none;">
+            <h1>Meu Perfil</h1>
+            <div class="profile-container" id="profile-container">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+            <button class="btn" id="back-from-profile-btn">Voltar</button>
         </div>
 
         <div id="profile-screen" class="game-screen" style="display: none;">

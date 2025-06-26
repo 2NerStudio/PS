@@ -381,3 +381,36 @@ function getUserRanking() {
         }))
         .sort((a, b) => b.score - a.score);
 }
+
+function addMockUsers() {
+    const mockUsers = [
+        { id: 1, name: "João Silva", scores: { easy: 950, medium: 800, hard: 700 }, lastPlayed: "2023-05-15T10:30:00Z" },
+        { id: 2, name: "Maria Oliveira", scores: { easy: 900, medium: 750, hard: 650 }, lastPlayed: "2023-05-16T11:20:00Z" },
+        { id: 3, name: "Carlos Souza", scores: { easy: 850, medium: 700, hard: 600 }, lastPlayed: "2023-05-14T09:15:00Z" },
+        { id: 4, name: "Ana Costa", scores: { easy: 800, medium: 680, hard: 550 }, lastPlayed: "2023-05-17T14:45:00Z" },
+        { id: 5, name: "Pedro Santos", scores: { easy: 780, medium: 650, hard: 500 }, lastPlayed: "2023-05-13T16:30:00Z" },
+        { id: 6, name: "Lucia Ferreira", scores: { easy: 750, medium: 600, hard: 480 }, lastPlayed: "2023-05-18T08:20:00Z" },
+        { id: 7, name: "Marcos Rocha", scores: { easy: 700, medium: 580, hard: 450 }, lastPlayed: "2023-05-12T13:10:00Z" },
+        { id: 8, name: "Julia Almeida", scores: { easy: 680, medium: 550, hard: 420 }, lastPlayed: "2023-05-19T17:50:00Z" },
+        { id: 9, name: "Ricardo Lima", scores: { easy: 650, medium: 520, hard: 400 }, lastPlayed: "2023-05-11T12:40:00Z" },
+        { id: 10, name: "Fernanda Gomes", scores: { easy: 600, medium: 500, hard: 380 }, lastPlayed: "2023-05-20T10:15:00Z" }
+    ];
+
+    // Verifica se já existem usuários no localStorage
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    
+    // Filtra para adicionar apenas usuários que não existem ainda (por ID)
+    const newUsers = mockUsers.filter(mockUser => 
+        !existingUsers.some(existingUser => existingUser.id === mockUser.id)
+    );
+
+    if (newUsers.length > 0) {
+        localStorage.setItem('users', JSON.stringify([...existingUsers, ...newUsers]));
+        console.log(`${newUsers.length} usuários fictícios adicionados ao leaderboard.`);
+    } else {
+        console.log('Todos os usuários fictícios já existem no leaderboard.');
+    }
+}
+
+// Chame esta função uma vez para adicionar os usuários fictícios
+addMockUsers();
