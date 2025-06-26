@@ -171,6 +171,20 @@ header .container {
     display: flex;
     align-items: center;
     gap: 15px;
+    gap: 10px;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    order: 1;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a4a4a;
 }
 
 .btn-sm {
@@ -184,44 +198,31 @@ header .container {
     margin: 20px 0;
 }
 
-/* Adicione ao seu arquivo style.css */
 .leaderboard-item {
-    display: grid;
-    grid-template-columns: 40px 1fr 150px;
-    gap: 15px;
+    display: flex;
+    justify-content: space-between;
     padding: 15px;
     margin: 10px 0;
     background-color: #f8f9fa;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    align-items: center;
 }
 
 .leaderboard-position {
     font-weight: bold;
     color: #6e8efb;
-    text-align: center;
-    font-size: 18px;
+    width: 30px;
 }
 
 .leaderboard-name {
+    flex-grow: 1;
     text-align: left;
-    font-weight: 500;
+    padding: 0 15px;
 }
 
 .leaderboard-score {
-    text-align: right;
     font-weight: bold;
     color: #4a4a4a;
-}
-
-.leaderboard-score small {
-    display: block;
-    font-size: 0.8em;
-    color: #666;
-    font-weight: normal;
-    margin-top: 3px;
-    text-align: right;
 }
 
 .current-user {
@@ -230,8 +231,7 @@ header .container {
 }
 
 .trophy-icon {
-    margin-left: 5px;
-    font-size: 1.2em;
+    margin-left: 10px;
 }
 
 .gold-icon { color: gold; }
