@@ -1,3 +1,4 @@
+import { getCurrentUser, updateUserScore, getUserRanking, updateLastPlayed } from './user.js';
 // Verifica autenticação ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
     const currentUser = getCurrentUser();
@@ -148,46 +149,58 @@ function initializeGame() {
         startScreen.style.display = 'block';
     });
 
-    function showLeaderboard() {
+    async function showLeaderboard() {
         startScreen.style.display = 'none';
         leaderboardScreen.style.display = 'block';
         
-        const ranking = getUserRanking();
-        const currentUser = getCurrentUser();
-        
-        leaderboardContainer.innerHTML = '';
-        
-        if (ranking.length === 0) {
-            leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
-            return;
-        }
-        
-        ranking.forEach((user, index) => {
-            const leaderboardItem = document.createElement('div');
-            leaderboardItem.className = 'leaderboard-item';
+        try {
+            const ranking = await getUserRanking();
+            const currentUser = getCurrentUser();
             
-            if (currentUser && user.name === currentUser.name) {
-                leaderboardItem.classList.add('current-user');
+            leaderboardContainer.innerHTML = '';
+            
+            if (ranking.length === 0) {
+                leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
+                return;
             }
             
-            let trophyIcon = '';
-            if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
-            else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
-            else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
-            
-            // Adiciona detalhes das pontuações por nível
-            const scoreDetails = `(Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard})`;
-            
-            leaderboardItem.innerHTML = `
-                <div class="leaderboard-position">${index + 1}</div>
-                <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
-                <div class="leaderboard-score">${user.score} pts 
-                    <small>${scoreDetails}</small>
-                </div>
-            `;
-            
-            leaderboardContainer.appendChild(leaderboardItem);
-        });
+            ranking.forEach((user, index) => {
+                const leaderboardItem = document.createElement('div');
+                leaderboardItem.className = 'leaderboard-item';
+                
+                if (currentUser && user._id === currentUser.id) {
+                    leaderboardItem.classList.add('current-user');
+                }
+                
+                let trophyIcon = '';
+                if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
+                else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
+                else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
+                
+                // Formata a data do último jogo, se existir
+                const lastPlayed = user.lastPlayed 
+                    ? new Date(user.lastPlayed).toLocaleDateString() 
+                    : 'Nunca jogou';
+                
+                // Adiciona detalhes das pontuações por nível
+                const scoreDetails = `Fácil: ${user.scores.easy} | Médio: ${user.scores.medium} | Difícil: ${user.scores.hard}`;
+                
+                leaderboardItem.innerHTML = `
+                    <div class="leaderboard-position">${index + 1}</div>
+                    <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
+                    <div class="leaderboard-score">
+                        ${user.totalScore} pts
+                        <small>${scoreDetails}</small>
+                        <small>Último jogo: ${lastPlayed}</small>
+                    </div>
+                `;
+                
+                leaderboardContainer.appendChild(leaderboardItem);
+            });
+        } catch (err) {
+            leaderboardContainer.innerHTML = '<p>Erro ao carregar a classificação. Tente novamente mais tarde.</p>';
+            console.error('Error loading leaderboard:', err);
+        }
     }
 
     // Event Listeners
