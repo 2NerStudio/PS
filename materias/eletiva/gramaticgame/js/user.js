@@ -1,9 +1,20 @@
-// Funções relacionadas ao usuário
-function getCurrentUser() {
-    return JSON.parse(sessionStorage.getItem('currentUser'));
+function getUserRanking() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users
+        .map(user => ({
+            id: user.id,
+            name: user.name,
+            score: (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3),
+            easy: user.scores.easy,
+            medium: user.scores.medium,
+            hard: user.scores.hard,
+            lastPlayed: user.lastPlayed || null
+        }))
+        .sort((a, b) => b.score - a.score);
 }
 
-function updateUserScore(difficulty, score) {
+// Adicione esta função para registrar quando um usuário joga
+function updateLastPlayed() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
     
@@ -12,27 +23,14 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza a pontuação se for maior que a anterior
-        if (score > users[userIndex].scores[difficulty]) {
-            users[userIndex].scores[difficulty] = score;
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Atualiza também na sessão atual
-            currentUser.scores[difficulty] = score;
-            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        }
+        users[userIndex].lastPlayed = new Date().toISOString();
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        // Atualiza também na sessão atual
+        currentUser.lastPlayed = users[userIndex].lastPlayed;
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         return true;
     }
     
     return false;
-}
-
-function getUserRanking() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    return users
-        .map(user => ({
-            name: user.name,
-            score: user.scores.easy + user.scores.medium + user.scores.hard
-        }))
-        .sort((a, b) => b.score - a.score);
 }

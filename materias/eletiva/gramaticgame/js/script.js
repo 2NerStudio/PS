@@ -47,6 +47,148 @@ function initializeGame() {
     const resultMessageElement = document.getElementById('result-message');
     const trophyElement = document.getElementById('trophy');
     const restartButton = document.getElementById('restart-btn');
+    const leaderboardScreen = document.getElementById('leaderboard-screen');
+    const showLeaderboardBtn = document.getElementById('show-leaderboard-btn');
+    const backToMenuBtn = document.getElementById('back-to-menu-btn');
+    const leaderboardContainer = document.getElementById('leaderboard-container');
+    const profileScreen = document.getElementById('profile-screen');
+    const profileBtn = document.getElementById('profile-btn');
+    const backFromProfileBtn = document.getElementById('back-from-profile-btn');
+    const profileContainer = document.getElementById('profile-container');
+
+    // Adicione os event listeners:
+    profileBtn.addEventListener('click', showProfile);
+    backFromProfileBtn.addEventListener('click', () => {
+        profileScreen.style.display = 'none';
+        startScreen.style.display = 'block';
+    });
+
+    // Adicione esta função para mostrar o perfil:
+    function showProfile() {
+        startScreen.style.display = 'none';
+        profileScreen.style.display = 'block';
+        
+        const user = getCurrentUser();
+        if (!user) return;
+        
+        // Calcula a pontuação total ponderada
+        const totalScore = (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3);
+        
+        // Determina o nível do jogador
+        let level = "Iniciante";
+        let levelClass = "level-badge";
+        
+        if (totalScore >= 100) {
+            level = "Mestre";
+            levelClass += " gold";
+        } else if (totalScore >= 50) {
+            level = "Avançado";
+            levelClass += " silver";
+        } else if (totalScore >= 20) {
+            level = "Intermediário";
+            levelClass += " bronze";
+        }
+        
+        profileContainer.innerHTML = `
+            <div class="profile-header">
+                <div class="profile-avatar">${user.name.charAt(0).toUpperCase()}</div>
+                <div>
+                    <h2>${user.name} <span class="${levelClass}">${level}</span></h2>
+                    <p>Jogador desde ${new Date(user.createdAt).toLocaleDateString()}</p>
+                </div>
+            </div>
+            
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-value">${totalScore}</div>
+                    <div class="stat-label">Pontos totais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${user.scores.easy + user.scores.medium + user.scores.hard}</div>
+                    <div class="stat-label">Questões acertadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${Math.floor(totalScore / 5)}</div>
+                    <div class="stat-label">Partidas jogadas</div>
+                </div>
+            </div>
+            
+            <div class="progress-section">
+                <h3>Desempenho por Nível</h3>
+                
+                <div class="progress-title">
+                    <span>Fácil <small>(1 ponto por acerto)</small></span>
+                    <span>${user.scores.easy} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.easy / 20) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Médio <small>(2 pontos por acerto)</small></span>
+                    <span>${user.scores.medium} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.medium / 15) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Difícil <small>(3 pontos por acerto)</small></span>
+                    <span>${user.scores.hard} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.hard / 10) * 100)}%"></div>
+                </div>
+            </div>
+        `;
+    }
+    showLeaderboardBtn.addEventListener('click', showLeaderboard);
+    backToMenuBtn.addEventListener('click', () => {
+        leaderboardScreen.style.display = 'none';
+        startScreen.style.display = 'block';
+    });
+
+    function showLeaderboard() {
+        startScreen.style.display = 'none';
+        leaderboardScreen.style.display = 'block';
+        
+        const ranking = getUserRanking();
+        const currentUser = getCurrentUser();
+        
+        leaderboardContainer.innerHTML = '';
+        
+        if (ranking.length === 0) {
+            leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
+            return;
+        }
+        
+        ranking.forEach((user, index) => {
+            const leaderboardItem = document.createElement('div');
+            leaderboardItem.className = 'leaderboard-item';
+            
+            if (currentUser && user.name === currentUser.name) {
+                leaderboardItem.classList.add('current-user');
+            }
+            
+            let trophyIcon = '';
+            if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
+            else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
+            else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
+            
+            // Adiciona detalhes das pontuações por nível
+            const scoreDetails = `(Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard})`;
+            
+            leaderboardItem.innerHTML = `
+                <div class="leaderboard-position">${index + 1}</div>
+                <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
+                <div class="leaderboard-score">${user.score} pts 
+                    <small>${scoreDetails}</small>
+                </div>
+            `;
+            
+            leaderboardContainer.appendChild(leaderboardItem);
+        });
+    }
 
     // Event Listeners
     document.querySelectorAll('.btn-difficulty').forEach(button => {
@@ -177,6 +319,7 @@ function initializeGame() {
             trophyElement.textContent = '🥉';
             trophyElement.className = 'trophy bronze';
         }
+        updateLastPlayed();
     }
 
     function restartGame() {
