@@ -1,56 +1,58 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Por favor, adicione um nome'],
-    trim: true,
-    maxlength: [50, 'Nome não pode ter mais que 50 caracteres'],
+    required: [true, 'Por favor adicione um nome']
   },
   email: {
     type: String,
-    required: [true, 'Por favor, adicione um e-mail'],
+    required: [true, 'Por favor adicione um email'],
     unique: true,
-    validate: [validator.isEmail, 'Por favor, insira um e-mail válido'],
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Por favor adicione um email válido'
+    ]
   },
   password: {
     type: String,
-    required: [true, 'Por favor, adicione uma senha'],
-    minlength: [6, 'Senha deve ter no mínimo 6 caracteres'],
-    select: false,
+    required: [true, 'Por favor adicione uma senha'],
+    minlength: 6,
+    select: false
   },
   scores: {
     easy: { type: Number, default: 0 },
     medium: { type: Number, default: 0 },
-    hard: { type: Number, default: 0 },
+    hard: { type: Number, default: 0 }
   },
   lastPlayed: Date,
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
-// Hash da senha antes de salvar
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
+// Criptografar senha antes de salvar
+UserSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 // Gerar token JWT
-UserSchema.methods.generateAuthToken = function () {
+UserSchema.methods.generateAuthToken = function() {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
+    expiresIn: process.env.JWT_EXPIRE
   });
 };
 
-// Comparar senhas
-UserSchema.methods.matchPassword = async function (enteredPassword) {
+// Verificar senha
+UserSchema.methods.matchPassword = async function(enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 

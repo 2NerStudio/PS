@@ -4,25 +4,25 @@ const GameResultSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',
-    required: true,
+    required: true
   },
   difficulty: {
     type: String,
     enum: ['easy', 'medium', 'hard'],
-    required: true,
+    required: true
   },
   score: {
     type: Number,
-    required: true,
+    required: true
   },
   totalQuestions: {
     type: Number,
-    required: true,
+    required: true
   },
   playedAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model('GameResult', GameResultSchema);

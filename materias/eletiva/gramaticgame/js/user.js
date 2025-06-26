@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/v1/users';
+const API_URL = 'http://localhost:3000/api/v1/users';
 
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
