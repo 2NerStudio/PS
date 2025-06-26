@@ -1,65 +1,36 @@
+// user.js - Versão sem back-end
+
+// Função para obter o usuário atual da sessionStorage
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
 
-function getToken() {
-    return sessionStorage.getItem('token');
-}
-
-async function updateUserScore(difficulty, score) {
+// Atualiza a pontuação do usuário no localStorage e sessionStorage
+function updateUserScore(difficulty, score) {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
+    
     if (!currentUser) return false;
-
-    try {
-        const response = await fetch(`${API_URL}/scores`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${getToken()}`
-            },
-            body: JSON.stringify({ difficulty, score })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'Failed to update scores');
+    
+    const userIndex = users.findIndex(u => u.id === currentUser.id);
+    
+    if (userIndex !== -1) {
+        // Atualiza apenas se a nova pontuação for maior que a anterior
+        if (score > users[userIndex].scores[difficulty]) {
+            users[userIndex].scores[difficulty] = score;
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Atualiza também na sessão atual
+            currentUser.scores[difficulty] = score;
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         }
-
-        // Atualiza o usuário na sessão
-        const updatedUser = { ...currentUser, scores: data.data };
-        sessionStorage.setItem('currentUser', JSON.stringify(updatedUser));
-        
         return true;
-    } catch (err) {
-        console.error('Error updating scores:', err);
-        return false;
     }
+    
+    return false;
 }
 
-async function getUserRanking() {
-    try {
-        const response = await fetch(`${API_URL}/leaderboard`);
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || 'Failed to fetch leaderboard');
-        }
-
-        return data.data;
-    } catch (err) {
-        console.error('Error fetching leaderboard:', err);
-        return [];
-    }
-}
-
-function updateLastPlayed() {
-    // Esta função agora é tratada no backend quando atualizamos os scores
-    return true;
-}
-
-export { getCurrentUser, updateUserScore, getUserRanking, updateLastPlayed };
-
+// Obtém o ranking de todos os usuários
 function getUserRanking() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     return users
@@ -80,7 +51,7 @@ function getUserRanking() {
         });
 }
 
-// Adicione esta função para registrar quando um usuário joga
+// Atualiza a data da última jogada
 function updateLastPlayed() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
@@ -101,3 +72,6 @@ function updateLastPlayed() {
     
     return false;
 }
+
+// Exporta as funções para uso em outros arquivos
+export { getCurrentUser, updateUserScore, getUserRanking, updateLastPlayed };
