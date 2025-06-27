@@ -56,91 +56,12 @@ function initializeGame() {
     const backFromProfileBtn = document.getElementById('back-from-profile-btn');
     const profileContainer = document.getElementById('profile-container');
 
-    // Adicione os event listeners:
+    // Event Listeners
     profileBtn.addEventListener('click', showProfile);
     backFromProfileBtn.addEventListener('click', () => {
         profileScreen.style.display = 'none';
         startScreen.style.display = 'block';
     });
-
-    function showProfile() {
-        startScreen.style.display = 'none';
-        profileScreen.style.display = 'block';
-        
-        const user = getCurrentUser();
-        if (!user) return;
-    
-        // Calcula a pontuação total ponderada
-        const totalScore = (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3;
-            
-        // Determina o nível do jogador
-        let level = "Iniciante";
-        let levelClass = "level-badge";
-        
-        if (totalScore >= 100) {
-            level = "Mestre";
-            levelClass += " gold";
-        } else if (totalScore >= 50) {
-            level = "Avançado";
-            levelClass += " silver";
-        } else if (totalScore >= 20) {
-            level = "Intermediário";
-            levelClass += " bronze";
-        }
-        
-        profileContainer.innerHTML = `
-            <div class="profile-header">
-                <div class="profile-avatar">${user.name.charAt(0).toUpperCase()}</div>
-                <div>
-                    <h2>${user.name} <span class="${levelClass}">${level}</span></h2>
-                    <p>Jogador desde ${new Date(user.createdAt).toLocaleDateString()}</p>
-                </div>
-            </div>
-            
-            <div class="profile-stats">
-                <div class="stat-card">
-                    <div class="stat-value">${totalScore}</div>
-                    <div class="stat-label">Pontos totais</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">${(user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0)}</div>
-                    <div class="stat-label">Questões acertadas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">${Math.floor(totalScore / 5)}</div>
-                    <div class="stat-label">Partidas jogadas</div>
-                </div>
-            </div>
-            
-            <div class="progress-section">
-                <h3>Desempenho por Nível</h3>
-                
-                <div class="progress-title">
-                    <span>Fácil <small>(1 ponto por acerto)</small></span>
-                    <span>${user.scores.easy || 0} acertos</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.easy || 0) / 20) * 100)}%"></div>
-                </div>
-                
-                <div class="progress-title">
-                    <span>Médio <small>(2 pontos por acerto)</small></span>
-                    <span>${user.scores.medium || 0} acertos</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.medium || 0) / 15) * 100)}%"></div>
-                </div>
-                
-                <div class="progress-title">
-                    <span>Difícil <small>(3 pontos por acerto)</small></span>
-                    <span>${user.scores.hard || 0} acertos</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.hard || 0) / 10) * 100)}%"></div>
-                </div>
-            </div>
-        `;
-    }
 
     showLeaderboardBtn.addEventListener('click', showLeaderboard);
     backToMenuBtn.addEventListener('click', () => {
@@ -148,46 +69,6 @@ function initializeGame() {
         startScreen.style.display = 'block';
     });
 
-    function showLeaderboard() {
-        startScreen.style.display = 'none';
-        leaderboardScreen.style.display = 'block';
-        
-        const ranking = getUserRanking();
-        const currentUser = getCurrentUser();
-        
-        leaderboardContainer.innerHTML = '';
-        
-        if (ranking.length === 0) {
-            leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
-            return;
-        }
-        
-        ranking.forEach((user, index) => {
-            const leaderboardItem = document.createElement('div');
-            leaderboardItem.className = 'leaderboard-item';
-            
-            if (currentUser && user.id === currentUser.id) {
-                leaderboardItem.classList.add('current-user');
-            }
-            
-            let trophyIcon = '';
-            if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
-            else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
-            else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
-            
-            leaderboardItem.innerHTML = `
-                <div class="leaderboard-position">${index + 1}</div>
-                <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
-                <div class="leaderboard-score">${user.score} pts
-                    <small>Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard}</small>
-                </div>
-            `;
-            
-            leaderboardContainer.appendChild(leaderboardItem);
-        });
-    }
-
-    // Event Listeners
     document.querySelectorAll('.btn-difficulty').forEach(button => {
         button.addEventListener('click', startGame);
     });
@@ -195,6 +76,7 @@ function initializeGame() {
     nextButton.addEventListener('click', nextQuestion);
     restartButton.addEventListener('click', restartGame);
 
+    // Funções do jogo
     function startGame(e) {
         currentDifficulty = e.target.dataset.difficulty;
         selectedQuestions = selectRandomQuestions(currentDifficulty, 5);
@@ -288,11 +170,8 @@ function initializeGame() {
         gameScreen.style.display = 'none';
         resultScreen.style.display = 'block';
         
-        // Calcula os pontos baseados na dificuldade (sem multiplicar aqui)
-        const pointsEarned = score;
-        
-        // Atualiza a pontuação do usuário (agora passando a quantidade de acertos)
-        updateUserScore(currentDifficulty, pointsEarned);
+        // Atualiza apenas se a pontuação atual for maior que a anterior
+        updateUserScore(currentDifficulty, score);
         
         finalScoreElement.textContent = score;
         totalQuestionsElement.textContent = selectedQuestions.length;
@@ -316,6 +195,125 @@ function initializeGame() {
         updateLastPlayed();
     }
 
+    function showProfile() {
+        startScreen.style.display = 'none';
+        profileScreen.style.display = 'block';
+        
+        const user = getCurrentUser();
+        if (!user) return;
+        
+        // Calcula a pontuação total ponderada
+        const totalScore = (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3;
+        const totalCorrect = (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0);
+        
+        // Determina o nível do jogador
+        let level = "Iniciante";
+        let levelClass = "level-badge";
+        
+        if (totalScore >= 100) {
+            level = "Mestre";
+            levelClass += " gold";
+        } else if (totalScore >= 50) {
+            level = "Avançado";
+            levelClass += " silver";
+        } else if (totalScore >= 20) {
+            level = "Intermediário";
+            levelClass += " bronze";
+        }
+        
+        profileContainer.innerHTML = `
+            <div class="profile-header">
+                <div class="profile-avatar">${user.name.charAt(0).toUpperCase()}</div>
+                <div>
+                    <h2>${user.name} <span class="${levelClass}">${level}</span></h2>
+                    <p>Jogador desde ${new Date(user.createdAt).toLocaleDateString()}</p>
+                </div>
+            </div>
+            
+            <div class="profile-stats">
+                <div class="stat-card">
+                    <div class="stat-value">${totalScore}</div>
+                    <div class="stat-label">Pontos totais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${totalCorrect}</div>
+                    <div class="stat-label">Questões acertadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${Math.floor(totalScore / 5)}</div>
+                    <div class="stat-label">Partidas jogadas</div>
+                </div>
+            </div>
+            
+            <div class="progress-section">
+                <h3>Desempenho por Nível</h3>
+                
+                <div class="progress-title">
+                    <span>Fácil <small>(1 ponto por acerto)</small></span>
+                    <span>${user.scores.easy || 0} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.easy || 0) / 20) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Médio <small>(2 pontos por acerto)</small></span>
+                    <span>${user.scores.medium || 0} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.medium || 0) / 15) * 100)}%"></div>
+                </div>
+                
+                <div class="progress-title">
+                    <span>Difícil <small>(3 pontos por acerto)</small></span>
+                    <span>${user.scores.hard || 0} acertos</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.hard || 0) / 10) * 100)}%"></div>
+                </div>
+            </div>
+        `;
+    }
+
+    function showLeaderboard() {
+        startScreen.style.display = 'none';
+        leaderboardScreen.style.display = 'block';
+        
+        const ranking = getUserRanking();
+        const currentUser = getCurrentUser();
+        
+        leaderboardContainer.innerHTML = '';
+        
+        if (ranking.length === 0) {
+            leaderboardContainer.innerHTML = '<p>Nenhum jogador registrado ainda.</p>';
+            return;
+        }
+        
+        ranking.forEach((user, index) => {
+            const leaderboardItem = document.createElement('div');
+            leaderboardItem.className = 'leaderboard-item';
+            
+            if (currentUser && user.id === currentUser.id) {
+                leaderboardItem.classList.add('current-user');
+            }
+            
+            let trophyIcon = '';
+            if (index === 0) trophyIcon = '<span class="trophy-icon gold-icon">🥇</span>';
+            else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
+            else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
+            
+            leaderboardItem.innerHTML = `
+                <div class="leaderboard-position">${index + 1}</div>
+                <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
+                <div class="leaderboard-score">${user.score} pts
+                    <small>Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard}</small>
+                </div>
+            `;
+            
+            leaderboardContainer.appendChild(leaderboardItem);
+        });
+    }
+
     function restartGame() {
         resultScreen.style.display = 'none';
         startScreen.style.display = 'block';
@@ -335,6 +333,7 @@ function initializeGame() {
     }
 }
 
+// Funções de usuário
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
@@ -348,16 +347,14 @@ function updateUserScore(difficulty, newScore) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza apenas se a nova pontuação for maior que a anterior
-        if (newScore > (users[userIndex].scores[difficulty] || 0)) {
-            users[userIndex].scores[difficulty] = newScore;
-            users[userIndex].lastPlayed = new Date().toISOString();
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            currentUser.scores[difficulty] = newScore;
-            currentUser.lastPlayed = users[userIndex].lastPlayed;
-            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        }
+        // Mantém o maior score entre o atual e o novo
+        users[userIndex].scores[difficulty] = Math.max(newScore, users[userIndex].scores[difficulty] || 0);
+        users[userIndex].lastPlayed = new Date().toISOString();
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
+        currentUser.lastPlayed = users[userIndex].lastPlayed;
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         return true;
     }
     

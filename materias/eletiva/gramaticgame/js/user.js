@@ -2,22 +2,7 @@ function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
 
-function getUserRanking() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    return users
-        .map(user => ({
-            id: user.id,
-            name: user.name,
-            score: (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3,
-            easy: user.scores.easy || 0,
-            medium: user.scores.medium || 0,
-            hard: user.scores.hard || 0,
-            lastPlayed: user.lastPlayed || null
-        }))
-        .sort((a, b) => b.score - a.score);
-}
-
-function updateUserScore(difficulty, score) {
+function updateUserScore(difficulty, newScore) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
     
@@ -26,8 +11,7 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza a pontuação somando (não multiplica aqui, pois já vem ponderada)
-        users[userIndex].scores[difficulty] = (users[userIndex].scores[difficulty] || 0) + score;
+        users[userIndex].scores[difficulty] = Math.max(newScore, users[userIndex].scores[difficulty] || 0);
         users[userIndex].lastPlayed = new Date().toISOString();
         localStorage.setItem('users', JSON.stringify(users));
         
@@ -38,6 +22,20 @@ function updateUserScore(difficulty, score) {
     }
     
     return false;
+}
+
+function getUserRanking() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users
+        .map(user => ({
+            id: user.id,
+            name: user.name,
+            score: (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3,
+            easy: user.scores.easy || 0,
+            medium: user.scores.medium || 0,
+            hard: user.scores.hard || 0
+        }))
+        .sort((a, b) => b.score - a.score);
 }
 
 function updateLastPlayed() {
