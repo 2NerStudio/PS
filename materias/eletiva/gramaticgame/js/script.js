@@ -72,9 +72,9 @@ function initializeGame() {
         const user = getCurrentUser();
         if (!user) return;
         
-        // Calcula a pontuação total ponderada
-        const totalScore = (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3);
-        
+        // Calcula a pontuação total somando todos os níveis
+        const totalScore = (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0);
+            
         // Determina o nível do jogador
         let level = "Iniciante";
         let levelClass = "level-badge";
@@ -298,7 +298,7 @@ function initializeGame() {
         gameScreen.style.display = 'none';
         resultScreen.style.display = 'block';
         
-        // Atualiza a pontuação do usuário
+        // Atualiza a pontuação do usuário (agora soma em vez de substituir)
         updateUserScore(currentDifficulty, score);
         
         finalScoreElement.textContent = score;
@@ -319,6 +319,8 @@ function initializeGame() {
             trophyElement.textContent = '🥉';
             trophyElement.className = 'trophy bronze';
         }
+        
+        // Atualiza o último jogo jogado
         updateLastPlayed();
     }
 
@@ -356,15 +358,13 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza a pontuação se for maior que a anterior
-        if (score > users[userIndex].scores[difficulty]) {
-            users[userIndex].scores[difficulty] = score;
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Atualiza também na sessão atual
-            currentUser.scores[difficulty] = score;
-            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        }
+        // Atualiza a pontuação somando ao invés de substituir
+        users[userIndex].scores[difficulty] += score;
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        // Atualiza também na sessão atual
+        currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         return true;
     }
     

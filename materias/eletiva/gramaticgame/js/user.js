@@ -8,10 +8,10 @@ function getUserRanking() {
         .map(user => ({
             id: user.id,
             name: user.name,
-            score: (user.scores.easy * 1) + (user.scores.medium * 2) + (user.scores.hard * 3),
-            easy: user.scores.easy,
-            medium: user.scores.medium,
-            hard: user.scores.hard,
+            score: (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0),
+            easy: user.scores.easy || 0,
+            medium: user.scores.medium || 0,
+            hard: user.scores.hard || 0,
             lastPlayed: user.lastPlayed || null
         }))
         .sort((a, b) => b.score - a.score);
@@ -26,13 +26,14 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        if (score > users[userIndex].scores[difficulty]) {
-            users[userIndex].scores[difficulty] = score;
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            currentUser.scores[difficulty] = score;
-            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        }
+        // Atualiza somando a pontuação
+        users[userIndex].scores[difficulty] = (users[userIndex].scores[difficulty] || 0) + score;
+        users[userIndex].lastPlayed = new Date().toISOString();
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
+        currentUser.lastPlayed = users[userIndex].lastPlayed;
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         return true;
     }
     
