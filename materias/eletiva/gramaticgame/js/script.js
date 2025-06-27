@@ -167,41 +167,41 @@ function initializeGame() {
     }
 
     function showResults() {
-    gameScreen.style.display = 'none';
-    resultScreen.style.display = 'block';
-    
-    // Obtém IDs das questões respondidas corretamente
-    const correctQuestionIds = selectedQuestions
-        .filter((q, index) => {
-            const userAnswer = selectedOption?.dataset.index;
-            return userAnswer && parseInt(userAnswer) === q.answer;
-        })
-        .map(q => q.question);
-    
-    // Atualiza as questões respondidas corretamente
-    updateUserAnswers(currentDifficulty, correctQuestionIds);
-    
-    finalScoreElement.textContent = score;
-    totalQuestionsElement.textContent = selectedQuestions.length;
-    
-    const percentage = (score / selectedQuestions.length) * 100;
+        gameScreen.style.display = 'none';
+        resultScreen.style.display = 'block';
         
-        if (percentage >= 80) {
-            resultMessageElement.textContent = 'Excelente! Você domina a gramática!';
-            trophyElement.textContent = '🏆';
-            trophyElement.className = 'trophy gold';
-        } else if (percentage >= 50) {
-            resultMessageElement.textContent = 'Bom trabalho! Continue praticando!';
-            trophyElement.textContent = '🥈';
-            trophyElement.className = 'trophy silver';
-        } else {
-            resultMessageElement.textContent = 'Estude mais gramática e tente novamente!';
-            trophyElement.textContent = '🥉';
-            trophyElement.className = 'trophy bronze';
+        // Obtém IDs das questões respondidas corretamente
+        const correctQuestionIds = selectedQuestions
+            .filter((q, index) => {
+                // Verifica se a questão foi respondida corretamente
+                return score > 0 && index < score; // Assumindo que as corretas são as primeiras
+            })
+            .map(q => q.id); // Usa o ID da questão
+        
+        // Atualiza as questões respondidas corretamente
+        updateUserAnswers(currentDifficulty, correctQuestionIds);
+        
+        finalScoreElement.textContent = score;
+        totalQuestionsElement.textContent = selectedQuestions.length;
+        
+        const percentage = (score / selectedQuestions.length) * 100;
+            
+            if (percentage >= 80) {
+                resultMessageElement.textContent = 'Excelente! Você domina a gramática!';
+                trophyElement.textContent = '🏆';
+                trophyElement.className = 'trophy gold';
+            } else if (percentage >= 50) {
+                resultMessageElement.textContent = 'Bom trabalho! Continue praticando!';
+                trophyElement.textContent = '🥈';
+                trophyElement.className = 'trophy silver';
+            } else {
+                resultMessageElement.textContent = 'Estude mais gramática e tente novamente!';
+                trophyElement.textContent = '🥉';
+                trophyElement.className = 'trophy bronze';
+            }
+            
+            updateLastPlayed();
         }
-        
-        updateLastPlayed();
-    }
 
     function showProfile() {
         startScreen.style.display = 'none';
@@ -354,64 +354,3 @@ function initializeGame() {
     }
 }
 
-// Funções de usuário
-function getCurrentUser() {
-    return JSON.parse(sessionStorage.getItem('currentUser'));
-}
-
-function updateUserScore(difficulty, newScore) {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const currentUser = getCurrentUser();
-    
-    if (!currentUser) return false;
-    
-    const userIndex = users.findIndex(u => u.id === currentUser.id);
-    
-    if (userIndex !== -1) {
-        // Mantém o maior score entre o atual e o novo
-        users[userIndex].scores[difficulty] = Math.max(newScore, users[userIndex].scores[difficulty] || 0);
-        users[userIndex].lastPlayed = new Date().toISOString();
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
-        currentUser.lastPlayed = users[userIndex].lastPlayed;
-        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        return true;
-    }
-    
-    return false;
-}
-
-function getUserRanking() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    return users
-        .map(user => ({
-            id: user.id,
-            name: user.name,
-            score: (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3,
-            easy: user.scores.easy || 0,
-            medium: user.scores.medium || 0,
-            hard: user.scores.hard || 0
-        }))
-        .sort((a, b) => b.score - a.score);
-}
-
-function updateLastPlayed() {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const currentUser = getCurrentUser();
-    
-    if (!currentUser) return false;
-    
-    const userIndex = users.findIndex(u => u.id === currentUser.id);
-    
-    if (userIndex !== -1) {
-        users[userIndex].lastPlayed = new Date().toISOString();
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        currentUser.lastPlayed = users[userIndex].lastPlayed;
-        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
-        return true;
-    }
-    
-    return false;
-}

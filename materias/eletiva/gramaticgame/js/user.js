@@ -11,7 +11,7 @@ function updateUserAnswers(difficulty, questionIds) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Adiciona novas questões respondidas corretamente (evitando duplicatas)
+        // Adiciona novas questões respondidas corretamente
         questionIds.forEach(id => {
             if (!users[userIndex].correctAnswers[difficulty].includes(id)) {
                 users[userIndex].correctAnswers[difficulty].push(id);
@@ -37,12 +37,12 @@ function getUserRanking() {
         .map(user => ({
             id: user.id,
             name: user.name,
-            score: (user.correctAnswers.easy.length || 0) * 1 + 
-                  (user.correctAnswers.medium.length || 0) * 2 + 
-                  (user.correctAnswers.hard.length || 0) * 3,
-            easy: user.correctAnswers.easy.length || 0,
-            medium: user.correctAnswers.medium.length || 0,
-            hard: user.correctAnswers.hard.length || 0
+            score: (user.correctAnswers?.easy?.length || 0) * 1 + 
+                  (user.correctAnswers?.medium?.length || 0) * 2 + 
+                  (user.correctAnswers?.hard?.length || 0) * 3,
+            easy: user.correctAnswers?.easy?.length || 0,
+            medium: user.correctAnswers?.medium?.length || 0,
+            hard: user.correctAnswers?.hard?.length || 0
         }))
         .sort((a, b) => b.score - a.score);
 }
