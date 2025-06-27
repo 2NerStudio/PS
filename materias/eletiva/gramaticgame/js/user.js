@@ -8,7 +8,7 @@ function getUserRanking() {
         .map(user => ({
             id: user.id,
             name: user.name,
-            score: (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0),
+            score: (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3,
             easy: user.scores.easy || 0,
             medium: user.scores.medium || 0,
             hard: user.scores.hard || 0,
@@ -26,7 +26,7 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza somando a pontuação
+        // Atualiza a pontuação somando (não multiplica aqui, pois já vem ponderada)
         users[userIndex].scores[difficulty] = (users[userIndex].scores[difficulty] || 0) + score;
         users[userIndex].lastPlayed = new Date().toISOString();
         localStorage.setItem('users', JSON.stringify(users));

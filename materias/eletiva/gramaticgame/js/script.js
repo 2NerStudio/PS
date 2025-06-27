@@ -1,4 +1,3 @@
-
 // Verifica autenticação ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
     const currentUser = getCurrentUser();
@@ -64,16 +63,15 @@ function initializeGame() {
         startScreen.style.display = 'block';
     });
 
-    // Adicione esta função para mostrar o perfil:
     function showProfile() {
         startScreen.style.display = 'none';
         profileScreen.style.display = 'block';
         
         const user = getCurrentUser();
         if (!user) return;
-        
-        // Calcula a pontuação total somando todos os níveis
-        const totalScore = (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0);
+    
+        // Calcula a pontuação total ponderada
+        const totalScore = (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3;
             
         // Determina o nível do jogador
         let level = "Iniciante";
@@ -105,7 +103,7 @@ function initializeGame() {
                     <div class="stat-label">Pontos totais</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">${user.scores.easy + user.scores.medium + user.scores.hard}</div>
+                    <div class="stat-value">${(user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0)}</div>
                     <div class="stat-label">Questões acertadas</div>
                 </div>
                 <div class="stat-card">
@@ -119,30 +117,31 @@ function initializeGame() {
                 
                 <div class="progress-title">
                     <span>Fácil <small>(1 ponto por acerto)</small></span>
-                    <span>${user.scores.easy} acertos</span>
+                    <span>${user.scores.easy || 0} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.easy / 20) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.easy || 0) / 20) * 100)}%"></div>
                 </div>
                 
                 <div class="progress-title">
                     <span>Médio <small>(2 pontos por acerto)</small></span>
-                    <span>${user.scores.medium} acertos</span>
+                    <span>${user.scores.medium || 0} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.medium / 15) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.medium || 0) / 15) * 100)}%"></div>
                 </div>
                 
                 <div class="progress-title">
                     <span>Difícil <small>(3 pontos por acerto)</small></span>
-                    <span>${user.scores.hard} acertos</span>
+                    <span>${user.scores.hard || 0} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, (user.scores.hard / 10) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.hard || 0) / 10) * 100)}%"></div>
                 </div>
             </div>
         `;
     }
+
     showLeaderboardBtn.addEventListener('click', showLeaderboard);
     backToMenuBtn.addEventListener('click', () => {
         leaderboardScreen.style.display = 'none';
@@ -167,7 +166,7 @@ function initializeGame() {
             const leaderboardItem = document.createElement('div');
             leaderboardItem.className = 'leaderboard-item';
             
-            if (currentUser && user.name === currentUser.name) {
+            if (currentUser && user.id === currentUser.id) {
                 leaderboardItem.classList.add('current-user');
             }
             
@@ -176,13 +175,11 @@ function initializeGame() {
             else if (index === 1) trophyIcon = '<span class="trophy-icon silver-icon">🥈</span>';
             else if (index === 2) trophyIcon = '<span class="trophy-icon bronze-icon">🥉</span>';
             
-            // Adiciona detalhes das pontuações por nível
-            const scoreDetails = `(Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard})`;
-            
             leaderboardItem.innerHTML = `
                 <div class="leaderboard-position">${index + 1}</div>
                 <div class="leaderboard-name">${user.name} ${trophyIcon}</div>
-                <div class="leaderboard-score">${user.score} pts 
+                <div class="leaderboard-score">${user.score} pts
+                    <small>Fácil: ${user.easy} | Médio: ${user.medium} | Difícil: ${user.hard}</small>
                 </div>
             `;
             
@@ -198,13 +195,9 @@ function initializeGame() {
     nextButton.addEventListener('click', nextQuestion);
     restartButton.addEventListener('click', restartGame);
 
-    // Funções do jogo
     function startGame(e) {
         currentDifficulty = e.target.dataset.difficulty;
-        
-        // Seleciona 5 questões aleatórias da dificuldade escolhida
         selectedQuestions = selectRandomQuestions(currentDifficulty, 5);
-        
         score = 0;
         currentQuestionIndex = 0;
         
@@ -215,7 +208,6 @@ function initializeGame() {
         showQuestion();
     }
 
-    // Seleciona n questões aleatórias de uma dificuldade
     function selectRandomQuestions(difficulty, count) {
         const allQuestions = [...questionsDatabase[difficulty]];
         const shuffled = shuffleArray(allQuestions);
@@ -257,13 +249,11 @@ function initializeGame() {
         const selectedIndex = parseInt(selectedOption.dataset.index);
         const correctIndex = selectedQuestions[currentQuestionIndex].answer;
         
-        // Desabilita todas as opções
         document.querySelectorAll('.btn-option').forEach(button => {
             button.disabled = true;
             button.style.cursor = 'not-allowed';
         });
         
-        // Marca a opção correta como verde
         document.querySelector(`.btn-option[data-index="${correctIndex}"]`).style.backgroundColor = '#d4edda';
         document.querySelector(`.btn-option[data-index="${correctIndex}"]`).style.borderColor = '#c3e6cb';
         
@@ -298,8 +288,13 @@ function initializeGame() {
         gameScreen.style.display = 'none';
         resultScreen.style.display = 'block';
         
-        // Atualiza a pontuação do usuário (agora soma em vez de substituir)
-        updateUserScore(currentDifficulty, score);
+        // Calcula pontos com peso
+        let pointsEarned = score;
+        if (currentDifficulty === 'medium') pointsEarned = score * 2;
+        if (currentDifficulty === 'hard') pointsEarned = score * 3;
+        
+        // Atualiza a pontuação do usuário com os pontos ponderados
+        updateUserScore(currentDifficulty, pointsEarned);
         
         finalScoreElement.textContent = score;
         totalQuestionsElement.textContent = selectedQuestions.length;
@@ -320,7 +315,6 @@ function initializeGame() {
             trophyElement.className = 'trophy bronze';
         }
         
-        // Atualiza o último jogo jogado
         updateLastPlayed();
     }
 
@@ -334,7 +328,6 @@ function initializeGame() {
         progressBar.style.width = `${progress}%`;
     }
 
-    // Função para embaralhar array (Fisher-Yates algorithm)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -344,7 +337,6 @@ function initializeGame() {
     }
 }
 
-// Funções de usuário (de user.js)
 function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
@@ -358,12 +350,12 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        // Atualiza a pontuação somando ao invés de substituir
-        users[userIndex].scores[difficulty] += score;
+        users[userIndex].scores[difficulty] = (users[userIndex].scores[difficulty] || 0) + score;
+        users[userIndex].lastPlayed = new Date().toISOString();
         localStorage.setItem('users', JSON.stringify(users));
         
-        // Atualiza também na sessão atual
         currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
+        currentUser.lastPlayed = users[userIndex].lastPlayed;
         sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
         return true;
     }
@@ -375,9 +367,32 @@ function getUserRanking() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     return users
         .map(user => ({
+            id: user.id,
             name: user.name,
-            score: user.scores.easy + user.scores.medium + user.scores.hard
+            score: (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3,
+            easy: user.scores.easy || 0,
+            medium: user.scores.medium || 0,
+            hard: user.scores.hard || 0
         }))
         .sort((a, b) => b.score - a.score);
 }
 
+function updateLastPlayed() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const currentUser = getCurrentUser();
+    
+    if (!currentUser) return false;
+    
+    const userIndex = users.findIndex(u => u.id === currentUser.id);
+    
+    if (userIndex !== -1) {
+        users[userIndex].lastPlayed = new Date().toISOString();
+        localStorage.setItem('users', JSON.stringify(users));
+        
+        currentUser.lastPlayed = users[userIndex].lastPlayed;
+        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+        return true;
+    }
+    
+    return false;
+}
