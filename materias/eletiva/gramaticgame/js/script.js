@@ -288,12 +288,10 @@ function initializeGame() {
         gameScreen.style.display = 'none';
         resultScreen.style.display = 'block';
         
-        // Calcula pontos com peso
-        let pointsEarned = score;
-        if (currentDifficulty === 'medium') pointsEarned = score * 2;
-        if (currentDifficulty === 'hard') pointsEarned = score * 3;
+        // Calcula os pontos baseados na dificuldade (sem multiplicar aqui)
+        const pointsEarned = score;
         
-        // Atualiza a pontuação do usuário com os pontos ponderados
+        // Atualiza a pontuação do usuário (agora passando a quantidade de acertos)
         updateUserScore(currentDifficulty, pointsEarned);
         
         finalScoreElement.textContent = score;
@@ -341,7 +339,7 @@ function getCurrentUser() {
     return JSON.parse(sessionStorage.getItem('currentUser'));
 }
 
-function updateUserScore(difficulty, score) {
+function updateUserScore(difficulty, newScore) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const currentUser = getCurrentUser();
     
@@ -350,13 +348,16 @@ function updateUserScore(difficulty, score) {
     const userIndex = users.findIndex(u => u.id === currentUser.id);
     
     if (userIndex !== -1) {
-        users[userIndex].scores[difficulty] = (users[userIndex].scores[difficulty] || 0) + score;
-        users[userIndex].lastPlayed = new Date().toISOString();
-        localStorage.setItem('users', JSON.stringify(users));
-        
-        currentUser.scores[difficulty] = users[userIndex].scores[difficulty];
-        currentUser.lastPlayed = users[userIndex].lastPlayed;
-        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+        // Atualiza apenas se a nova pontuação for maior que a anterior
+        if (newScore > (users[userIndex].scores[difficulty] || 0)) {
+            users[userIndex].scores[difficulty] = newScore;
+            users[userIndex].lastPlayed = new Date().toISOString();
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            currentUser.scores[difficulty] = newScore;
+            currentUser.lastPlayed = users[userIndex].lastPlayed;
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
         return true;
     }
     
