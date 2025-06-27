@@ -167,16 +167,24 @@ function initializeGame() {
     }
 
     function showResults() {
-        gameScreen.style.display = 'none';
-        resultScreen.style.display = 'block';
-        
-        // Atualiza apenas se a pontuação atual for maior que a anterior
-        updateUserScore(currentDifficulty, score);
-        
-        finalScoreElement.textContent = score;
-        totalQuestionsElement.textContent = selectedQuestions.length;
-        
-        const percentage = (score / selectedQuestions.length) * 100;
+    gameScreen.style.display = 'none';
+    resultScreen.style.display = 'block';
+    
+    // Obtém IDs das questões respondidas corretamente
+    const correctQuestionIds = selectedQuestions
+        .filter((q, index) => {
+            const userAnswer = selectedOption?.dataset.index;
+            return userAnswer && parseInt(userAnswer) === q.answer;
+        })
+        .map(q => q.question);
+    
+    // Atualiza as questões respondidas corretamente
+    updateUserAnswers(currentDifficulty, correctQuestionIds);
+    
+    finalScoreElement.textContent = score;
+    totalQuestionsElement.textContent = selectedQuestions.length;
+    
+    const percentage = (score / selectedQuestions.length) * 100;
         
         if (percentage >= 80) {
             resultMessageElement.textContent = 'Excelente! Você domina a gramática!';
@@ -202,9 +210,12 @@ function initializeGame() {
         const user = getCurrentUser();
         if (!user) return;
         
-        // Calcula a pontuação total ponderada
-        const totalScore = (user.scores.easy || 0) * 1 + (user.scores.medium || 0) * 2 + (user.scores.hard || 0) * 3;
-        const totalCorrect = (user.scores.easy || 0) + (user.scores.medium || 0) + (user.scores.hard || 0);
+        // Calcula totais
+        const easyCount = user.correctAnswers.easy?.length || 0;
+        const mediumCount = user.correctAnswers.medium?.length || 0;
+        const hardCount = user.correctAnswers.hard?.length || 0;
+        const totalScore = easyCount * 1 + mediumCount * 2 + hardCount * 3;
+        const totalCorrect = easyCount + mediumCount + hardCount;
         
         // Determina o nível do jogador
         let level = "Iniciante";
@@ -250,27 +261,37 @@ function initializeGame() {
                 
                 <div class="progress-title">
                     <span>Fácil <small>(1 ponto por acerto)</small></span>
-                    <span>${user.scores.easy || 0} acertos</span>
+                    <span>${easyCount} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.easy || 0) / 20) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, (easyCount / 20) * 100)}%"></div>
                 </div>
                 
                 <div class="progress-title">
                     <span>Médio <small>(2 pontos por acerto)</small></span>
-                    <span>${user.scores.medium || 0} acertos</span>
+                    <span>${mediumCount} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.medium || 0) / 15) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, (mediumCount / 15) * 100)}%"></div>
                 </div>
                 
                 <div class="progress-title">
                     <span>Difícil <small>(3 pontos por acerto)</small></span>
-                    <span>${user.scores.hard || 0} acertos</span>
+                    <span>${hardCount} acertos</span>
                 </div>
                 <div class="progress-container">
-                    <div class="progress-bar" style="width: ${Math.min(100, ((user.scores.hard || 0) / 10) * 100)}%"></div>
+                    <div class="progress-bar" style="width: ${Math.min(100, (hardCount / 10) * 100)}%"></div>
                 </div>
+            </div>
+            
+            <div class="recent-answers">
+                <h3>Últimos Acertos</h3>
+                <ul>
+                    ${[...user.correctAnswers.easy.slice(-3), ...user.correctAnswers.medium.slice(-3), ...user.correctAnswers.hard.slice(-3)]
+                        .slice(-5)
+                        .map(q => `<li>${q}</li>`)
+                        .join('')}
+                </ul>
             </div>
         `;
     }
