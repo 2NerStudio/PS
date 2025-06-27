@@ -75,12 +75,11 @@ function registerUser(name, email, password) {
         email,
         password,
         createdAt: new Date().toISOString(),
-        correctAnswers: {
-            easy: [],
-            medium: [],
-            hard: []
-        },
-        lastPlayed: null
+        scores: {
+            easy: 0,
+            medium: 0,
+            hard: 0
+        }
     };
     
     users.push(newUser);

@@ -1,61 +1,53 @@
+
+// Banco de perguntas por nível de dificuldade
 const questionsDatabase = {
     easy: [
         {
-            id: "easy-1",
             question: "Qual é o plural de 'casa'?",
             options: ["Casas", "Casa", "Cazes", "Casais"],
             answer: 0
         },
         {
-            id: "easy-2",
             question: "Qual destas palavras é um artigo definido?",
             options: ["Um", "Uns", "O", "Alguns"],
             answer: 2
         },
         {
-            id: "easy-3",
             question: "Complete a frase: 'Eu ____ para escola todos os dias.'",
             options: ["vou", "vão", "vamos", "vou"],
-            answer: 0 // Corrigido de 3 para 0 (a opção 3 era duplicada)
+            answer: 3
         },
         {
-            id: "easy-4",
             question: "Qual destas palavras é um substantivo?",
             options: ["Correr", "Bonito", "Cachorro", "Rapidamente"],
             answer: 2
         },
         {
-            id: "easy-5",
             question: "Qual é o feminino de 'menino'?",
             options: ["Menina", "Menino", "Meninos", "Meninaz"],
             answer: 0
         },
         {
-            id: "easy-6",
             question: "Qual destas palavras está escrita corretamente?",
             options: ["Caza", "Casa", "Cassa", "Cazza"],
             answer: 1
         },
         {
-            id: "easy-7",
             question: "Qual é o antônimo de 'alto'?",
             options: ["Baixo", "Grande", "Largo", "Estreito"],
             answer: 0
         },
         {
-            id: "easy-8",
             question: "Qual destas palavras é um verbo?",
             options: ["Corrida", "Bonito", "Correr", "Felizmente"],
             answer: 2
         },
         {
-            id: "easy-9",
             question: "Complete: 'Ontem eu ____ ao cinema.'",
             options: ["fui", "vou", "irei", "vamos"],
             answer: 0
         },
         {
-            id: "easy-10",
             question: "Qual destas frases está no plural?",
             options: [
                 "O gato dorme.",
@@ -66,13 +58,11 @@ const questionsDatabase = {
             answer: 1
         },
         {
-            id: "easy-11",
             question: "Qual é o aumentativo de 'casa'?",
             options: ["Casinha", "Casebre", "Casarão", "Casario"],
             answer: 2
         },
         {
-            id: "easy-12",
             question: "Qual destas palavras é paroxítona?",
             options: ["América", "Brasil", "Canadá", "México"],
             answer: 0
@@ -80,7 +70,6 @@ const questionsDatabase = {
     ],
     medium: [
         {
-            id: "medium-1",
             question: "Qual destas frases está na voz passiva?",
             options: [
                 "O professor corrigiu as provas.",
@@ -91,31 +80,26 @@ const questionsDatabase = {
             answer: 1
         },
         {
-            id: "medium-2",
             question: "Qual destas palavras é um advérbio?",
             options: ["Coragem", "Rapidamente", "Feliz", "Casa"],
             answer: 1
         },
         {
-            id: "medium-3",
             question: "Identifique o sujeito na frase: 'Os alunos estudaram para a prova.'",
             options: ["estudaram", "para a prova", "Os alunos", "não há sujeito"],
             answer: 2
         },
         {
-            id: "medium-4",
             question: "Qual destas palavras é oxítona?",
             options: ["casa", "árvore", "caderno", "sofá"],
             answer: 3
         },
         {
-            id: "medium-5",
             question: "Qual é a classificação morfológica da palavra 'que' na frase: 'O livro que comprei é interessante.'?",
             options: ["Pronome relativo", "Conjunção", "Advérbio", "Preposição"],
             answer: 0
         },
         {
-            id: "medium-6",
             question: "Qual destas frases contém uma metáfora?",
             options: [
                 "O tempo é um rio que corre.",
@@ -126,19 +110,16 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "medium-7",
             question: "Qual destas palavras é um numeral?",
             options: ["Alguns", "Poucos", "Três", "Vários"],
             answer: 2
         },
         {
-            id: "medium-8",
             question: "Qual é a função sintática da palavra 'livro' na frase: 'Comprei um livro interessante.'?",
             options: ["Sujeito", "Objeto direto", "Objeto indireto", "Adjunto adverbial"],
             answer: 1
         },
         {
-            id: "medium-9",
             question: "Qual destas frases apresenta um adjunto adnominal?",
             options: [
                 "O livro de português está na mesa.",
@@ -149,13 +130,11 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "medium-10",
             question: "Qual destas palavras é proparoxítona?",
             options: ["Árvore", "Caderno", "Livro", "Mesa"],
             answer: 0
         },
         {
-            id: "medium-11",
             question: "Qual destas frases contém uma oração subordinada adverbial?",
             options: [
                 "Quando cheguei, todos já tinham saído.",
@@ -166,7 +145,6 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "medium-12",
             question: "Qual é a regência correta do verbo 'aspirar' no sentido de 'almejar'?",
             options: [
                 "Aspirar algo",
@@ -179,7 +157,6 @@ const questionsDatabase = {
     ],
     hard: [
         {
-            id: "hard-1",
             question: "Qual destas frases contém um pleonasmo?",
             options: [
                 "Subir para cima é mais fácil que descer para baixo.",
@@ -190,7 +167,6 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "hard-2",
             question: "Qual destas construções apresenta uma crase incorreta?",
             options: [
                 "Vou à escola.",
@@ -201,7 +177,6 @@ const questionsDatabase = {
             answer: 2
         },
         {
-            id: "hard-3",
             question: "Qual destas frases apresenta um erro de concordância verbal?",
             options: [
                 "Faz dois anos que não o vejo.",
@@ -212,7 +187,6 @@ const questionsDatabase = {
             answer: 1
         },
         {
-            id: "hard-4",
             question: "Qual destas frases contém um erro de regência verbal?",
             options: [
                 "Aspiro ao cargo de diretor.",
@@ -223,7 +197,6 @@ const questionsDatabase = {
             answer: 1
         },
         {
-            id: "hard-5",
             question: "Qual destas frases apresenta um erro de colocação pronominal?",
             options: [
                 "Não se esqueça de trazer os documentos.",
@@ -234,7 +207,6 @@ const questionsDatabase = {
             answer: 3
         },
         {
-            id: "hard-6",
             question: "Qual destas frases contém um anacoluto?",
             options: [
                 "O livro, já li várias vezes.",
@@ -245,7 +217,6 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "hard-7",
             question: "Qual destas frases apresenta zeugma?",
             options: [
                 "Ele prefere cinema; eu, teatro.",
@@ -256,7 +227,6 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "hard-8",
             question: "Qual destas frases contém um hipérbato?",
             options: [
                 "Do céu caíram as bênçãos.",
@@ -267,7 +237,6 @@ const questionsDatabase = {
             answer: 2
         },
         {
-            id: "hard-9",
             question: "Qual destas frases apresenta polissíndeto?",
             options: [
                 "E corre, e pula, e grita, e ri.",
@@ -278,7 +247,6 @@ const questionsDatabase = {
             answer: 0
         },
         {
-            id: "hard-10",
             question: "Qual destas construções apresenta um erro de paralelismo sintático?",
             options: [
                 "Gosto de nadar e correr.",
@@ -289,7 +257,6 @@ const questionsDatabase = {
             answer: 2
         },
         {
-            id: "hard-11",
             question: "Qual destas frases contém uma silepse de número?",
             options: [
                 "O povo aplaudiu quando o presidente chegou.",
@@ -300,7 +267,6 @@ const questionsDatabase = {
             answer: 1
         },
         {
-            id: "hard-12",
             question: "Qual destas frases apresenta uma ambiguidade?",
             options: [
                 "Vi o irmão da Maria que mora no exterior.",
