@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Email ou senha incorretos!');
         }
     });
-    addMockUsers();
 });
 
 // Função para registrar novo usuário
@@ -93,3 +92,5 @@ function authenticateUser(email, password) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     return users.find(user => user.email === email && user.password === password);
 }
+
+addMockUsers();
