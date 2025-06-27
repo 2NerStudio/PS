@@ -1,3 +1,5 @@
+import { addMockUsers } from './user.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('login-form');
     const registerForm = document.getElementById('register-form');
@@ -90,3 +92,11 @@ function authenticateUser(email, password) {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     return users.find(user => user.email === email && user.password === password);
 }
+// auth.js (adicionar no final do arquivo)
+// Ao carregar a página, verifica se já existem usuários fictícios
+document.addEventListener('DOMContentLoaded', function() {
+    // Chama a função para adicionar usuários fictícios
+    addMockUsers();
+    
+    // ... restante do código existente ...
+});

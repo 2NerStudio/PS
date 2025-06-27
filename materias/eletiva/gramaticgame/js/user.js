@@ -63,26 +63,107 @@ function updateLastPlayed() {
     return false;
 }
 
+// user.js
 function addMockUsers() {
     const mockUsers = [
-        { id: 1, name: "Campeão Master", scores: { easy: 1200, medium: 950, hard: 800 }, lastPlayed: "2023-06-20T09:45:00Z" },
-        { id: 2, name: "Gênio Quiz", scores: { easy: 1100, medium: 850, hard: 750 }, lastPlayed: "2023-06-19T14:30:00Z" },
-        { id: 3, name: "Sabichão", scores: { easy: 1000, medium: 800, hard: 700 }, lastPlayed: "2023-06-18T11:20:00Z" },
-        { id: 4, name: "Perguntador", scores: { easy: 950, medium: 750, hard: 650 }, lastPlayed: "2023-06-17T16:15:00Z" },
-        { id: 5, name: "Curioso", scores: { easy: 900, medium: 700, hard: 600 }, lastPlayed: "2023-06-16T13:10:00Z" },
-        { id: 6, name: "Aprendiz", scores: { easy: 850, medium: 650, hard: 550 }, lastPlayed: "2023-06-15T10:05:00Z" },
-        { id: 7, name: "Iniciante", scores: { easy: 800, medium: 600, hard: 500 }, lastPlayed: "2023-06-14T08:00:00Z" },
-        { id: 8, name: "Novato", scores: { easy: 750, medium: 550, hard: 450 }, lastPlayed: "2023-06-13T17:55:00Z" },
-        { id: 9, name: "Explorador", scores: { easy: 700, medium: 500, hard: 400 }, lastPlayed: "2023-06-12T12:50:00Z" },
-        { id: 10, name: "Visitante", scores: { easy: 650, medium: 450, hard: 350 }, lastPlayed: "2023-06-11T09:45:00Z" }
+        { 
+            id: "1", 
+            name: "Campeão Master", 
+            email: "campeao@exemplo.com", 
+            password: "123456", 
+            createdAt: "2023-01-01T00:00:00Z",
+            scores: { easy: 12, medium: 10, hard: 8 }, 
+            lastPlayed: "2023-06-20T09:45:00Z" 
+        },
+        { 
+            id: "2", 
+            name: "Gênio Quiz", 
+            email: "genio@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-02T00:00:00Z",
+            scores: { easy: 11, medium: 9, hard: 7 }, 
+            lastPlayed: "2023-06-19T14:30:00Z" 
+        },
+        { 
+            id: "3", 
+            name: "Sabichão", 
+            email: "sabichao@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-03T00:00:00Z",
+            scores: { easy: 10, medium: 8, hard: 6 }, 
+            lastPlayed: "2023-06-18T11:20:00Z" 
+        },
+        { 
+            id: "4", 
+            name: "Perguntador", 
+            email: "perguntador@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-04T00:00:00Z",
+            scores: { easy: 9, medium: 7, hard: 5 }, 
+            lastPlayed: "2023-06-17T16:15:00Z" 
+        },
+        { 
+            id: "5", 
+            name: "Curioso", 
+            email: "curioso@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-05T00:00:00Z",
+            scores: { easy: 8, medium: 6, hard: 4 }, 
+            lastPlayed: "2023-06-16T13:10:00Z" 
+        },
+        { 
+            id: "6", 
+            name: "Aprendiz", 
+            email: "aprendiz@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-06T00:00:00Z",
+            scores: { easy: 7, medium: 5, hard: 3 }, 
+            lastPlayed: "2023-06-15T10:05:00Z" 
+        },
+        { 
+            id: "7", 
+            name: "Iniciante", 
+            email: "iniciante@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-07T00:00:00Z",
+            scores: { easy: 6, medium: 4, hard: 2 }, 
+            lastPlayed: "2023-06-14T08:00:00Z" 
+        },
+        { 
+            id: "8", 
+            name: "Novato", 
+            email: "novato@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-08T00:00:00Z",
+            scores: { easy: 5, medium: 3, hard: 1 }, 
+            lastPlayed: "2023-06-13T17:55:00Z" 
+        },
+        { 
+            id: "9", 
+            name: "Explorador", 
+            email: "explorador@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-09T00:00:00Z",
+            scores: { easy: 4, medium: 2, hard: 0 }, 
+            lastPlayed: "2023-06-12T12:50:00Z" 
+        },
+        { 
+            id: "10", 
+            name: "Visitante", 
+            email: "visitante@exemplo.com", 
+            password: "123456",
+            createdAt: "2023-01-10T00:00:00Z",
+            scores: { easy: 3, medium: 1, hard: 0 }, 
+            lastPlayed: "2023-06-11T09:45:00Z" 
+        }
     ];
 
     // Verifica se já existem usuários no localStorage
     const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
     
-    // Filtra para adicionar apenas usuários que não existem ainda (por ID)
+    // Filtra para adicionar apenas usuários que não existem ainda (por email)
     const newUsers = mockUsers.filter(mockUser => 
-        !existingUsers.some(existingUser => existingUser.id === mockUser.id)
+        !existingUsers.some(existingUser => existingUser.email === mockUser.email)
     );
 
     if (newUsers.length > 0) {
@@ -92,5 +173,3 @@ function addMockUsers() {
         console.log('Todos os usuários fictícios já existem no leaderboard.');
     }
 }
-// Chame esta função uma vez para adicionar os usuários fictícios
-addMockUsers();
