@@ -1,4 +1,5 @@
 
+
 // Verifica autenticação ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
     const currentUser = getCurrentUser();
@@ -380,4 +381,3 @@ function getUserRanking() {
         }))
         .sort((a, b) => b.score - a.score);
 }
-
